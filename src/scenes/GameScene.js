@@ -34,6 +34,15 @@ class GameScene extends Phaser.Scene {
       const entry = this.roomManager.roomObjects.find(o => o.def.id === objDef.id);
       if (entry) {
         entry.go.setFrame(objDef.stateFrames[newState]);
+      } else if (this.inventory.pickedUpIds.has(objDef.id)) {
+        const invItem = this.inventory.items.find(i => i.id === objDef.id);
+        if (invItem) {
+          invItem.spriteFrame = objDef.stateFrames[newState];
+          if (objDef.states && objDef.states[newState] && objDef.states[newState].label) {
+            invItem.label = objDef.states[newState].label;
+          }
+          this.inventory.updateDisplay();
+        }
       }
     }
 

@@ -544,6 +544,7 @@
           },
           "states": {
             "burnt": {
+              "label": "Ashes",
               "lookMessage": "A small pile of ash. The flames claimed the photograph.",
               "useMessage": "Nothing left but ash."
             }
