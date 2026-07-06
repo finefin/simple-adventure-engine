@@ -29,6 +29,14 @@ class GameScene extends Phaser.Scene {
 
   setObjState(objDef, newState) {
     this.worldState[objDef.id] = newState;
+
+    if (objDef.stateFrames && objDef.stateFrames[newState] !== undefined) {
+      const entry = this.roomManager.roomObjects.find(o => o.def.id === objDef.id);
+      if (entry) {
+        entry.go.setFrame(objDef.stateFrames[newState]);
+      }
+    }
+
     if (objDef.reveals) {
       objDef.reveals.forEach((childId) => {
         const childDef = this.roomManager.currentRoomData.objects.find((o) => o.id === childId);
@@ -78,14 +86,28 @@ class GameScene extends Phaser.Scene {
   }
 
   createPlayer() {
-    this.player = this.add.rectangle(0, 0, 28, 44, 0x44aaff);
-    this.player.setDepth(10);
+    this.player = this.add.sprite(0, 0, 'player');
+    this.player.setDepth(10).setScale(2);
+
+    this.anims.create({
+      key: 'idle',
+      frames: this.anims.generateFrameNumbers('player', { start: 0, end: 1 }),
+      frameRate: 10,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'walk',
+      frames: this.anims.generateFrameNumbers('player', { start: 2, end: 3 }),
+      frameRate: 10,
+      repeat: -1
+    });
+
+    this.player.play('idle');
 
     this.playerMovement = new CharacterMovement(this, this.player, {
       speed: 220,
-      onArrive: () => {
-        this.player.setFillStyle(0x44aaff);
-      }
+      onArrive: () => {}
     });
   }
 
@@ -139,7 +161,7 @@ class GameScene extends Phaser.Scene {
         return;
       }
 
-      this.player.setFillStyle(0x66ccff);
+      this.player.setFlipX(pointer.x >= this.player.x);
       this.playerMovement.moveTo(pointer.x, pointer.y);
     });
   }
@@ -270,6 +292,19 @@ class GameScene extends Phaser.Scene {
   update(time, delta) {
     if (this.playerMovement) {
       this.playerMovement.update(time, delta);
+
+      if (this.playerMovement.isMoving) {
+        if (this.player.anims.currentAnim?.key !== 'walk') {
+          this.player.play('walk');
+        }
+        if (this.playerMovement.target) {
+          this.player.setFlipX(this.playerMovement.target.x >= this.player.x);
+        }
+      } else {
+        if (this.player.anims.currentAnim?.key !== 'idle') {
+          this.player.play('idle');
+        }
+      }
     }
   }
 }

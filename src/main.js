@@ -5,6 +5,8 @@ const config = {
   parent: document.body,
   backgroundColor: '#000000',
   scene: [BootScene, GameScene],
+  pixelArt: true, 
+  roundPixels: true 
 };
 
 const game = new Phaser.Game(config);

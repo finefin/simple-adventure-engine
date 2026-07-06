@@ -53,11 +53,15 @@ class Inventory {
       bg.setStrokeStyle(1, 0x888899);
 
       let icon;
-      const color = parseInt(item.color);
-      if (item.type === 'circle') {
-        icon = this.scene.add.circle(x, y - 2, 10, color);
+      if (item.spriteFrame !== undefined) {
+        icon = this.scene.add.sprite(x, y - 2, 'objects', item.spriteFrame);
       } else {
-        icon = this.scene.add.rectangle(x, y - 2, 20, 16, color);
+        const color = parseInt(item.color);
+        if (item.type === 'circle') {
+          icon = this.scene.add.circle(x, y - 2, 10, color);
+        } else {
+          icon = this.scene.add.rectangle(x, y - 2, 20, 16, color);
+        }
       }
 
       icon.setDepth(201);

@@ -38,6 +38,7 @@ class RoomManager {
     const w = this.scene.scale.width;
     const h = this.scene.scale.height;
     const wt = data.wallThickness || 24;
+    const invH = this.scene.inventory ? this.scene.inventory.barHeight : 0;
     const floorColor = parseInt(data.floorColor);
     const wallColor = parseInt(data.wallColor);
     const bgColor = parseInt(data.backgroundColor);
@@ -49,11 +50,11 @@ class RoomManager {
     gfx.fillRect(0, 0, w, h);
 
     gfx.fillStyle(floorColor);
-    gfx.fillRect(wt, wt, w - wt * 2, h - wt * 2);
+    gfx.fillRect(wt, wt, w - wt * 2, h - wt * 2 - invH);
 
     gfx.fillStyle(wallColor);
     gfx.fillRect(0, 0, w, wt);
-    gfx.fillRect(0, h - wt, w, wt);
+    gfx.fillRect(0, h - wt - invH, w, wt + invH);
     gfx.fillRect(0, 0, wt, h);
     gfx.fillRect(w - wt, 0, wt, h);
 
@@ -62,7 +63,7 @@ class RoomManager {
     this.walkableArea = new Phaser.Geom.Rectangle(
       wt + margin, wt + margin,
       w - (wt + margin) * 2,
-      h - (wt + margin) * 2
+      h - (wt + margin) * 2 - invH
     );
 
     data.objects.forEach((objDef) => {
@@ -105,19 +106,27 @@ class RoomManager {
   }
 
   createObject(objDef) {
-    const color = parseInt(objDef.color);
-    const strokeColor = objDef.strokeColor ? parseInt(objDef.strokeColor) : null;
     let go;
 
-    if (objDef.type === 'rect') {
+    if (objDef.spriteFrame !== undefined) {
+      let frame = objDef.spriteFrame;
+      if (objDef.stateFrames && objDef.state && objDef.stateFrames[objDef.state] !== undefined) {
+        frame = objDef.stateFrames[objDef.state];
+      }
+      go = this.scene.add.sprite(objDef.x, objDef.y, 'objects', frame);
+      go.setDepth(5).setScale(2);
+    } else if (objDef.type === 'rect') {
+      const color = parseInt(objDef.color);
       go = this.scene.add.rectangle(objDef.x, objDef.y, objDef.width, objDef.height, color);
-      if (strokeColor) go.setStrokeStyle(2, strokeColor);
+      if (objDef.strokeColor) go.setStrokeStyle(2, parseInt(objDef.strokeColor));
+      go.setDepth(5);
     } else if (objDef.type === 'circle') {
+      const color = parseInt(objDef.color);
       go = this.scene.add.circle(objDef.x, objDef.y, objDef.radius, color);
-      if (strokeColor) go.setStrokeStyle(2, strokeColor);
+      if (objDef.strokeColor) go.setStrokeStyle(2, parseInt(objDef.strokeColor));
+      go.setDepth(5);
     }
 
-    go.setDepth(5);
     go.setInteractive({ useHandCursor: true });
     go.objDef = objDef;
 
@@ -133,9 +142,15 @@ class RoomManager {
   }
 
   createDoor(doorDef) {
-    const color = parseInt(doorDef.color);
-    const go = this.scene.add.rectangle(doorDef.x, doorDef.y, doorDef.width, doorDef.height, color);
-    go.setDepth(3);
+    let go;
+    if (doorDef.spriteFrame !== undefined) {
+      go = this.scene.add.sprite(doorDef.x, doorDef.y, 'objects', doorDef.spriteFrame);
+      go.setDepth(3).setScale(2);
+    } else {
+      const color = parseInt(doorDef.color);
+      go = this.scene.add.rectangle(doorDef.x, doorDef.y, doorDef.width, doorDef.height, color);
+      go.setDepth(3);
+    }
     go.setInteractive({ useHandCursor: true });
     go.doorDef = doorDef;
 

@@ -16,6 +16,7 @@
           "width": 60, "height": 100,
           "color": "0x8B4513",
           "label": "Bookshelf",
+          "spriteFrame": 9,
           "interactable": true,
           "blocks": true,
           "lookMessage": "An old bookshelf filled with dusty tomes."
@@ -29,6 +30,7 @@
           "label": "Table",
           "interactable": true,
           "blocks": true,
+          "spriteFrame": 0,
           "lookMessage": "A wooden table. There's something underneath it.",
           "reveals": ["key"],
           "examineReveals": ["key"]
@@ -36,12 +38,13 @@
         {
           "id": "key",
           "type": "circle",
-          "x": 400, "y": 370,
+          "x": 400, "y": 400,
           "radius": 8,
           "color": "0xffd700",
           "label": "Key",
           "interactable": true,
           "hiddenBy": "table",
+          "spriteFrame": 1,
           "lookMessage": "A small golden key.",
           "pickup": true,
           "useMessage": "It might fit something around here.",
@@ -58,6 +61,7 @@
           "strokeColor": "0x4a3a2a",
           "label": "Window",
           "interactable": true,
+          "spriteFrame": 7,
           "lookMessage": "The garden. A statue stands in the middle."
         },
         {
@@ -69,6 +73,7 @@
           "label": "Old Man",
           "interactable": true,
           "blocks": true,
+          "spriteFrame": 8,
           "lookMessage": "An old man with a long grey beard.",
           "talkMessage": "He grunts and looks away.",
           "dialogTree": {
@@ -150,6 +155,7 @@
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Kitchen",
+          "spriteFrame": 10,
           "targetRoom": "kitchen",
           "targetX": 80,
           "targetY": 300
@@ -160,6 +166,7 @@
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Hallway",
+          "spriteFrame": 10,
           "targetRoom": "hallway",
           "targetX": 400,
           "targetY": 500
@@ -183,6 +190,8 @@
           "label": "Stove",
           "interactable": true,
           "blocks": true,
+          "spriteFrame": 2,
+          "stateFrames": { "on": 3 },
           "state": "off",
           "lookMessage": "A cast iron stove. It's cold.",
           "useMessage": "Nothing to light it with.",
@@ -207,6 +216,7 @@
           "width": 70, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
+          "spriteFrame": 4,
           "interactable": true,
           "blocks": true,
           "state": "closed",
@@ -224,10 +234,11 @@
         {
           "id": "matches",
           "type": "rect",
-          "x": 180, "y": 160,
+          "x": 150, "y": 160,
           "width": 14, "height": 24,
           "color": "0xdd8844",
           "label": "Matchbox",
+          "spriteFrame": 5,
           "interactable": true,
           "lookMessage": "A half-empty matchbox.",
           "pickup": true,
@@ -245,6 +256,7 @@
           "label": "Potted Plant",
           "interactable": true,
           "blocks": true,
+          "spriteFrame": 6,
           "lookMessage": "A thriving basil plant. Someone's been watering it."
         }
       ],
@@ -255,6 +267,7 @@
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Living Room",
+          "spriteFrame": 10,
           "targetRoom": "living_room",
           "targetX": 720,
           "targetY": 300
@@ -300,43 +313,59 @@
           "color": "0xddddbb",
           "label": "Note",
           "interactable": true,
-          "lookMessage": "A crumpled note: \"The study desk drawer...\"",
+          "state": "reversed",
+          "lookMessage": "'...reward ksed yduts ehT'??? What does that mean?",
           "pickup": true,
+          "states": {
+            "readable": {
+              "lookMessage": "A crumpled note: \"The study desk drawer...\""
+            }
+          },
           "combineMessages": {
-            "quill": "You scribble on the note. The ink reveals hidden text: 'Use the key on the desk.'"
+            "quill": {
+              "message": "You scribble on the note. The ink reveals hidden text: 'Use the key on the desk.'",
+              "setState": "readable"
+            },
+            "mirror": {
+              "message": "You hold the note up to the mirror. The backwards writing becomes clear: \"The study desk drawer...\"",
+              "setState": "readable"
+            }
           }
         }
       ],
       "doors": [
         {
           "id": "door_living_from_hall",
-          "x": 280, "y": 540,
+          "x": 280, "y": 500,
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Living Room",
+          "spriteFrame": 10,
           "targetRoom": "living_room",
           "targetX": 400,
           "targetY": 60
         },
         {
           "id": "door_study",
-          "x": 740, "y": 280,
+          "x": 760, "y": 280,
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Study",
+          "spriteFrame": 10,
           "targetRoom": "study",
           "targetX": 80,
           "targetY": 300
         },
         {
           "id": "door_garden",
-          "x": 740, "y": 540,
+          "x": 760, "y": 500,
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Garden",
+          "spriteFrame": 10,
           "targetRoom": "garden",
-          "targetX": 80,
-          "targetY": 300
+          "targetX": 380,
+          "targetY": 100
         }
       ]
     },
@@ -394,6 +423,7 @@
           "label": "Bookshelf",
           "interactable": true,
           "blocks": true,
+          "spriteFrame": 9,
           "lookMessage": "Mostly legal texts and philosophy. Boring."
         },
         {
@@ -449,6 +479,7 @@
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Hallway",
+          "spriteFrame": 10,
           "targetRoom": "hallway",
           "targetX": 720,
           "targetY": 300
@@ -490,9 +521,10 @@
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Hallway",
+          "spriteFrame": 10,
           "targetRoom": "hallway",
           "targetX": 720,
-          "targetY": 300
+          "targetY": 500
         }
       ]
     },
@@ -533,6 +565,7 @@
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Garden",
+          "spriteFrame": 10,
           "targetRoom": "garden",
           "targetX": 530,
           "targetY": 300

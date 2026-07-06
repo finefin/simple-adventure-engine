@@ -5,6 +5,8 @@ class BootScene extends Phaser.Scene {
 
   preload() {
     this.load.json('world', 'src/data/world.json');
+    this.load.spritesheet('player', 'assets/Sprite-0001.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('objects', 'assets/Sprite-0002.png', { frameWidth: 32, frameHeight: 32 });
   }
 
   create() {
