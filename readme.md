@@ -1,4 +1,4 @@
-# Fine Adventure
+# Simple Adventure Engine
 
 A point-and-click adventure engine built on Phaser. Games are created entirely by editing `src/data/world.json`.
 
