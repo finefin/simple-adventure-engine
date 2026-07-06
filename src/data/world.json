@@ -1,0 +1,543 @@
+{
+  "startRoom": "living_room",
+  "rooms": {
+    "living_room": {
+      "name": "Living Room",
+      "backgroundColor": "0x1a1a2e",
+      "floorColor": "0x3a3a4a",
+      "wallColor": "0x4a3a2a",
+      "wallThickness": 24,
+      "playerStart": { "x": 200, "y": 400 },
+      "objects": [
+        {
+          "id": "bookshelf",
+          "type": "rect",
+          "x": 120, "y": 180,
+          "width": 60, "height": 100,
+          "color": "0x8B4513",
+          "label": "Bookshelf",
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "An old bookshelf filled with dusty tomes."
+        },
+        {
+          "id": "table",
+          "type": "rect",
+          "x": 400, "y": 380,
+          "width": 80, "height": 50,
+          "color": "0x8B7355",
+          "label": "Table",
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "A wooden table. There's something underneath it.",
+          "reveals": ["key"],
+          "examineReveals": ["key"]
+        },
+        {
+          "id": "key",
+          "type": "circle",
+          "x": 400, "y": 370,
+          "radius": 8,
+          "color": "0xffd700",
+          "label": "Key",
+          "interactable": true,
+          "hiddenBy": "table",
+          "lookMessage": "A small golden key.",
+          "pickup": true,
+          "useMessage": "It might fit something around here.",
+          "combineMessages": {
+            "desk": "The key slides into the lock and turns. The desk drawer swings open."
+          }
+        },
+        {
+          "id": "window",
+          "type": "rect",
+          "x": 650, "y": 80,
+          "width": 80, "height": 100,
+          "color": "0x87CEEB",
+          "strokeColor": "0x4a3a2a",
+          "label": "Window",
+          "interactable": true,
+          "lookMessage": "The garden. A statue stands in the middle."
+        },
+        {
+          "id": "old_man",
+          "type": "rect",
+          "x": 250, "y": 300,
+          "width": 28, "height": 44,
+          "color": "0xcc8844",
+          "label": "Old Man",
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "An old man with a long grey beard.",
+          "talkMessage": "He grunts and looks away.",
+          "dialogTree": {
+            "start": {
+              "text": "Evening, stranger. Not many make it to this old manor.",
+              "options": [
+                { "text": "Who are you?", "next": "who" },
+                { "text": "What is this place?", "next": "place" },
+                { "text": "Goodbye.", "next": null }
+              ]
+            },
+            "who": {
+              "text": "I'm the caretaker.",
+              "options": [
+                { "text": "How long have you been here?", "next": "how_long" },
+                { "text": "Seen anything strange?", "next": "strange" },
+                { "text": "I should go.", "next": null }
+              ]
+            },
+            "how_long": {
+              "text": "Thirty years. Time moves different in a place like this.",
+              "options": [
+                { "text": "What do you mean?", "next": "time_meaning" },
+                { "text": "I see. Goodbye.", "next": null }
+              ]
+            },
+            "time_meaning": {
+              "text": "You'll see.",
+              "options": [
+                { "text": "That's unsettling.", "next": "unsettling" },
+                { "text": "I'll keep an eye out.", "next": null }
+              ]
+            },
+            "unsettling": {
+              "text": "Heh. You get used to it.",
+              "options": [
+                { "text": "...", "next": null }
+              ]
+            },
+            "strange": {
+              "text": "The study gives me the creeps.",
+              "options": [
+                { "text": "Uhh... okay.", "next": null }
+              ]
+            },
+            "place": {
+              "text": "Old Manor Blackwood. Been standing longer than anyone remembers. Full of secrets.",
+              "options": [
+                { "text": "What kind of secrets?", "next": "secrets" },
+                { "text": "I'd better explore.", "next": null }
+              ]
+            },
+            "secrets": {
+              "text": "Things that hum in the walls. Something awful happened here.",
+              "options": [
+                { "text": "What happened?", "next": "secrets2" },
+                { "text": "Oh... okay.", "next": null }
+              ]
+            },
+            "secrets2": {
+              "text": "Fire. They burned her.",
+              "options": [
+                { "text": "That sounds awful, indeed.", "next": "secrets3" }
+              ]
+            },
+            "secrets3": {
+              "text": "Yes. But it happened a loooong time ago.",
+              "options": [
+                { "text": "I really hope so.", "next": null }
+              ]
+            }
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "door_kitchen",
+          "x": 740, "y": 280,
+          "width": 12, "height": 60,
+          "color": "0xcc8833",
+          "label": "Kitchen",
+          "targetRoom": "kitchen",
+          "targetX": 80,
+          "targetY": 300
+        },
+        {
+          "id": "door_hall",
+          "x": 380, "y": 36,
+          "width": 60, "height": 12,
+          "color": "0xcc8833",
+          "label": "Hallway",
+          "targetRoom": "hallway",
+          "targetX": 400,
+          "targetY": 500
+        }
+      ]
+    },
+    "kitchen": {
+      "name": "Kitchen",
+      "backgroundColor": "0x2a1a1a",
+      "floorColor": "0x4a3a3a",
+      "wallColor": "0x3a2a2a",
+      "wallThickness": 24,
+      "playerStart": { "x": 80, "y": 300 },
+      "objects": [
+        {
+          "id": "stove",
+          "type": "rect",
+          "x": 600, "y": 400,
+          "width": 80, "height": 50,
+          "color": "0x555555",
+          "label": "Stove",
+          "interactable": true,
+          "blocks": true,
+          "state": "off",
+          "lookMessage": "A cast iron stove. It's cold.",
+          "useMessage": "Nothing to light it with.",
+          "states": {
+            "on": {
+              "lookMessage": "The stove crackles with a warm, dancing flame.",
+              "useMessage": "The fire is already lit."
+            }
+          },
+          "combineMessages": {
+            "matches": {
+              "message": "You light the stove. A warm flame flickers to life.",
+              "setState": "on"
+            },
+            "old_photo": "The stove is cold. Nothing happens."
+          }
+        },
+        {
+          "id": "cupboard",
+          "type": "rect",
+          "x": 150, "y": 150,
+          "width": 70, "height": 80,
+          "color": "0x8B6914",
+          "label": "Cupboard",
+          "interactable": true,
+          "blocks": true,
+          "state": "closed",
+          "lookMessage": "A wooden cupboard with a small drawer.",
+          "openMessage": "Inside the cupboard: a single matchbox.",
+          "openSetsState": "open",
+          "useMessage": "You rattle the cupboard doors.",
+          "states": {
+            "open": {
+              "lookMessage": "The cupboard stands open, its drawer pulled out.",
+              "openMessage": "Already open."
+            }
+          }
+        },
+        {
+          "id": "matches",
+          "type": "rect",
+          "x": 180, "y": 160,
+          "width": 14, "height": 24,
+          "color": "0xdd8844",
+          "label": "Matchbox",
+          "interactable": true,
+          "lookMessage": "A half-empty matchbox.",
+          "pickup": true,
+          "useMessage": "You strike a match. It flickers briefly.",
+          "combineMessages": {
+            "stove": "You light the stove. A warm flame flickers to life."
+          }
+        },
+        {
+          "id": "potted_plant",
+          "type": "circle",
+          "x": 300, "y": 400,
+          "radius": 18,
+          "color": "0x44aa44",
+          "label": "Potted Plant",
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "A thriving basil plant. Someone's been watering it."
+        }
+      ],
+      "doors": [
+        {
+          "id": "door_living",
+          "x": 48, "y": 280,
+          "width": 12, "height": 60,
+          "color": "0xcc8833",
+          "label": "Living Room",
+          "targetRoom": "living_room",
+          "targetX": 720,
+          "targetY": 300
+        }
+      ]
+    },
+    "hallway": {
+      "name": "Hallway",
+      "backgroundColor": "0x1a1a2e",
+      "floorColor": "0x2a2a3a",
+      "wallColor": "0x3a2a1a",
+      "wallThickness": 24,
+      "playerStart": { "x": 400, "y": 80 },
+      "objects": [
+        {
+          "id": "mirror",
+          "type": "rect",
+          "x": 400, "y": 300,
+          "width": 40, "height": 70,
+          "color": "0xaaaaaa",
+          "strokeColor": "0x8B6914",
+          "label": "Mirror",
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "Your reflection stares back. You look tired."
+        },
+        {
+          "id": "painting",
+          "type": "rect",
+          "x": 200, "y": 160,
+          "width": 70, "height": 60,
+          "color": "0x446688",
+          "strokeColor": "0x8B6914",
+          "label": "Painting",
+          "interactable": true,
+          "lookMessage": "A painting of a ship at sea. The signature is illegible."
+        },
+        {
+          "id": "note",
+          "type": "rect",
+          "x": 350, "y": 300,
+          "width": 20, "height": 16,
+          "color": "0xddddbb",
+          "label": "Note",
+          "interactable": true,
+          "lookMessage": "A crumpled note: \"The study desk drawer...\"",
+          "pickup": true,
+          "combineMessages": {
+            "quill": "You scribble on the note. The ink reveals hidden text: 'Use the key on the desk.'"
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "door_living_from_hall",
+          "x": 280, "y": 540,
+          "width": 60, "height": 12,
+          "color": "0xcc8833",
+          "label": "Living Room",
+          "targetRoom": "living_room",
+          "targetX": 400,
+          "targetY": 60
+        },
+        {
+          "id": "door_study",
+          "x": 740, "y": 280,
+          "width": 12, "height": 60,
+          "color": "0xcc8833",
+          "label": "Study",
+          "targetRoom": "study",
+          "targetX": 80,
+          "targetY": 300
+        },
+        {
+          "id": "door_garden",
+          "x": 740, "y": 540,
+          "width": 60, "height": 12,
+          "color": "0xcc8833",
+          "label": "Garden",
+          "targetRoom": "garden",
+          "targetX": 80,
+          "targetY": 300
+        }
+      ]
+    },
+    "study": {
+      "name": "Study",
+      "backgroundColor": "0x1a1a1a",
+      "floorColor": "0x2a2a1a",
+      "wallColor": "0x3a2a1a",
+      "wallThickness": 24,
+      "playerStart": { "x": 80, "y": 300 },
+      "objects": [
+        {
+          "id": "desk",
+          "type": "rect",
+          "x": 500, "y": 350,
+          "width": 90, "height": 50,
+          "color": "0x5a3a1a",
+          "label": "Desk",
+          "interactable": true,
+          "blocks": true,
+          "state": "locked",
+          "lookMessage": "A heavy oak desk. The drawers are locked.",
+          "openMessage": "The drawers are locked tight.",
+          "useMessage": "Maybe a key would help.",
+          "reveals": ["old_photo"],
+          "states": {
+            "unlocked": {
+              "lookMessage": "The desk drawer is open. Inside lies an old photograph.",
+              "openMessage": "Already open."
+            }
+          },
+          "combineMessages": {
+            "key": {
+              "message": "The key fits perfectly! The drawer opens revealing an old photograph.",
+              "setState": "unlocked"
+            }
+          }
+        },
+        {
+          "id": "lamp",
+          "type": "circle",
+          "x": 500, "y": 300,
+          "radius": 10,
+          "color": "0xffdd88",
+          "label": "Lamp",
+          "interactable": true,
+          "lookMessage": "A warm glow from the oil lamp."
+        },
+        {
+          "id": "bookshelf_study",
+          "type": "rect",
+          "x": 200, "y": 160,
+          "width": 80, "height": 120,
+          "color": "0x6B3A1F",
+          "label": "Bookshelf",
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "Mostly legal texts and philosophy. Boring."
+        },
+        {
+          "id": "quill",
+          "type": "rect",
+          "x": 530, "y": 340,
+          "width": 6, "height": 18,
+          "color": "0xddddcc",
+          "label": "Quill",
+          "interactable": true,
+          "lookMessage": "A feather quill, still inked.",
+          "pickup": true,
+          "combineMessages": {
+            "note": "You scribble on the note. The ink reveals hidden text: 'Use the key on the desk.'"
+          }
+        },
+        {
+          "id": "old_photo",
+          "type": "rect",
+          "x": 500, "y": 345,
+          "width": 20, "height": 24,
+          "color": "0xccbb88",
+          "label": "Old Photo",
+          "interactable": true,
+          "hiddenBy": "desk",
+          "lookMessage": "A faded photograph of a woman standing in a garden.",
+          "pickup": true,
+          "combineMessages": {
+            "stove": {
+              "requiresState": [{ "id": "stove", "state": "on" }],
+              "message": "The photo curls and blackens in the flames.",
+              "setState": "burnt"
+            },
+            "statue": {
+              "message": "You place the burnt remains in the offering bowl. The statue accepts."
+            },
+            "matches": {
+              "message": "You try to burn the photo but the flame is too small."
+            }
+          },
+          "states": {
+            "burnt": {
+              "lookMessage": "A small pile of ash. The flames claimed the photograph.",
+              "useMessage": "Nothing left but ash."
+            }
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "door_hall_from_study",
+          "x": 48, "y": 280,
+          "width": 12, "height": 60,
+          "color": "0xcc8833",
+          "label": "Hallway",
+          "targetRoom": "hallway",
+          "targetX": 720,
+          "targetY": 300
+        }
+      ]
+    },
+    "garden": {
+      "name": "Garden",
+      "backgroundColor": "0x1a1a1a",
+      "floorColor": "0x2a2a1a",
+      "wallColor": "0x3a2a1a",
+      "wallThickness": 24,
+      "playerStart": { "x": 80, "y": 300 },
+      "objects": [
+        {
+          "id": "statue",
+          "type": "rect",
+          "x": 530, "y": 340,
+          "width": 40, "height": 60,
+          "color": "0x888888",
+          "label": "Statue",
+          "interactable": true,
+          "lookMessage": "A stone statue of a young woman on a pyre holding a small bowl. A sign says 'Ashes to ashes.'",
+          "becomesDoor": {
+            "requiresState": [{ "id": "old_photo", "state": "burnt" }],
+            "targetRoom": "underground",
+            "targetX": 400,
+            "targetY": 300,
+            "openColor": "0x666688",
+            "message": "The statue grinds and slides aside, revealing dark stairs descending into the earth.",
+            "openLookMessage": "The statue has shifted aside, revealing a stairway down."
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "door_garden_from_hall",
+          "x": 350, "y": 36,
+          "width": 60, "height": 12,
+          "color": "0xcc8833",
+          "label": "Hallway",
+          "targetRoom": "hallway",
+          "targetX": 720,
+          "targetY": 300
+        }
+      ]
+    },
+    "underground": {
+      "name": "Underground Chamber",
+      "backgroundColor": "0x050508",
+      "floorColor": "0x101018",
+      "wallColor": "0x080810",
+      "wallThickness": 24,
+      "playerStart": { "x": 400, "y": 80 },
+      "objects": [
+        {
+          "id": "altar",
+          "type": "rect",
+          "x": 400, "y": 350,
+          "width": 60, "height": 30,
+          "color": "0x444444",
+          "label": "Altar",
+          "interactable": true,
+          "lookMessage": "A dark stone altar. Strange symbols are carved into its surface."
+        },
+        {
+          "id": "torch",
+          "type": "rect",
+          "x": 200, "y": 160,
+          "width": 8, "height": 40,
+          "color": "0xcc8833",
+          "label": "Torch",
+          "interactable": true,
+          "lookMessage": "A torch flickering with an eerie blue flame.",
+          "pickup": true
+        }
+      ],
+      "doors": [
+        {
+          "id": "door_garden_return",
+          "x": 740, "y": 540,
+          "width": 12, "height": 60,
+          "color": "0xcc8833",
+          "label": "Garden",
+          "targetRoom": "garden",
+          "targetX": 530,
+          "targetY": 300
+        }
+      ]
+    }
+  }
+}
