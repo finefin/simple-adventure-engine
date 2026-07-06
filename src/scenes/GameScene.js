@@ -92,7 +92,7 @@ class GameScene extends Phaser.Scene {
     this.anims.create({
       key: 'idle',
       frames: this.anims.generateFrameNumbers('player', { start: 0, end: 1 }),
-      frameRate: 10,
+      frameRate: 2.5,
       repeat: -1
     });
 
@@ -126,6 +126,7 @@ class GameScene extends Phaser.Scene {
       fontFamily: 'monospace',
       backgroundColor: '#000000aa',
       padding: { x: 10, y: 6 },
+      wordWrap: { width: this.scale.width - 100 },
     }).setDepth(100).setVisible(false).setOrigin(0.5);
   }
 

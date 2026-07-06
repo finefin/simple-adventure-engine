@@ -130,15 +130,8 @@ class RoomManager {
     go.setInteractive({ useHandCursor: true });
     go.objDef = objDef;
 
-    const label = this.scene.add.text(
-      objDef.x, objDef.y + (objDef.type === 'rect' ? objDef.height / 2 + 8 : objDef.radius + 8),
-      objDef.label,
-      { fontSize: '11px', color: '#aaaaaa', fontFamily: 'monospace' }
-    ).setOrigin(0.5).setDepth(5);
-
     this.container.add(go);
-    this.container.add(label);
-    this.roomObjects.push({ go, label, def: objDef });
+    this.roomObjects.push({ go, def: objDef });
   }
 
   createDoor(doorDef) {
@@ -160,9 +153,7 @@ class RoomManager {
 
   removeRoomObject(obj) {
     this.container.remove(obj.go);
-    this.container.remove(obj.label);
     obj.go.destroy();
-    obj.label.destroy();
     this.roomObjects = this.roomObjects.filter((o) => o !== obj);
   }
 

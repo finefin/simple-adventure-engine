@@ -224,6 +224,7 @@
           "openMessage": "Inside the cupboard: a single matchbox.",
           "openSetsState": "open",
           "useMessage": "You rattle the cupboard doors.",
+          "reveals": ["matches"],
           "states": {
             "open": {
               "lookMessage": "The cupboard stands open, its drawer pulled out.",
@@ -239,12 +240,79 @@
           "color": "0xdd8844",
           "label": "Matchbox",
           "spriteFrame": 5,
+          "hiddenBy": "cupboard",
           "interactable": true,
           "lookMessage": "A half-empty matchbox.",
           "pickup": true,
           "useMessage": "You strike a match. It flickers briefly.",
           "combineMessages": {
             "stove": "You light the stove. A warm flame flickers to life."
+          }
+        },
+        {
+          "id": "cupboard2",
+          "type": "rect",
+          "x": 80, "y": 150,
+          "width": 50, "height": 80,
+          "color": "0x8B6914",
+          "label": "Cupboard",
+          "spriteFrame": 4,
+          "interactable": true,
+          "blocks": true,
+          "state": "closed",
+          "lookMessage": "A narrow wooden cupboard.",
+          "openMessage": "The drawer is empty.",
+          "openSetsState": "open",
+          "useMessage": "You rattle the cupboard doors.",
+          "states": {
+            "open": {
+              "lookMessage": "The narrow cupboard hangs open, empty inside.",
+              "openMessage": "Already open — and still empty."
+            }
+          }
+        },
+        {
+          "id": "cupboard3",
+          "type": "rect",
+          "x": 220, "y": 150,
+          "width": 50, "height": 80,
+          "color": "0x8B6914",
+          "label": "Cupboard",
+          "spriteFrame": 4,
+          "interactable": true,
+          "blocks": true,
+          "state": "closed",
+          "lookMessage": "A tall wooden cupboard.",
+          "openMessage": "Nothing inside but dust.",
+          "openSetsState": "open",
+          "useMessage": "You rattle the cupboard doors.",
+          "states": {
+            "open": {
+              "lookMessage": "The tall cupboard is open, revealing only dust.",
+              "openMessage": "Already open — still just dust."
+            }
+          }
+        },
+        {
+          "id": "cupboard4",
+          "type": "rect",
+          "x": 290, "y": 150,
+          "width": 50, "height": 80,
+          "color": "0x8B6914",
+          "label": "Cupboard",
+          "spriteFrame": 4,
+          "interactable": true,
+          "blocks": true,
+          "state": "closed",
+          "lookMessage": "A squat wooden cupboard.",
+          "openMessage": "Completely empty.",
+          "openSetsState": "open",
+          "useMessage": "You rattle the cupboard doors.",
+          "states": {
+            "open": {
+              "lookMessage": "The squat cupboard is empty, as expected.",
+              "openMessage": "Still empty."
+            }
           }
         },
         {
@@ -292,6 +360,7 @@
           "label": "Mirror",
           "interactable": true,
           "blocks": true,
+          "spriteFrame": 13,
           "lookMessage": "Your reflection stares back. You look tired."
         },
         {
@@ -303,6 +372,7 @@
           "strokeColor": "0x8B6914",
           "label": "Painting",
           "interactable": true,
+          "spriteFrame": 11,
           "lookMessage": "A painting of a ship at sea. The signature is illegible."
         },
         {
@@ -314,20 +384,24 @@
           "label": "Note",
           "interactable": true,
           "state": "reversed",
-          "lookMessage": "'...reward ksed yduts ehT'??? What does that mean?",
+          "spriteFrame": 12,
+          "lookMessage": "'reward ksed yduts eht'?! What does this mean?",
           "pickup": true,
           "states": {
+            "extended": {
+              "lookMessage": "'yek nedlog eht yb denepo si reward ksed yduts eht'?! What language is this?"
+            },
             "readable": {
-              "lookMessage": "A crumpled note: \"The study desk drawer...\""
+              "lookMessage": "'the study desk drawer is opened by the golden key'"
             }
           },
           "combineMessages": {
             "quill": {
-              "message": "You scribble on the note. The ink reveals hidden text: 'Use the key on the desk.'",
-              "setState": "readable"
+              "message": "The quill writes more backwards text on the note.",
+              "setState": "extended"
             },
             "mirror": {
-              "message": "You hold the note up to the mirror. The backwards writing becomes clear: \"The study desk drawer...\"",
+              "message": "You hold the note up to the mirror. The backwards writing becomes clear: \"The study desk drawer is opened by the golden key.\"",
               "setState": "readable"
             }
           }
@@ -386,6 +460,7 @@
           "label": "Desk",
           "interactable": true,
           "blocks": true,
+          "spriteFrame": 15,
           "state": "locked",
           "lookMessage": "A heavy oak desk. The drawers are locked.",
           "openMessage": "The drawers are locked tight.",
@@ -407,18 +482,19 @@
         {
           "id": "lamp",
           "type": "circle",
-          "x": 500, "y": 300,
+          "x": 500, "y": 320,
           "radius": 10,
           "color": "0xffdd88",
           "label": "Lamp",
           "interactable": true,
-          "lookMessage": "A warm glow from the oil lamp."
+          "spriteFrame": 14,
+          "lookMessage": "A strange lamp."
         },
         {
           "id": "bookshelf_study",
           "type": "rect",
-          "x": 200, "y": 160,
-          "width": 80, "height": 120,
+          "x": 100, "y": 160,
+          "width": 40, "height": 120,
           "color": "0x6B3A1F",
           "label": "Bookshelf",
           "interactable": true,
@@ -449,6 +525,8 @@
           "label": "Old Photo",
           "interactable": true,
           "hiddenBy": "desk",
+          "spriteFrame": 16,
+          "stateFrames": { "burnt": 17 },
           "lookMessage": "A faded photograph of a woman standing in a garden.",
           "pickup": true,
           "combineMessages": {
@@ -470,6 +548,66 @@
               "useMessage": "Nothing left but ash."
             }
           }
+        },
+        {
+          "id": "bookshelf_study2",
+          "type": "rect",
+          "x": 220, "y": 160,
+          "width": 40, "height": 120,
+          "color": "0x6B3A1F",
+          "label": "Bookshelf",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 9,
+          "lookMessage": "Encyclopedias. Volume after volume of dry facts."
+        },
+        {
+          "id": "bookshelf_study3",
+          "type": "rect",
+          "x": 340, "y": 160,
+          "width": 40, "height": 120,
+          "color": "0x6B3A1F",
+          "label": "Bookshelf",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 9,
+          "lookMessage": "Travelogues from distant lands. Still boring somehow."
+        },
+        {
+          "id": "bookshelf_study4",
+          "type": "rect",
+          "x": 460, "y": 160,
+          "width": 40, "height": 120,
+          "color": "0x6B3A1F",
+          "label": "Bookshelf",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 9,
+          "lookMessage": "Cookbooks. Every recipe calls for ingredients you don't have."
+        },
+        {
+          "id": "bookshelf_study5",
+          "type": "rect",
+          "x": 580, "y": 160,
+          "width": 40, "height": 120,
+          "color": "0x6B3A1F",
+          "label": "Bookshelf",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 9,
+          "lookMessage": "Poetry. All of it rhymes 'moon' with 'June.'"
+        },
+        {
+          "id": "bookshelf_study6",
+          "type": "rect",
+          "x": 700, "y": 160,
+          "width": 40, "height": 120,
+          "color": "0x6B3A1F",
+          "label": "Bookshelf",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 9,
+          "lookMessage": "Self-help books. They didn't help."
         }
       ],
       "doors": [
@@ -544,7 +682,18 @@
           "color": "0x444444",
           "label": "Altar",
           "interactable": true,
-          "lookMessage": "A dark stone altar. Strange symbols are carved into its surface."
+          "lookMessage": "A dark stone altar. Strange symbols are carved into its surface.",
+          "combineMessages": {
+            "torch": {
+              "message": "You hold the torch close to the altar. The eerie blue flame illuminates hidden text — the secret word is \"SIN\".",
+              "setState": "revealed"
+            }
+          },
+          "states": {
+            "revealed": {
+              "lookMessage": "A dark stone altar. The secret word \"SIN\" is now visible among the symbols."
+            }
+          }
         },
         {
           "id": "torch",

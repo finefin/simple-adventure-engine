@@ -89,6 +89,8 @@ Objects are the interactable elements in each room. Two shapes are supported: `r
 | `interactable` | Must be `true` for clicks to register |
 | `blocks` | `true` makes the object impassable to the player |
 | `hiddenBy` | ID of another object. This object is invisible until revealed |
+| `spriteFrame` | Frame index from the objects spritesheet (`Sprite-0002.png`). When set, the object renders as a sprite instead of a colored shape |
+| `stateFrames` | Maps state names to frame indices for visual state changes (see Sprites below) |
 
 #### Messages
 
@@ -160,6 +162,44 @@ Objects can have multiple states that change their appearance, messages, and beh
 ```
 
 When the stove's state is `"off"`, examine shows "A cast iron stove. It's cold." When the state changes to `"on"`, it shows "The stove crackles with a warm flame."
+
+### Sprites
+
+Objects and doors can use sprite frames from a spritesheet instead of colored shapes. Sprites are loaded from `assets/Sprite-0002.png` (objects) and `assets/Sprite-0001.png` (player).
+
+```json
+{
+  "id": "stove",
+  "type": "rect",
+  "x": 600, "y": 400,
+  "spriteFrame": 2,
+  "stateFrames": { "on": 3 }
+}
+```
+
+When `spriteFrame` is set, the object renders at 2x scale using that frame from the spritesheet. The `type`, `color`, and `strokeColor` fields are ignored for rendering, but `width`/`height` (for `rect`) or `radius` (for `circle`) are still used for hit-testing and pathfinding.
+
+**State-based frame changes** use `stateFrames` to switch the displayed frame when the object's state changes:
+
+| Field | Description |
+|---|---|
+| `spriteFrame` | Frame index to render |
+| `stateFrames` | Object mapping state names to frame indices, e.g. `{"on": 3, "open": 4}` |
+
+Doors support `spriteFrame` the same way:
+
+```json
+{
+  "id": "door_living",
+  "x": 280, "y": 500,
+  "width": 60, "height": 12,
+  "spriteFrame": 10,
+  "targetRoom": "living_room",
+  "targetX": 400, "targetY": 400
+}
+```
+
+The player's walk and idle animations are handled separately from object sprites and use frames from `Sprite-0001.png` (idle: frames 0-1, walk: frames 2-3).
 
 State changes happen through:
 - **Combines** with `"setState"` in the result
