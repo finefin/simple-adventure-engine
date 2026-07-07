@@ -141,6 +141,7 @@ class GameScene extends Phaser.Scene {
 
   setupInput() {
     this.input.on('pointerdown', (pointer) => {
+      console.log(`Pointer: ${Math.round(pointer.x)}, ${Math.round(pointer.y)}`);
       if (this.dialogUI.isOpen) return;
 
       if (this._invClick) {
@@ -198,6 +199,11 @@ class GameScene extends Phaser.Scene {
       return Math.abs(dx) <= halfW && Math.abs(dy) <= halfH;
     });
     if (!door) return false;
+
+    if (door.def.locked) {
+      this.showMessage(door.def.lockedMessage);
+      return true;
+    }
 
     this.playerMovement.moveTo(door.go.x, door.go.y);
     const origArrive = this.playerMovement.onArrive;
@@ -268,7 +274,12 @@ class GameScene extends Phaser.Scene {
           if (conds.every((c) => (this.worldState[c.id] || null) === c.state)) {
             this.worldState[obj.def.id + '_doorOpen'] = true;
             if (obj.def.becomesDoor.openColor) {
-              obj.go.setFillStyle(parseInt(obj.def.becomesDoor.openColor));
+              const color = parseInt(obj.def.becomesDoor.openColor);
+              if (obj.go.setFillStyle) {
+                obj.go.setFillStyle(color);
+              } else if (obj.go.setTint) {
+                obj.go.setTint(color);
+              }
             }
             if (obj.def.becomesDoor.openLookMessage) {
               obj.def.lookMessage = obj.def.becomesDoor.openLookMessage;

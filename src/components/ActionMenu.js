@@ -102,6 +102,9 @@ class ActionMenu {
       if (target.openSetsState) {
         scene.setObjState(target, target.openSetsState);
       }
+      if (target.becomesDoor) {
+        scene.worldState[target.id + '_doorOpen'] = true;
+      }
       return;
     }
 

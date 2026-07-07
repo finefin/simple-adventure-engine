@@ -6,25 +6,97 @@
       "backgroundColor": "0x1a1a2e",
       "floorColor": "0x3a3a4a",
       "wallColor": "0x4a3a2a",
-      "wallThickness": 24,
-      "playerStart": { "x": 200, "y": 400 },
+      "wallThickness": 64,
+      "playerStart": { "x": 50, "y": 280 },
       "objects": [
         {
           "id": "bookshelf",
           "type": "rect",
-          "x": 120, "y": 180,
+          "x": 100, "y": 460,
           "width": 60, "height": 100,
           "color": "0x8B4513",
           "label": "Bookshelf",
           "spriteFrame": 9,
           "interactable": true,
           "blocks": true,
-          "lookMessage": "An old bookshelf filled with dusty tomes."
+          "lookMessage": "Volume 1 of 'How to Annoy Adventurers in Ten Easy Steps.'."
+        },
+        {
+          "id": "bookshelf2",
+          "type": "rect",
+          "x": 200, "y": 460,
+          "width": 60, "height": 100,
+          "color": "0x8B4513",
+          "label": "Bookshelf",
+          "spriteFrame": 9,
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "Mostly furniture catalogues from 1982. Someone had a dream, I guess."
+        },
+        {
+          "id": "bookshelf3",
+          "type": "rect",
+          "x": 300, "y": 460,
+          "width": 60, "height": 100,
+          "color": "0x8B4513",
+          "label": "Bookshelf",
+          "spriteFrame": 9,
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "Every single book is titled 'The Adventures of Captain Obvious.'"
+        },
+        {
+          "id": "bookshelf4",
+          "type": "rect",
+          "x": 400, "y": 460,
+          "width": 60, "height": 100,
+          "color": "0x8B4513",
+          "label": "Bookshelf",
+          "spriteFrame": 9,
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "This shelf is just 47 copies of the same book about taxidermy."
+        },
+        {
+          "id": "bookshelf5",
+          "type": "rect",
+          "x": 500, "y": 460,
+          "width": 60, "height": 100,
+          "color": "0x8B4513",
+          "label": "Bookshelf",
+          "spriteFrame": 9,
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "A self-help book titled 'How to Stop Being Addicted to Reading.'"
+        },
+        {
+          "id": "bookshelf6",
+          "type": "rect",
+          "x": 600, "y": 460,
+          "width": 60, "height": 100,
+          "color": "0x8B4513",
+          "label": "Bookshelf",
+          "spriteFrame": 9,
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "'Point and Click Adventures for Dummies'... Sounds slightly interesing."
+        },
+        {
+          "id": "bookshelf7",
+          "type": "rect",
+          "x": 700, "y": 460,
+          "width": 60, "height": 100,
+          "color": "0x8B4513",
+          "label": "Bookshelf",
+          "spriteFrame": 9,
+          "interactable": true,
+          "blocks": true,
+          "lookMessage": "The complete encyclopedia of 'Things that are annoying'"
         },
         {
           "id": "table",
           "type": "rect",
-          "x": 400, "y": 380,
+          "x": 520, "y": 110,
           "width": 80, "height": 50,
           "color": "0x8B7355",
           "label": "Table",
@@ -38,7 +110,7 @@
         {
           "id": "key",
           "type": "circle",
-          "x": 400, "y": 400,
+          "x": 520, "y": 130,
           "radius": 8,
           "color": "0xffd700",
           "label": "Key",
@@ -55,14 +127,26 @@
         {
           "id": "window",
           "type": "rect",
-          "x": 650, "y": 80,
+          "x": 650, "y": 36,
           "width": 80, "height": 100,
           "color": "0x87CEEB",
           "strokeColor": "0x4a3a2a",
           "label": "Window",
           "interactable": true,
           "spriteFrame": 7,
-          "lookMessage": "The garden. A statue stands in the middle."
+          "lookMessage": "The garden. A statue stands in the middle.",
+          "openMessage": "You push the window open. Cool night air rushes in.",
+          "openSetsState": "open",
+          "states": {
+            "open": {
+              "lookMessage": "The window is open, revealing the garden beyond."
+            }
+          },
+          "becomesDoor": {
+            "targetRoom": "garden",
+            "targetX": 260,
+            "targetY": 480
+          }
         },
         {
           "id": "old_man",
@@ -151,7 +235,7 @@
       "doors": [
         {
           "id": "door_kitchen",
-          "x": 740, "y": 280,
+          "x": 755, "y": 280,
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Kitchen",
@@ -162,13 +246,26 @@
         },
         {
           "id": "door_hall",
-          "x": 380, "y": 36,
+          "x": 230, "y": 36,
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Hallway",
           "spriteFrame": 10,
           "targetRoom": "hallway",
-          "targetX": 400,
+          "targetX": 230,
+          "targetY": 380
+        },
+        {
+          "id": "door_out",
+          "x": 45, "y": 280,
+          "width": 60, "height": 12,
+          "color": "0xcc8833",
+          "label": "Outside",
+          "spriteFrame": 10,
+          "locked": true,
+          "lockedMessage": "I can't leave now - I have a case to solve!",
+          "targetRoom": null,
+          "targetX": 230,
           "targetY": 500
         }
       ]
@@ -178,13 +275,13 @@
       "backgroundColor": "0x2a1a1a",
       "floorColor": "0x4a3a3a",
       "wallColor": "0x3a2a2a",
-      "wallThickness": 24,
+      "wallThickness": 64,
       "playerStart": { "x": 80, "y": 300 },
       "objects": [
         {
           "id": "stove",
           "type": "rect",
-          "x": 600, "y": 400,
+          "x": 600, "y": 250,
           "width": 80, "height": 50,
           "color": "0x555555",
           "label": "Stove",
@@ -212,7 +309,7 @@
         {
           "id": "cupboard",
           "type": "rect",
-          "x": 150, "y": 150,
+          "x": 190, "y": 500,
           "width": 70, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
@@ -235,7 +332,7 @@
         {
           "id": "matches",
           "type": "rect",
-          "x": 150, "y": 160,
+          "x": 190, "y": 500,
           "width": 14, "height": 24,
           "color": "0xdd8844",
           "label": "Matchbox",
@@ -252,7 +349,7 @@
         {
           "id": "cupboard2",
           "type": "rect",
-          "x": 80, "y": 150,
+          "x": 120, "y": 500,
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
@@ -260,7 +357,7 @@
           "interactable": true,
           "blocks": true,
           "state": "closed",
-          "lookMessage": "A narrow wooden cupboard.",
+          "lookMessage": "A narrow wooden cupboard with a drawe.",
           "openMessage": "The drawer is empty.",
           "openSetsState": "open",
           "useMessage": "You rattle the cupboard doors.",
@@ -274,7 +371,7 @@
         {
           "id": "cupboard3",
           "type": "rect",
-          "x": 220, "y": 150,
+          "x": 260, "y": 500,
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
@@ -282,7 +379,7 @@
           "interactable": true,
           "blocks": true,
           "state": "closed",
-          "lookMessage": "A tall wooden cupboard.",
+          "lookMessage": "A wooden cupboard with a probably empty drawer.",
           "openMessage": "Nothing inside but dust.",
           "openSetsState": "open",
           "useMessage": "You rattle the cupboard doors.",
@@ -296,7 +393,7 @@
         {
           "id": "cupboard4",
           "type": "rect",
-          "x": 290, "y": 150,
+          "x": 330, "y": 500,
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
@@ -304,7 +401,7 @@
           "interactable": true,
           "blocks": true,
           "state": "closed",
-          "lookMessage": "A squat wooden cupboard.",
+          "lookMessage": "A wooden cupboard. With a drawer.",
           "openMessage": "Completely empty.",
           "openSetsState": "open",
           "useMessage": "You rattle the cupboard doors.",
@@ -316,9 +413,119 @@
           }
         },
         {
+          "id": "cupboard5",
+          "type": "rect",
+          "x": 400, "y": 500,
+          "width": 50, "height": 80,
+          "color": "0x8B6914",
+          "label": "Cupboard",
+          "spriteFrame": 4,
+          "interactable": true,
+          "blocks": true,
+          "state": "closed",
+          "lookMessage": "An old wooden cupboard. Looks empty.",
+          "openMessage": "Completely empty.",
+          "openSetsState": "open",
+          "useMessage": "You rattle the cupboard doors.",
+          "states": {
+            "open": {
+              "lookMessage": "The cupboard is empty.",
+              "openMessage": "Yes: empty."
+            }
+          }
+        },
+        {
+          "id": "cupboard6",
+          "type": "rect",
+          "x": 470, "y": 500,
+          "width": 50, "height": 80,
+          "color": "0x8B6914",
+          "label": "Cupboard",
+          "spriteFrame": 4,
+          "interactable": true,
+          "blocks": true,
+          "state": "closed",
+          "lookMessage": "Another wooden cupboard.",
+          "openMessage": "Completely empty.",
+          "openSetsState": "open",
+          "useMessage": "You rattle the cupboard doors.",
+          "states": {
+            "open": {
+              "lookMessage": "The squat cupboard contains ... just air.",
+              "openMessage": "It is not empty - it contains air and dust!"
+            }
+          }
+        },
+        {
+          "id": "cupboard7",
+          "type": "rect",
+          "x": 540, "y": 500,
+          "width": 50, "height": 80,
+          "color": "0x8B6914",
+          "label": "Cupboard",
+          "spriteFrame": 4,
+          "interactable": true,
+          "blocks": true,
+          "state": "closed",
+          "lookMessage": "Slightly crooked cupboard. The drawer is stuck.",
+          "openMessage": "Completely empty.",
+          "openSetsState": "open",
+          "useMessage": "You rattle the cupboard doors.",
+          "states": {
+            "open": {
+              "lookMessage": "The crooked cupboard is open. Still empty.",
+              "openMessage": "Still empty."
+            }
+          }
+        },
+        {
+          "id": "cupboard8",
+          "type": "rect",
+          "x": 610, "y": 500,
+          "width": 50, "height": 80,
+          "color": "0x8B6914",
+          "label": "Cupboard",
+          "spriteFrame": 4,
+          "interactable": true,
+          "blocks": true,
+          "state": "closed",
+          "lookMessage": "This cupboard smells faintly of pickles.",
+          "openMessage": "The pickle smell is stronger. No pickles though.",
+          "openSetsState": "open",
+          "useMessage": "You rattle the cupboard doors.",
+          "states": {
+            "open": {
+              "lookMessage": "An empty pickle-smelling cupboard.",
+              "openMessage": "Still pickle-scented. Still pickle-free."
+            }
+          }
+        },
+        {
+          "id": "cupboard9",
+          "type": "rect",
+          "x": 680, "y": 500,
+          "width": 50, "height": 80,
+          "color": "0x8B6914",
+          "label": "Cupboard",
+          "spriteFrame": 4,
+          "interactable": true,
+          "blocks": true,
+          "state": "closed",
+          "lookMessage": "The final cupboard. The underdog of cupboards.",
+          "openMessage": "A single dried leaf. You feel proud.",
+          "openSetsState": "open",
+          "useMessage": "You rattle the cupboard doors.",
+          "states": {
+            "open": {
+              "lookMessage": "The underdog cupboard delivered.",
+              "openMessage": "The leaf is still there. So are you."
+            }
+          }
+        },
+        {
           "id": "potted_plant",
           "type": "circle",
-          "x": 300, "y": 400,
+          "x": 300, "y": 150,
           "radius": 18,
           "color": "0x44aa44",
           "label": "Potted Plant",
@@ -347,7 +554,7 @@
       "backgroundColor": "0x1a1a2e",
       "floorColor": "0x2a2a3a",
       "wallColor": "0x3a2a1a",
-      "wallThickness": 24,
+      "wallThickness": 124,
       "playerStart": { "x": 400, "y": 80 },
       "objects": [
         {
@@ -410,7 +617,7 @@
       "doors": [
         {
           "id": "door_living_from_hall",
-          "x": 280, "y": 500,
+          "x": 230, "y": 450,
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Living Room",
@@ -421,7 +628,7 @@
         },
         {
           "id": "door_study",
-          "x": 760, "y": 280,
+          "x": 695, "y": 170,
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Study",
@@ -432,11 +639,13 @@
         },
         {
           "id": "door_garden",
-          "x": 760, "y": 500,
+          "x": 620, "y": 450,
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Garden",
           "spriteFrame": 10,
+          "locked": true,
+          "lockedMessage": "The door has no handle.",
           "targetRoom": "garden",
           "targetX": 380,
           "targetY": 100
@@ -448,7 +657,7 @@
       "backgroundColor": "0x1a1a1a",
       "floorColor": "0x2a2a1a",
       "wallColor": "0x3a2a1a",
-      "wallThickness": 24,
+      "wallThickness": 64,
       "playerStart": { "x": 80, "y": 300 },
       "objects": [
         {
@@ -510,6 +719,7 @@
           "color": "0xddddcc",
           "label": "Quill",
           "interactable": true,
+          "spriteFrame": 18,
           "lookMessage": "A feather quill, still inked.",
           "pickup": true,
           "combineMessages": {
@@ -620,8 +830,8 @@
           "label": "Hallway",
           "spriteFrame": 10,
           "targetRoom": "hallway",
-          "targetX": 720,
-          "targetY": 300
+          "targetX": 650,
+          "targetY": 170
         }
       ]
     },
@@ -641,6 +851,7 @@
           "color": "0x888888",
           "label": "Statue",
           "interactable": true,
+          "spriteFrame": 19,
           "lookMessage": "A stone statue of a young woman on a pyre holding a small bowl. A sign says 'Ashes to ashes.'",
           "becomesDoor": {
             "requiresState": [{ "id": "old_photo", "state": "burnt" }],
@@ -662,8 +873,8 @@
           "label": "Hallway",
           "spriteFrame": 10,
           "targetRoom": "hallway",
-          "targetX": 720,
-          "targetY": 500
+          "targetX": 620,
+          "targetY": 380
         }
       ]
     },
@@ -683,6 +894,7 @@
           "color": "0x444444",
           "label": "Altar",
           "interactable": true,
+          "spriteFrame": 21,
           "lookMessage": "A dark stone altar. Strange symbols are carved into its surface.",
           "combineMessages": {
             "torch": {
@@ -704,6 +916,7 @@
           "color": "0xcc8833",
           "label": "Torch",
           "interactable": true,
+          "spriteFrame": 20,
           "lookMessage": "A torch flickering with an eerie blue flame.",
           "pickup": true
         }
