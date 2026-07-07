@@ -1029,12 +1029,77 @@
           "id": "gnome",
           "type": "circle",
           "x": 160, "y": 200,
-          "radius": 8,
+          "radius": 24,
           "color": "0xcc4444",
           "label": "Gnome",
           "interactable": true,
           "spriteFrame": 29,
-          "lookMessage": "A garden gnome with a cheery red hat and a surprisingly judgmental stare."
+          "lookMessage": "A garden gnome with a cheery red hat and a surprisingly judgmental stare.",
+          "talkMessage": "The gnome mutters something indecipherable.",
+          "dialogTree": {
+            "start": {
+              "text": "...",
+              "options": [
+                { "text": "Hello?", "next": "hello" },
+                { "text": "Nice hat.", "next": "hat" },
+                { "text": "Never mind.", "next": null }
+              ]
+            },
+            "hello": {
+              "text": "Hmph. You speak. The stone ones never speak. The tall green ones just rustle. But you... you form words.",
+              "options": [
+                { "text": "What are you?", "next": "what" },
+                { "text": "Can you help me?", "next": "help" },
+                { "text": "Goodbye.", "next": null }
+              ]
+            },
+            "what": {
+              "text": "I am the watcher. The sitter. The one who judges silently from the flowerbed. Also I turn to stone when the sun goes down, so that's inconvenient.",
+              "options": [
+                { "text": "Have you seen anything strange?", "next": "strange" },
+                { "text": "Right... goodbye.", "next": null }
+              ]
+            },
+            "strange": {
+              "text": "Strange? Everything is strange to a being who spends his days staring at a petunia. But yes. The statue moves at night. I saw it.",
+              "options": [
+                { "text": "The statue moves?", "next": "statue" },
+                { "text": "Thanks, gnome.", "next": null }
+              ]
+            },
+            "statue": {
+              "text": "Shh! Not so loud. It has ears. Stone ears. Very heavy, very effective ears.",
+              "options": [
+                { "text": "...right.", "next": null }
+              ]
+            },
+            "hat": {
+              "text": "Thank you! I painted it myself. Well, I asked a badger to do it. He had a good eye for crimson. Then I ate him.",
+              "options": [
+                { "text": "That's dark.", "next": "dark" },
+                { "text": "I'm leaving now.", "next": null }
+              ]
+            },
+            "dark": {
+              "text": "Dark? It was a Tuesday. Tuesdays are hungry days. You wouldn't understand.",
+              "options": [
+                { "text": "I really don't.", "next": null }
+              ]
+            },
+            "help": {
+              "text": "Help? I'm a garden ornament. My primary function is looking adorable and being rained on. But... if you find a golden key, I might be able to... no, never mind.",
+              "options": [
+                { "text": "A golden key?", "next": "key_hint" },
+                { "text": "Not helpful, but thanks.", "next": null }
+              ]
+            },
+            "key_hint": {
+              "text": "I've said too much. The badger warned me about talking too much. Go on, shoo. I have a flower to judge.",
+              "options": [
+                { "text": "Bye, gnome.", "next": null }
+              ]
+            }
+          }
         }
       ],
       "doors": [
