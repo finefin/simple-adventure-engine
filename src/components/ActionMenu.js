@@ -19,7 +19,7 @@ class ActionMenu {
       { key: 'take', label: 'Take', requires: 'pickup', skipInventory: true },
       { key: 'open', label: 'Open', requires: 'open' },
       { key: 'talk', label: 'Talk', requires: 'talk' },
-      { key: 'use', label: 'Use', defaultAction: true },
+      { key: 'use', label: 'Use', requires: 'use' },
     ];
 
     if (targetType === 'inventory') {

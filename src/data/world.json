@@ -939,7 +939,7 @@
           "color": "0xff6699",
           "label": "Flowers",
           "interactable": true,
-          "lookMessage": "A patch of pink flowers. They sway gently in the breeze.",
+          "lookMessage": "A patch of flowers. They sway gently in the breeze.",
           "spriteFrame": 26
         },
         {
@@ -950,7 +950,7 @@
           "color": "0xffcc44",
           "label": "Flowers",
           "interactable": true,
-          "lookMessage": "Yellow wildflowers. Bees buzz lazily between them.",
+          "lookMessage": "Wildflowers. Bees buzz lazily between them.",
           "spriteFrame": 26
         },
         {
@@ -961,7 +961,7 @@
           "color": "0xcc66ff",
           "label": "Flowers",
           "interactable": true,
-          "lookMessage": "Purple blooms cluster near the wall. They smell faintly of honey.",
+          "lookMessage": "Blooms cluster near the wall. They smell faintly of honey.",
           "spriteFrame": 26
         },
         {
@@ -974,7 +974,7 @@
           "interactable": true,
           "blocks": true,
           "spriteFrame": 27,
-          "lookMessage": "A towering oak tree. Its branches stretch wide, casting a cool shadow."
+          "lookMessage": "A towering tree. It looks very old."
         },
         {
           "id": "tree2",
@@ -986,7 +986,7 @@
           "interactable": true,
           "blocks": true,
           "spriteFrame": 27,
-          "lookMessage": "A weeping willow, its branches trailing down like tears."
+          "lookMessage": "A tree."
         },
         {
           "id": "tombstone1",
