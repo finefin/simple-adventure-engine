@@ -15,11 +15,17 @@ class GameScene extends Phaser.Scene {
     this.inventory = new Inventory(this);
     this.actionMenu = new ActionMenu(this);
     this.dialogUI = new DialogUI(this);
+    this.textPanel = new TextPanel(this);
     this.roomManager = new RoomManager(this, this.worldData, this.inventory);
     this.roomManager.onTransition = (roomId) => {
       this.showMessage('Entered ' + this.roomManager.currentRoomData.name);
     };
     this.roomManager.start(this.worldData.startRoom);
+    if (this.worldData.startPanel) {
+      this.time.delayedCall(100, () => {
+        this.textPanel.open(this.worldData.startPanel);
+      });
+    }
     this.setupInput();
   }
 
@@ -53,6 +59,12 @@ class GameScene extends Phaser.Scene {
           this.worldState[childDef.id + '_revealed'] = true;
           this.roomManager.revealObjectById(childDef);
         }
+      });
+    }
+
+    if (objDef.id === 'altar' && newState === 'revealed' && this.worldData.endPanel) {
+      this.time.delayedCall(1200, () => {
+        this.textPanel.open(this.worldData.endPanel);
       });
     }
   }
@@ -142,7 +154,7 @@ class GameScene extends Phaser.Scene {
   setupInput() {
     this.input.on('pointerdown', (pointer) => {
       console.log(`Pointer: ${Math.round(pointer.x)}, ${Math.round(pointer.y)}`);
-      if (this.dialogUI.isOpen) return;
+      if (this.dialogUI.isOpen || this.textPanel.isOpen) return;
 
       if (this._invClick) {
         this._invClick = false;
