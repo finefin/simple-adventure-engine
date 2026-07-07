@@ -361,7 +361,7 @@ class GameScene extends Phaser.Scene {
 
     if (inFront || atSide) {
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = 90;
+      const maxDist = 160;
       const t = Phaser.Math.Clamp(1 - dist / maxDist, 0, 1);
       const alpha = 0.5 * t;
       const scale = 1 + t;
