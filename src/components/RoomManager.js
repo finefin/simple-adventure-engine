@@ -42,6 +42,8 @@ class RoomManager {
     const floorColor = parseInt(data.floorColor);
     const wallColor = parseInt(data.wallColor);
     const bgColor = parseInt(data.backgroundColor);
+    const floorTile = data.floorTile !== undefined ? data.floorTile : 22;
+    const wallTile = data.wallTile !== undefined ? data.wallTile : 23;
 
     const gfx = this.scene.add.graphics();
     this.container.add(gfx);
@@ -49,14 +51,25 @@ class RoomManager {
     gfx.fillStyle(bgColor);
     gfx.fillRect(0, 0, w, h);
 
-    gfx.fillStyle(floorColor);
-    gfx.fillRect(wt, wt, w - wt * 2, h - wt * 2 - invH);
+    const floor = this.scene.add.tileSprite(
+      wt, wt, w - wt * 2, h - wt * 2 - invH, 'objects', floorTile
+    );
+    floor.setOrigin(0, 0);
+    floor.setTint(floorColor);
+    this.container.add(floor);
 
-    gfx.fillStyle(wallColor);
-    gfx.fillRect(0, 0, w, wt);
-    gfx.fillRect(0, h - wt - invH, w, wt + invH);
-    gfx.fillRect(0, 0, wt, h);
-    gfx.fillRect(w - wt, 0, wt, h);
+    const wallSides = [
+      { x: 0, y: 0, w: w, h: wt },
+      { x: 0, y: h - wt - invH, w: w, h: wt + invH },
+      { x: 0, y: 0, w: wt, h: h },
+      { x: w - wt, y: 0, w: wt, h: h },
+    ];
+    wallSides.forEach((ws) => {
+      const wall = this.scene.add.tileSprite(ws.x, ws.y, ws.w, ws.h, 'objects', wallTile);
+      wall.setOrigin(0, 0);
+      wall.setTint(wallColor);
+      this.container.add(wall);
+    });
 
     this.walkableMargin = 16;
     const margin = this.walkableMargin;

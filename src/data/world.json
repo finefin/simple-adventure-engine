@@ -10,6 +10,7 @@
       "backgroundColor": "0x1a1a2e",
       "floorColor": "0x3a3a4a",
       "wallColor": "0x4a3a2a",
+      "wallTile": 24,
       "wallThickness": 64,
       "playerStart": { "x": 50, "y": 280 },
       "objects": [
@@ -279,6 +280,7 @@
       "backgroundColor": "0x2a1a1a",
       "floorColor": "0x4a3a3a",
       "wallColor": "0x3a2a2a",
+      "wallTile": 24,
       "wallThickness": 64,
       "playerStart": { "x": 80, "y": 300 },
       "objects": [
@@ -558,6 +560,7 @@
       "backgroundColor": "0x1a1a2e",
       "floorColor": "0x2a2a3a",
       "wallColor": "0x3a2a1a",
+      "wallTile": 24,
       "wallThickness": 124,
       "playerStart": { "x": 400, "y": 80 },
       "objects": [
@@ -577,7 +580,7 @@
         {
           "id": "painting",
           "type": "rect",
-          "x": 200, "y": 160,
+          "x": 200, "y": 90,
           "width": 70, "height": 60,
           "color": "0x446688",
           "strokeColor": "0x8B6914",
@@ -661,6 +664,7 @@
       "backgroundColor": "0x1a1a1a",
       "floorColor": "0x2a2a1a",
       "wallColor": "0x3a2a1a",
+      "wallTile": 24,
       "wallThickness": 64,
       "playerStart": { "x": 80, "y": 300 },
       "objects": [
@@ -866,6 +870,167 @@
             "message": "The statue grinds and slides aside, revealing dark stairs descending into the earth.",
             "openLookMessage": "The statue has shifted aside, revealing a stairway down."
           }
+        },
+        {
+          "id": "bush1",
+          "type": "circle",
+          "x": 120, "y": 120,
+          "radius": 14,
+          "color": "0x2d6b2d",
+          "label": "Bush",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 25,
+          "lookMessage": "A dense green bush. Something rustles inside — probably just a mouse."
+        },
+        {
+          "id": "bush2",
+          "type": "circle",
+          "x": 680, "y": 140,
+          "radius": 16,
+          "color": "0x3a8a3a",
+          "label": "Bush",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 25,
+          "lookMessage": "This bush looks like it was trimmed into the shape of a bush. Stunning!"
+        },
+        {
+          "id": "bush3",
+          "type": "circle",
+          "x": 200, "y": 500,
+          "radius": 12,
+          "color": "0x2d6b2d",
+          "label": "Bush",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 25,
+          "lookMessage": "A modest little bush, minding its own business."
+        },
+        {
+          "id": "bush4",
+          "type": "circle",
+          "x": 700, "y": 480,
+          "radius": 15,
+          "color": "0x4a9a4a",
+          "label": "Bush",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 25,
+          "lookMessage": "A beautiful bush - for people with low standards."
+        },
+        {
+          "id": "bush5",
+          "type": "circle",
+          "x": 400, "y": 520,
+          "radius": 13,
+          "color": "0x2d6b2d",
+          "label": "Bush",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 25,
+          "lookMessage": "A perfectly ordinary bush. Suspiciously ordinary."
+        },
+        {
+          "id": "flower1",
+          "type": "circle",
+          "x": 300, "y": 180,
+          "radius": 6,
+          "color": "0xff6699",
+          "label": "Flowers",
+          "interactable": true,
+          "lookMessage": "A patch of pink flowers. They sway gently in the breeze.",
+          "spriteFrame": 26
+        },
+        {
+          "id": "flower2",
+          "type": "circle",
+          "x": 640, "y": 420,
+          "radius": 6,
+          "color": "0xffcc44",
+          "label": "Flowers",
+          "interactable": true,
+          "lookMessage": "Yellow wildflowers. Bees buzz lazily between them.",
+          "spriteFrame": 26
+        },
+        {
+          "id": "flower3",
+          "type": "circle",
+          "x": 450, "y": 100,
+          "radius": 6,
+          "color": "0xcc66ff",
+          "label": "Flowers",
+          "interactable": true,
+          "lookMessage": "Purple blooms cluster near the wall. They smell faintly of honey.",
+          "spriteFrame": 26
+        },
+        {
+          "id": "tree1",
+          "type": "circle",
+          "x": 80, "y": 300,
+          "radius": 18,
+          "color": "0x3a5a2a",
+          "label": "Oak Tree",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 27,
+          "lookMessage": "A towering oak tree. Its branches stretch wide, casting a cool shadow."
+        },
+        {
+          "id": "tree2",
+          "type": "circle",
+          "x": 740, "y": 280,
+          "radius": 16,
+          "color": "0x4a6a3a",
+          "label": "Willow Tree",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 27,
+          "lookMessage": "A weeping willow, its branches trailing down like tears."
+        },
+        {
+          "id": "tombstone1",
+          "type": "rect",
+          "x": 300, "y": 380,
+          "width": 14, "height": 20,
+          "color": "0x888888",
+          "label": "Tombstone",
+          "interactable": true,
+          "spriteFrame": 28,
+          "lookMessage": "\"Here lies Bartholomew Crumble.\nBeloved gardener.\nHe loved plants.\nToo much, probably.\""
+        },
+        {
+          "id": "tombstone2",
+          "type": "rect",
+          "x": 340, "y": 420,
+          "width": 14, "height": 20,
+          "color": "0x999999",
+          "label": "Tombstone",
+          "interactable": true,
+          "spriteFrame": 28,
+          "lookMessage": "\"Edwina Moss — she finally stopped growing.\""
+        },
+        {
+          "id": "tombstone3",
+          "type": "rect",
+          "x": 380, "y": 460,
+          "width": 14, "height": 20,
+          "color": "0x777777",
+          "label": "Tombstone",
+          "interactable": true,
+          "spriteFrame": 28,
+          "lookMessage": "\"Iris Greenbelt.\nWeeded out.\""
+        },
+        {
+          "id": "gnome",
+          "type": "circle",
+          "x": 160, "y": 200,
+          "radius": 8,
+          "color": "0xcc4444",
+          "label": "Gnome",
+          "interactable": true,
+          "spriteFrame": 29,
+          "lookMessage": "A garden gnome with a cheery red hat and a surprisingly judgmental stare."
         }
       ],
       "doors": [
@@ -887,7 +1052,7 @@
       "backgroundColor": "0x050508",
       "floorColor": "0x101018",
       "wallColor": "0x080810",
-      "wallThickness": 24,
+      "wallThickness": 64,
       "playerStart": { "x": 400, "y": 80 },
       "objects": [
         {
@@ -928,7 +1093,7 @@
       "doors": [
         {
           "id": "door_garden_return",
-          "x": 740, "y": 540,
+          "x": 710, "y": 540,
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Garden",
