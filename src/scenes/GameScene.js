@@ -343,7 +343,21 @@ class GameScene extends Phaser.Scene {
       }
     }
 
+    this.updateDepthSorting();
     this.updateMirrorReflection();
+  }
+
+  updateDepthSorting() {
+    if (!this.roomManager.roomObjects) return;
+    const z = (y, top) => 5 + y * 0.15 + (top ? 50 : 0);
+    const feetY = (go, def) => {
+      if (def.spriteFrame !== undefined) return go.y + go.displayHeight / 2;
+      if (def.type === 'rect') return go.y + def.height / 2;
+      if (def.type === 'circle') return go.y + def.radius;
+      return go.y;
+    };
+    this.player.setDepth(z(this.player.y + this.player.displayHeight / 2));
+    this.roomManager.roomObjects.forEach((o) => o.go.setDepth(z(feetY(o.go, o.def), o.def.alwaysOnTop)));
   }
 
   updateMirrorReflection() {
@@ -356,17 +370,17 @@ class GameScene extends Phaser.Scene {
 
     const dy = this.player.y - mirrorDef.y;
     const dx = this.player.x - mirrorDef.x;
-    const inFront = dy > 0 && Math.abs(dx) < mirrorDef.width && dy < 120;
-    const atSide = Math.abs(dy) < 164 && Math.abs(dx) > mirrorDef.width / 2 && Math.abs(dx) < 180;
+    const near = Math.abs(dx) < 200 && Math.abs(dy) < 200;
 
-    if (inFront || atSide) {
+    if (near) {
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = 160;
+      const maxDist = 200;
       const t = Phaser.Math.Clamp(1 - dist / maxDist, 0, 1);
       const alpha = 0.5 * t;
       const scale = 1 + t;
       this.mirrorReflection.setPosition(mirrorDef.x, mirrorDef.y);
       this.mirrorReflection.setScale(scale);
+      this.mirrorReflection.setDepth(100);
       this.mirrorReflection.setFrame(this.player.frame.name);
       this.mirrorReflection.setFlipX(this.player.flipX);
       this.mirrorReflection.setAlpha(alpha);

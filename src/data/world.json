@@ -345,6 +345,7 @@
           "spriteFrame": 5,
           "hiddenBy": "cupboard",
           "interactable": true,
+          "alwaysOnTop": true,
           "lookMessage": "A half-empty matchbox.",
           "pickup": true,
           "useMessage": "You strike a match. It flickers briefly.",
@@ -363,7 +364,7 @@
           "interactable": true,
           "blocks": true,
           "state": "closed",
-          "lookMessage": "A narrow wooden cupboard with a drawe.",
+          "lookMessage": "A narrow wooden cupboard with a drawer.",
           "openMessage": "The drawer is empty.",
           "openSetsState": "open",
           "useMessage": "You rattle the cupboard doors.",
@@ -567,7 +568,7 @@
         {
           "id": "mirror",
           "type": "rect",
-          "x": 400, "y": 300,
+          "x": 400, "y": 90,
           "width": 40, "height": 70,
           "color": "0xaaaaaa",
           "strokeColor": "0x8B6914",
@@ -707,18 +708,7 @@
           "spriteFrame": 14,
           "lookMessage": "A strange lamp."
         },
-        {
-          "id": "bookshelf_study",
-          "type": "rect",
-          "x": 100, "y": 160,
-          "width": 40, "height": 120,
-          "color": "0x6B3A1F",
-          "label": "Bookshelf",
-          "interactable": true,
-          "blocks": true,
-          "spriteFrame": 9,
-          "lookMessage": "Mostly legal texts and philosophy. Boring."
-        },
+
         {
           "id": "quill",
           "type": "rect",
@@ -727,6 +717,7 @@
           "color": "0xddddcc",
           "label": "Quill",
           "interactable": true,
+          "alwaysOnTop": true,
           "spriteFrame": 18,
           "lookMessage": "A feather quill, still inked.",
           "pickup": true,
@@ -742,6 +733,7 @@
           "color": "0xccbb88",
           "label": "Old Photo",
           "interactable": true,
+          "alwaysOnTop": true,
           "hiddenBy": "desk",
           "spriteFrame": 16,
           "stateFrames": { "burnt": 17 },
@@ -769,33 +761,45 @@
           }
         },
         {
-          "id": "bookshelf_study2",
+          "id": "bookshelf_study",
           "type": "rect",
-          "x": 220, "y": 160,
+          "x": 100, "y": 60,
           "width": 40, "height": 120,
           "color": "0x6B3A1F",
           "label": "Bookshelf",
           "interactable": true,
           "blocks": true,
           "spriteFrame": 9,
-          "lookMessage": "Encyclopedias. Volume after volume of dry facts."
+          "lookMessage": "Outdated legal texts and refuted philosophy."
+        },
+        {
+          "id": "bookshelf_study2",
+          "type": "rect",
+          "x": 220, "y": 60,
+          "width": 40, "height": 120,
+          "color": "0x6B3A1F",
+          "label": "Bookshelf",
+          "interactable": true,
+          "blocks": true,
+          "spriteFrame": 9,
+          "lookMessage": "The Great Encyclopedia of Standardized Tax Forms: Volumes I–XVII"
         },
         {
           "id": "bookshelf_study3",
           "type": "rect",
-          "x": 340, "y": 160,
+          "x": 340, "y": 60,
           "width": 40, "height": 120,
           "color": "0x6B3A1F",
           "label": "Bookshelf",
           "interactable": true,
           "blocks": true,
           "spriteFrame": 9,
-          "lookMessage": "Travelogues from distant lands. Still boring somehow."
+          "lookMessage": "Travel books from distant deserts."
         },
         {
           "id": "bookshelf_study4",
           "type": "rect",
-          "x": 460, "y": 160,
+          "x": 460, "y": 60,
           "width": 40, "height": 120,
           "color": "0x6B3A1F",
           "label": "Bookshelf",
@@ -807,19 +811,19 @@
         {
           "id": "bookshelf_study5",
           "type": "rect",
-          "x": 580, "y": 160,
+          "x": 580, "y": 60,
           "width": 40, "height": 120,
           "color": "0x6B3A1F",
           "label": "Bookshelf",
           "interactable": true,
           "blocks": true,
           "spriteFrame": 9,
-          "lookMessage": "Poetry. All of it rhymes 'moon' with 'June.'"
+          "lookMessage": "Poets of the Stationary: Staring at the Ceiling from 2 to 4 PM"
         },
         {
           "id": "bookshelf_study6",
           "type": "rect",
-          "x": 700, "y": 160,
+          "x": 700, "y": 60,
           "width": 40, "height": 120,
           "color": "0x6B3A1F",
           "label": "Bookshelf",
@@ -997,7 +1001,7 @@
           "label": "Tombstone",
           "interactable": true,
           "spriteFrame": 28,
-          "lookMessage": "\"Here lies Bartholomew Crumble.\nBeloved gardener.\nHe loved plants.\nHit by a tree.\""
+          "lookMessage": "\"Here lies Bartholomew Crumble.\nBeloved gardener.\nHe loved plants. Got hit by a tree.\""
         },
         {
           "id": "tombstone2",

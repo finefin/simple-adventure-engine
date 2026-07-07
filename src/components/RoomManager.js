@@ -5,7 +5,7 @@ class RoomManager {
     this.inventory = inventory;
     this.currentRoomId = null;
     this.currentRoomData = null;
-    this.container = scene.add.container(0, 0);
+    this.roomElements = [];
     this.roomObjects = [];
     this.doors = [];
     this.onTransition = null;
@@ -27,7 +27,10 @@ class RoomManager {
   }
 
   clearRoom() {
-    this.container.removeAll(true);
+    this.roomElements.forEach((e) => e.destroy());
+    this.roomObjects.forEach((o) => o.go.destroy());
+    this.doors.forEach((d) => d.go.destroy());
+    this.roomElements = [];
     this.roomObjects = [];
     this.doors = [];
     this.scene.messageText.setVisible(false);
@@ -46,8 +49,7 @@ class RoomManager {
     const wallTile = data.wallTile !== undefined ? data.wallTile : 23;
 
     const gfx = this.scene.add.graphics();
-    this.container.add(gfx);
-
+    this.roomElements.push(gfx);
     gfx.fillStyle(bgColor);
     gfx.fillRect(0, 0, w, h);
 
@@ -56,7 +58,7 @@ class RoomManager {
     );
     floor.setOrigin(0, 0);
     floor.setTint(floorColor);
-    this.container.add(floor);
+    this.roomElements.push(floor);
 
     const wallSides = [
       { x: 0, y: 0, w: w, h: wt },
@@ -68,7 +70,7 @@ class RoomManager {
       const wall = this.scene.add.tileSprite(ws.x, ws.y, ws.w, ws.h, 'objects', wallTile);
       wall.setOrigin(0, 0);
       wall.setTint(wallColor);
-      this.container.add(wall);
+      this.roomElements.push(wall);
     });
 
     this.walkableMargin = 16;
@@ -143,7 +145,6 @@ class RoomManager {
     go.setInteractive({ useHandCursor: true });
     go.objDef = objDef;
 
-    this.container.add(go);
     this.roomObjects.push({ go, def: objDef });
   }
 
@@ -160,12 +161,10 @@ class RoomManager {
     go.setInteractive({ useHandCursor: true });
     go.doorDef = doorDef;
 
-    this.container.add(go);
     this.doors.push({ go, def: doorDef });
   }
 
   removeRoomObject(obj) {
-    this.container.remove(obj.go);
     obj.go.destroy();
     this.roomObjects = this.roomObjects.filter((o) => o !== obj);
   }
@@ -191,6 +190,5 @@ class RoomManager {
 
   destroy() {
     this.clearRoom();
-    this.container.destroy();
   }
 }
