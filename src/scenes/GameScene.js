@@ -130,6 +130,9 @@ class GameScene extends Phaser.Scene {
       speed: 220,
       onArrive: () => {}
     });
+
+    this.mirrorReflection = this.add.sprite(0, 0, 'player', 0);
+    this.mirrorReflection.setDepth(6).setScale(2).setVisible(false);
   }
 
   createUI() {
@@ -338,6 +341,31 @@ class GameScene extends Phaser.Scene {
           this.player.play('idle');
         }
       }
+    }
+
+    this.updateMirrorReflection();
+  }
+
+  updateMirrorReflection() {
+    const room = this.roomManager.currentRoomData;
+    const mirrorDef = room && room.objects.find(o => o.id === 'mirror');
+    if (!mirrorDef) {
+      this.mirrorReflection.setVisible(false);
+      return;
+    }
+
+    const dy = this.player.y - mirrorDef.y;
+    const dx = this.player.x - mirrorDef.x;
+    const inFront = dy > 0 && Math.abs(dx) < mirrorDef.width && dy < 120;
+    const atSide = Math.abs(dy) < 64 && Math.abs(dx) > mirrorDef.width / 2 && Math.abs(dx) < 80;
+
+    if (inFront || atSide) {
+      this.mirrorReflection.setPosition(mirrorDef.x, mirrorDef.y);
+      this.mirrorReflection.setFrame(this.player.frame.name);
+      this.mirrorReflection.setFlipX(!this.player.flipX);
+      this.mirrorReflection.setVisible(true);
+    } else {
+      this.mirrorReflection.setVisible(false);
     }
   }
 }

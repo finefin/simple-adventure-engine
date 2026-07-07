@@ -630,7 +630,7 @@
           "label": "Living Room",
           "spriteFrame": 10,
           "targetRoom": "living_room",
-          "targetX": 400,
+          "targetX": 230,
           "targetY": 60
         },
         {
@@ -997,7 +997,7 @@
           "label": "Tombstone",
           "interactable": true,
           "spriteFrame": 28,
-          "lookMessage": "\"Here lies Bartholomew Crumble.\nBeloved gardener.\nHe loved plants.\nToo much, probably.\""
+          "lookMessage": "\"Here lies Bartholomew Crumble.\nBeloved gardener.\nHe loved plants.\nHit by a tree.\""
         },
         {
           "id": "tombstone2",

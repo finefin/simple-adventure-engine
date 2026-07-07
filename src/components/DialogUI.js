@@ -37,16 +37,18 @@ class DialogUI {
     bg.setStrokeStyle(2, 0x444477);
     this.container.add(bg);
 
-    const npcText = this.scene.add.text(w / 2, textY + 16, node.text, {
+    const textLeft = w / 2 - boxW / 2 + 20;
+    const npcText = this.scene.add.text(textLeft, textY + 16, node.text, {
       fontSize: '14px',
       color: '#ddddee',
       fontFamily: 'monospace',
       wordWrap: { width: boxW - 40 },
       lineSpacing: 4,
-    }).setOrigin(0.5, 0);
+    }).setOrigin(0, 0);
     this.container.add(npcText);
 
     if (node.options) {
+      const optLeft = w / 2 - (boxW - 40) / 2 + 10;
       node.options.forEach((opt, i) => {
         const oy = textY + 90 + i * 32;
         const optBg = this.scene.add.rectangle(w / 2, oy + 10, boxW - 40, 26, 0x222233, 1);
@@ -54,11 +56,11 @@ class DialogUI {
         optBg.setInteractive({ useHandCursor: true });
         this.container.add(optBg);
 
-        const optText = this.scene.add.text(w / 2, oy, '> ' + opt.text, {
+        const optText = this.scene.add.text(optLeft, oy + 10, '> ' + opt.text, {
           fontSize: '13px',
           color: '#aabbcc',
           fontFamily: 'monospace',
-        }).setOrigin(0.5, 0);
+        }).setOrigin(0, 0.5);
         this.container.add(optText);
 
         optBg.on('pointerover', () => {

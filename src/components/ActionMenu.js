@@ -47,17 +47,17 @@ class ActionMenu {
 
     const maxW = Math.max(...verbs.map((v) => v.label.length)) * 9 + 32;
 
-    this.bg = this.scene.add.rectangle(px, py + totalH / 2, maxW + 16, totalH + 12, 0x111122, 0.9);
+    this.bg = this.scene.add.rectangle(px, py + totalH / 2, maxW + 16, totalH + 12, 0x111122, 0.9).setOrigin(0.5);
     this.bg.setStrokeStyle(1, 0x666688);
     this.container.add(this.bg);
 
     verbs.forEach((verb, i) => {
       const by = py + i * (btnH + gap);
-      const text = this.scene.add.text(px, by, '  ' + verb.label, {
+      const text = this.scene.add.text(px, by + btnH / 2, verb.label, {
         fontSize: '13px', color: '#ddddee', fontFamily: 'monospace',
         backgroundColor: '#222233',
         padding: { x: 8, y: 3 },
-      }).setOrigin(0.5, 0).setInteractive({ useHandCursor: true });
+      }).setOrigin(0.5, 0.5).setInteractive({ useHandCursor: true });
 
       text.on('pointerover', () => text.setStyle({ backgroundColor: '#444466' }));
       text.on('pointerout', () => text.setStyle({ backgroundColor: '#222233' }));
