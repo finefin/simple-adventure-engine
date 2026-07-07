@@ -132,7 +132,7 @@ class GameScene extends Phaser.Scene {
     });
 
     this.mirrorReflection = this.add.sprite(0, 0, 'player', 0);
-    this.mirrorReflection.setDepth(6).setScale(2).setVisible(false);
+    this.mirrorReflection.setDepth(6).setScale(2).setAlpha(0.5).setVisible(false);
   }
 
   createUI() {
@@ -357,14 +357,22 @@ class GameScene extends Phaser.Scene {
     const dy = this.player.y - mirrorDef.y;
     const dx = this.player.x - mirrorDef.x;
     const inFront = dy > 0 && Math.abs(dx) < mirrorDef.width && dy < 120;
-    const atSide = Math.abs(dy) < 64 && Math.abs(dx) > mirrorDef.width / 2 && Math.abs(dx) < 80;
+    const atSide = Math.abs(dy) < 164 && Math.abs(dx) > mirrorDef.width / 2 && Math.abs(dx) < 180;
 
     if (inFront || atSide) {
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const maxDist = 90;
+      const t = Phaser.Math.Clamp(1 - dist / maxDist, 0, 1);
+      const alpha = 0.5 * t;
+      const scale = 1 + t;
       this.mirrorReflection.setPosition(mirrorDef.x, mirrorDef.y);
+      this.mirrorReflection.setScale(scale);
       this.mirrorReflection.setFrame(this.player.frame.name);
-      this.mirrorReflection.setFlipX(!this.player.flipX);
+      this.mirrorReflection.setFlipX(this.player.flipX);
+      this.mirrorReflection.setAlpha(alpha);
       this.mirrorReflection.setVisible(true);
     } else {
+      this.mirrorReflection.setAlpha(0);
       this.mirrorReflection.setVisible(false);
     }
   }
