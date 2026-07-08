@@ -4,30 +4,44 @@ A point-and-click adventure engine built on Phaser. Games are created entirely b
 
 ## Table of Contents
 
-- [Data Format](#data-format)
+- [Quick Start](#quick-start)
+- [World Structure](#world-structure)
   - [Rooms](#rooms)
   - [Doors](#doors)
-  - [Objects](#objects)
-    - [Common Properties](#common-properties)
-    - [Messages](#messages)
-    - [Verbs](#verbs)
+- [Objects](#objects)
+  - [Common Properties](#common-properties)
+  - [Messages](#messages)
+  - [Verbs](#verbs)
   - [Pickups](#pickups)
   - [States](#states)
-  - [World Tiles](#world-tiles)
   - [Sprites](#sprites)
   - [Hidden Objects](#hidden-objects)
   - [Combines](#combines)
     - [Conditional Combines](#conditional-combines)
   - [Object Doors](#object-doors)
   - [Dialogs](#dialogs)
-  - [Text Panels](#text-panels)
   - [OpenVerb and openSetsState](#openverb-and-opensetsstate)
   - [Stock Objects](#stock-objects)
-  - [Build Process](#build-process)
+- [Text Panels](#text-panels)
 
-## Data Format
+## Quick Start
 
-All game content lives in a single JSON file loaded at boot.
+No build step is required. The game runs directly from `index.html` using the Phaser framework file. All game data is read from `src/data/world.json` at runtime.
+
+To add a new room:
+1. Add an entry to the `"rooms"` object with objects, doors, and visual properties
+2. Add a door in the starting room that links to it
+3. Reference the room's key in other doors' `targetRoom` fields
+
+To add a new object:
+1. Choose a unique `id`
+2. Place it at coordinates within the walkable area (wallThickness + 16 to 800 - wallThickness - 16)
+3. Define its messages, shape, and interaction properties
+4. If it should be hidden, add `hiddenBy` referencing the parent object's id
+
+All coordinates use the Phaser coordinate system with origin at top-left.
+
+## World Structure
 
 ### Rooms
 
@@ -59,8 +73,15 @@ A room is a 800x600 area with walls, a floor, objects, and doors.
 | `objects` | Array of interactable objects |
 | `doors` | Array of exits to other rooms |
 
-The walkable area is calculated as `wallThickness + 16` inset from each edge. 
-Objects with `"blocks": true` are treated as impassable by the pathfinder.
+The walkable area is calculated as `wallThickness + 16` inset from each edge. Objects with `"blocks": true` are treated as impassable by the pathfinder.
+
+The floor and walls render as tiled sprites from the objects spritesheet (`Sprite-0002.png`). Available tile frames:
+
+| Frame | Type |
+|---|---|
+| 22 | Floor stone |
+| 23 | Stone wall |
+| 24 | Wood wall |
 
 ### Doors
 
@@ -81,7 +102,7 @@ Doors connect rooms. Clicking a door walks the player to it and transitions to t
 
 `targetX`/`targetY` is where the player lands in the target room. Use the room's `playerStart` position for a natural entry.
 
-### Objects
+## Objects
 
 Objects are the interactable elements in each room. Two shapes are supported: `rect` and `circle`.
 
@@ -99,7 +120,7 @@ Objects are the interactable elements in each room. Two shapes are supported: `r
 }
 ```
 
-#### Common Properties
+### Common Properties
 
 | Field | Description |
 |---|---|
@@ -115,10 +136,10 @@ Objects are the interactable elements in each room. Two shapes are supported: `r
 | `blocks` | `true` makes the object impassable to the player |
 | `hiddenBy` | ID of another object. This object is invisible until revealed |
 | `spriteFrame` | Frame index from the objects spritesheet (`Sprite-0002.png`). When set, the object renders as a sprite instead of a colored shape |
-| `stateFrames` | Maps state names to frame indices for visual state changes (see Sprites below) |
+| `stateFrames` | Maps state names to frame indices for visual state changes (see Sprites) |
 | `alwaysOnTop` | `true` keeps the object rendered above other objects regardless of Y position |
 
-#### Messages
+### Messages
 
 These define what text appears when the player uses a verb on the object.
 
@@ -129,9 +150,9 @@ These define what text appears when the player uses a verb on the object.
 | `openMessage` | Shown when selecting "Open" |
 | `talkMessage` | Shown when selecting "Talk" (if no dialogTree) |
 
-Each message can be overridden per-state (see States section).
+Each message can be overridden per-state (see States).
 
-#### Verbs
+### Verbs
 
 The action menu shows these verbs based on object properties:
 
@@ -203,22 +224,6 @@ Each state can also display a full-screen text panel when entered:
 | `lookMessage` | Overrides the object's default examine text while in this state |
 | `useMessage` | Overrides the object's default use text while in this state |
 | `showPanel` | Full-screen narrative overlay shown when this state is entered |
-
-### World Tiles
-
-The floor and walls are rendered as tiled sprites from the objects spritesheet. Each room specifies which frame to use and a tint color:
-
-| Field | Description |
-|---|---|
-| `floorTile` | Frame index for the floor tile (default 22) |
-| `wallTile` | Frame index for the wall tile (default 23) |
-| `floorColor` | Hex tint applied to the floor tiles |
-| `wallColor` | Hex tint applied to the wall tiles |
-
-The available tile frames are:
-- 22 — Floor stone
-- 23 — Stone wall
-- 24 — Wood wall
 
 ### Sprites
 
@@ -425,24 +430,6 @@ Objects with `talkMessage` or `dialogTree` support the Talk verb. A `dialogTree`
 
 Each node has `text` (NPC dialog) and `options` (player responses). Set `next: null` to end the conversation. `dialogStart` on the object overrides the default `"start"` entry point.
 
-### Text Panels
-
-Full-screen overlay panels display narrative text. They can be triggered on game start via the world root, or on any object state change via the `showPanel` field (see States).
-
-```json
-{
-  "startPanel": "A mysterious mansion looms before you..."
-}
-```
-
-| Field | Description |
-|---|---|
-| `startPanel` | Text shown when the game loads, dismissed on click |
-
-To trigger a panel on a state change, add `"showPanel"` to the state definition on any object. The panel appears 1.2 seconds after the state transition.
-
-The panel renders a centered bordered text box over a dark overlay. Click anywhere to dismiss it.
-
 ### OpenVerb and openSetsState
 
 Objects with `openMessage` show the Open verb. If `openSetsState` is defined, the object's state changes when opened:
@@ -469,19 +456,20 @@ Opening an object can trigger `reveals` on it via `setObjState`, making hidden o
 
 Some objects with `"pickup": true` are initially placed in rooms but hidden by `hiddenBy` or sitting in the open. When picked up, they move to the inventory bar and are no longer rendered in any room.
 
-### Build Process
+## Text Panels
 
-No build step is required. The game runs directly from `index.html` using the Phaser framework file. All game data is read from `src/data/world.json` at runtime.
+Full-screen overlay panels display narrative text. They can be triggered on game start via the world root, or on any object state change via the `showPanel` field (see States).
 
-To add a new room:
-1. Add an entry to the `"rooms"` object with objects, doors, and visual properties
-2. Add a door in the starting room that links to it
-3. Reference the room's key in other doors' `targetRoom` fields
+```json
+{
+  "startPanel": "A mysterious mansion looms before you..."
+}
+```
 
-To add a new object:
-1. Choose a unique `id`
-2. Place it at coordinates within the walkable area (wallThickness + 16 to 800 - wallThickness - 16)
-3. Define its messages, shape, and interaction properties
-4. If it should be hidden, add `hiddenBy` referencing the parent object's id
+| Field | Description |
+|---|---|
+| `startPanel` | Text shown when the game loads, dismissed on click |
 
-All coordinates use the Phaser coordinate system with origin at top-left.
+To trigger a panel on a state change, add `"showPanel"` to the state definition on any object. The panel appears 1.2 seconds after the state transition.
+
+The panel renders a centered bordered text box over a dark overlay. Click anywhere to dismiss it.
