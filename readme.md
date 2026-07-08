@@ -2,6 +2,29 @@
 
 A point-and-click adventure engine built on Phaser. Games are created entirely by editing `src/data/world.json`.
 
+## Table of Contents
+
+- [Data Format](#data-format)
+  - [Rooms](#rooms)
+  - [Doors](#doors)
+  - [Objects](#objects)
+    - [Common Properties](#common-properties)
+    - [Messages](#messages)
+    - [Verbs](#verbs)
+  - [Pickups](#pickups)
+  - [States](#states)
+  - [World Tiles](#world-tiles)
+  - [Sprites](#sprites)
+  - [Hidden Objects](#hidden-objects)
+  - [Combines](#combines)
+    - [Conditional Combines](#conditional-combines)
+  - [Object Doors](#object-doors)
+  - [Dialogs](#dialogs)
+  - [Text Panels](#text-panels)
+  - [OpenVerb and openSetsState](#openverb-and-opensetsstate)
+  - [Stock Objects](#stock-objects)
+  - [Build Process](#build-process)
+
 ## Data Format
 
 All game content lives in a single JSON file loaded at boot.
