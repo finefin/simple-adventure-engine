@@ -1,7 +1,5 @@
 {
-  "startPanel": "In the darkness of Blackwood Manor, shadows whisper secrets long forgotten.\n\nFind the truth.",
-
-
+  "startPanel": "In the darkness of Fine Manor,\nshadows whisper secrets long forgotten.\n\nFind the truth.",
 
   "startRoom": "living_room",
   "rooms": {
@@ -72,7 +70,7 @@
           "spriteFrame": 9,
           "interactable": true,
           "blocks": true,
-          "lookMessage": "A self-help book titled 'How to Stop Being Addicted to Reading.'"
+          "lookMessage": "A self-help book titled 'How to Stop Being Addicted to Reading'"
         },
         {
           "id": "bookshelf6",
@@ -1136,7 +1134,7 @@
           "lookMessage": "A dark stone altar. Strange symbols are carved into its surface.",
           "combineMessages": {
             "torch": {
-              "message": "You hold the torch close to the altar. The eerie blue flame illuminates hidden text — the secret word is \"SIN\".",
+              "message": "You hold the torch close to the altar. The eerie flame illuminates hidden text — the secret word is \"SIN\".",
               "setState": "revealed"
             }
           },
@@ -1156,7 +1154,7 @@
           "label": "Torch",
           "interactable": true,
           "spriteFrame": 20,
-          "lookMessage": "A torch flickering with an eerie blue flame.",
+          "lookMessage": "A torch flickering with an eerie flame.",
           "pickup": true
         }
       ],
