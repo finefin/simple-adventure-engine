@@ -14,6 +14,7 @@ A point-and-click adventure engine built on Phaser. Games are created entirely b
   - [Verbs](#verbs)
   - [Pickups](#pickups)
   - [States](#states)
+  - [Animations](#animations)
   - [Sprites](#sprites)
   - [Hidden Objects](#hidden-objects)
   - [Combines](#combines)
@@ -67,21 +68,15 @@ A room is a 800x600 area with walls, a floor, objects, and doors.
 | `wallColor` | Tint applied to wall tiles |
 | `floorColor` | Tint applied to floor tiles |
 | `wallThickness` | Optional, defaults to 24 |
-| `floorTile` | Spritesheet frame for the floor (default 22) |
-| `wallTile` | Spritesheet frame for walls (default 23, use 24 for indoor wood panels) |
+| `floorTile` | Sprite name or frame index for the floor (default "floor") |
+| `wallTile` | Sprite name or frame index for walls (default "wallStone") |
 | `playerStart` | Where the player spawns when entering this room |
 | `objects` | Array of interactable objects |
 | `doors` | Array of exits to other rooms |
 
 The walkable area is calculated as `wallThickness + 16` inset from each edge. Objects with `"blocks": true` are treated as impassable by the pathfinder.
 
-The floor and walls render as tiled sprites from the objects spritesheet (`Sprite-0002.png`). Available tile frames:
-
-| Frame | Type |
-|---|---|
-| 22 | Floor stone |
-| 23 | Stone wall |
-| 24 | Wood wall |
+The floor and walls render as tiled sprites from the objects spritesheet (`Sprite-0002.png`). Use sprite names (from the spritesheet's `frameTags`) or direct frame indices.
 
 ### Doors
 
@@ -135,9 +130,12 @@ Objects are the interactable elements in each room. Two shapes are supported: `r
 | `interactable` | Must be `true` for clicks to register |
 | `blocks` | `true` makes the object impassable to the player |
 | `hiddenBy` | ID of another object. This object is invisible until revealed |
-| `spriteFrame` | Frame index from the objects spritesheet (`Sprite-0002.png`). When set, the object renders as a sprite instead of a colored shape |
-| `stateFrames` | Maps state names to frame indices for visual state changes (see Sprites) |
+| `spriteFrame` | Sprite name (from the spritesheet's `frameTags`) or frame index. When set, the object renders as a sprite instead of a colored shape |
+| `stateFrames` | Maps state names to sprite names or frame indices for visual state changes (see Sprites) |
 | `alwaysOnTop` | `true` keeps the object rendered above other objects regardless of Y position |
+| `spriteAnim` | Animation name (defined in world root `animations`) to play on the sprite instead of a static frame |
+
+#### Messages
 
 ### Messages
 
@@ -225,6 +223,37 @@ Each state can also display a full-screen text panel when entered:
 | `useMessage` | Overrides the object's default use text while in this state |
 | `showPanel` | Full-screen narrative overlay shown when this state is entered |
 
+### Animations
+
+Object animations are defined in the world root and referenced by name on individual objects.
+
+```json
+{
+  "animations": {
+    "flicker": { "frames": [0, 1, 2], "frameRate": 8, "repeat": -1 },
+    "pulse": { "frames": "stoveOn", "frameRate": 5, "repeat": -1 }
+  }
+}
+```
+
+| Field | Description |
+|---|---|
+| `frames` | Array of frame indices OR a sprite name (from frameTags) that expands to its frame range |
+| `frameRate` | Frames per second |
+| `repeat` | Number of repeats (-1 for infinite) |
+
+Objects use the animation instead of a static sprite:
+
+```json
+{
+  "id": "torch",
+  "spriteAnim": "flicker",
+  "lookMessage": "The torch flickers with an eerie blue flame."
+}
+```
+
+When `spriteAnim` is set, the object plays the animation in a loop. The animation key is prefixed internally with `"obj_"` to avoid collisions with player animations.
+
 ### Sprites
 
 Objects and doors can use sprite frames from a spritesheet instead of colored shapes. Sprites are loaded from `assets/Sprite-0002.png` (objects) and `assets/Sprite-0001.png` (player).
@@ -234,19 +263,22 @@ Objects and doors can use sprite frames from a spritesheet instead of colored sh
   "id": "stove",
   "type": "rect",
   "x": 600, "y": 400,
-  "spriteFrame": 2,
-  "stateFrames": { "on": 3 }
+  "spriteFrame": "stove",
+  "stateFrames": { "on": "stoveOn" }
 }
 ```
 
 When `spriteFrame` is set, the object renders at 2x scale using that frame from the spritesheet. The `type`, `color`, and `strokeColor` fields are ignored for rendering, but `width`/`height` (for `rect`) or `radius` (for `circle`) are still used for hit-testing and pathfinding.
 
-**State-based frame changes** use `stateFrames` to switch the displayed frame when the object's state changes:
+**State-based frame changes** use `stateFrames` to switch the displayed frame when the object's state changes. Use `stateAnim` to play an animation instead:
 
 | Field | Description |
 |---|---|
-| `spriteFrame` | Frame index to render |
-| `stateFrames` | Object mapping state names to frame indices, e.g. `{"on": 3, "open": 4}` |
+| `spriteFrame` | Sprite name or frame index to render |
+| `stateFrames` | Object mapping state names to sprite names or frame indices, e.g. `{"on": "stoveOn"}` |
+| `stateAnim` | Object mapping state names to animation names, e.g. `{"on": "pulse"}`. Plays the animation when the state is entered |
+
+Values can be either a sprite name (from the spritesheet's `frameTags`) or a direct numeric frame index. Using names is recommended since they survive spritesheet reordering.
 
 Doors support `spriteFrame` the same way:
 
@@ -255,7 +287,7 @@ Doors support `spriteFrame` the same way:
   "id": "door_living",
   "x": 280, "y": 500,
   "width": 60, "height": 12,
-  "spriteFrame": 10,
+  "spriteFrame": "door",
   "targetRoom": "living_room",
   "targetX": 400, "targetY": 400
 }

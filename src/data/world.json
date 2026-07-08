@@ -2,13 +2,19 @@
   "startPanel": "In the darkness of Fine Manor,\nshadows whisper secrets long forgotten.\n\nFind the truth.",
 
   "startRoom": "living_room",
+
+  "animations": {
+    "flicker": { "frames": "torch", "frameRate": 8, "repeat": -1 },
+    "pulse": { "frames": [3, 4], "frameRate": 5, "repeat": -1 },
+    "breathe": { "frames": "oldMan", "frameRate": 3, "repeat": -1 }
+  },
   "rooms": {
     "living_room": {
       "name": "Living Room",
       "backgroundColor": "0x1a1a2e",
       "floorColor": "0x3a3a4a",
       "wallColor": "0x4a3a2a",
-      "wallTile": 24,
+      "wallTile": "wallStone",
       "wallThickness": 64,
       "playerStart": { "x": 50, "y": 280 },
       "objects": [
@@ -19,7 +25,7 @@
           "width": 60, "height": 100,
           "color": "0x8B4513",
           "label": "Bookshelf",
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
           "lookMessage": "Volume 1 of 'How to Annoy Adventurers in Ten Easy Steps.'."
@@ -31,7 +37,7 @@
           "width": 60, "height": 100,
           "color": "0x8B4513",
           "label": "Bookshelf",
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
           "lookMessage": "Mostly furniture catalogues from 1982. Someone had a dream, I guess."
@@ -43,7 +49,7 @@
           "width": 60, "height": 100,
           "color": "0x8B4513",
           "label": "Bookshelf",
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
           "lookMessage": "Every single book is titled 'The Adventures of Captain Obvious.'"
@@ -55,7 +61,7 @@
           "width": 60, "height": 100,
           "color": "0x8B4513",
           "label": "Bookshelf",
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
           "lookMessage": "This shelf is just 47 copies of the same book about taxidermy."
@@ -67,7 +73,7 @@
           "width": 60, "height": 100,
           "color": "0x8B4513",
           "label": "Bookshelf",
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
           "lookMessage": "A self-help book titled 'How to Stop Being Addicted to Reading'"
@@ -79,7 +85,7 @@
           "width": 60, "height": 100,
           "color": "0x8B4513",
           "label": "Bookshelf",
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
           "lookMessage": "'Point and Click Adventures for Dummies'... Sounds slightly interesing."
@@ -91,7 +97,7 @@
           "width": 60, "height": 100,
           "color": "0x8B4513",
           "label": "Bookshelf",
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
           "lookMessage": "The complete encyclopedia of 'Things that are annoying'"
@@ -105,7 +111,7 @@
           "label": "Table",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 0,
+          "spriteFrame": "table",
           "lookMessage": "A wooden table. There's something underneath it.",
           "reveals": ["key"],
           "examineReveals": ["key"]
@@ -119,7 +125,7 @@
           "label": "Key",
           "interactable": true,
           "hiddenBy": "table",
-          "spriteFrame": 1,
+          "spriteFrame": "key",
           "lookMessage": "A small golden key.",
           "pickup": true,
           "useMessage": "It might fit something around here.",
@@ -136,7 +142,7 @@
           "strokeColor": "0x4a3a2a",
           "label": "Window",
           "interactable": true,
-          "spriteFrame": 7,
+          "spriteFrame": "window",
           "lookMessage": "The garden. A statue stands in the middle.",
           "openMessage": "You push the window open. Cool night air rushes in.",
           "openSetsState": "open",
@@ -160,7 +166,8 @@
           "label": "Old Man",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 8,
+          "spriteFrame": "oldMan",
+          "spriteAnim": "breathe",
           "lookMessage": "An old man with a long grey beard.",
           "talkMessage": "He grunts and looks away.",
           "dialogTree": {
@@ -242,7 +249,7 @@
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Kitchen",
-          "spriteFrame": 10,
+          "spriteFrame": "door",
           "targetRoom": "kitchen",
           "targetX": 80,
           "targetY": 300
@@ -253,7 +260,7 @@
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Hallway",
-          "spriteFrame": 10,
+          "spriteFrame": "door",
           "targetRoom": "hallway",
           "targetX": 230,
           "targetY": 380
@@ -264,7 +271,7 @@
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Outside",
-          "spriteFrame": 10,
+          "spriteFrame": "door",
           "locked": true,
           "lockedMessage": "I can't leave now - I have a case to solve!",
           "targetRoom": null,
@@ -278,7 +285,7 @@
       "backgroundColor": "0x2a1a1a",
       "floorColor": "0x4a3a3a",
       "wallColor": "0x3a2a2a",
-      "wallTile": 24,
+      "wallTile": "wallStone",
       "wallThickness": 64,
       "playerStart": { "x": 80, "y": 300 },
       "objects": [
@@ -291,8 +298,9 @@
           "label": "Stove",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 2,
-          "stateFrames": { "on": 3 },
+          "spriteFrame": "stove",
+          "stateFrames": { "on": "stoveOn" },
+          "stateAnim": { "on": "pulse" },
           "state": "off",
           "lookMessage": "A cast iron stove. It's cold.",
           "useMessage": "Nothing to light it with.",
@@ -317,7 +325,7 @@
           "width": 70, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
-          "spriteFrame": 4,
+          "spriteFrame": "cupboard",
           "interactable": true,
           "blocks": true,
           "state": "closed",
@@ -340,7 +348,7 @@
           "width": 14, "height": 24,
           "color": "0xdd8844",
           "label": "Matchbox",
-          "spriteFrame": 5,
+          "spriteFrame": "matchbox",
           "hiddenBy": "cupboard",
           "interactable": true,
           "alwaysOnTop": true,
@@ -358,7 +366,7 @@
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
-          "spriteFrame": 4,
+          "spriteFrame": "cupboard",
           "interactable": true,
           "blocks": true,
           "state": "closed",
@@ -380,7 +388,7 @@
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
-          "spriteFrame": 4,
+          "spriteFrame": "cupboard",
           "interactable": true,
           "blocks": true,
           "state": "closed",
@@ -402,7 +410,7 @@
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
-          "spriteFrame": 4,
+          "spriteFrame": "cupboard",
           "interactable": true,
           "blocks": true,
           "state": "closed",
@@ -424,7 +432,7 @@
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
-          "spriteFrame": 4,
+          "spriteFrame": "cupboard",
           "interactable": true,
           "blocks": true,
           "state": "closed",
@@ -446,7 +454,7 @@
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
-          "spriteFrame": 4,
+          "spriteFrame": "cupboard",
           "interactable": true,
           "blocks": true,
           "state": "closed",
@@ -468,7 +476,7 @@
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
-          "spriteFrame": 4,
+          "spriteFrame": "cupboard",
           "interactable": true,
           "blocks": true,
           "state": "closed",
@@ -490,7 +498,7 @@
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
-          "spriteFrame": 4,
+          "spriteFrame": "cupboard",
           "interactable": true,
           "blocks": true,
           "state": "closed",
@@ -512,7 +520,7 @@
           "width": 50, "height": 80,
           "color": "0x8B6914",
           "label": "Cupboard",
-          "spriteFrame": 4,
+          "spriteFrame": "cupboard",
           "interactable": true,
           "blocks": true,
           "state": "closed",
@@ -536,7 +544,7 @@
           "label": "Potted Plant",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 6,
+          "spriteFrame": "plant",
           "lookMessage": "A thriving basil plant. Someone's been watering it."
         }
       ],
@@ -547,7 +555,7 @@
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Living Room",
-          "spriteFrame": 10,
+          "spriteFrame": "door",
           "targetRoom": "living_room",
           "targetX": 720,
           "targetY": 300
@@ -559,7 +567,7 @@
       "backgroundColor": "0x1a1a2e",
       "floorColor": "0x2a2a3a",
       "wallColor": "0x3a2a1a",
-      "wallTile": 24,
+      "wallTile": "wallStone",
       "wallThickness": 124,
       "playerStart": { "x": 400, "y": 80 },
       "objects": [
@@ -573,7 +581,7 @@
           "label": "Mirror",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 13,
+          "spriteFrame": "mirror",
           "lookMessage": "Your reflection stares back. You look tired."
         },
         {
@@ -585,7 +593,7 @@
           "strokeColor": "0x8B6914",
           "label": "Painting",
           "interactable": true,
-          "spriteFrame": 11,
+          "spriteFrame": "painting",
           "lookMessage": "A painting of a ship at sea. The signature is illegible."
         },
         {
@@ -597,7 +605,7 @@
           "label": "Note",
           "interactable": true,
           "state": "reversed",
-          "spriteFrame": 12,
+          "spriteFrame": "note",
           "lookMessage": "'reward ksed yduts eht'?! What does this mean?",
           "pickup": true,
           "states": {
@@ -627,7 +635,7 @@
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Living Room",
-          "spriteFrame": 10,
+          "spriteFrame": "door",
           "targetRoom": "living_room",
           "targetX": 230,
           "targetY": 60
@@ -638,7 +646,7 @@
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Study",
-          "spriteFrame": 10,
+          "spriteFrame": "door",
           "targetRoom": "study",
           "targetX": 80,
           "targetY": 300
@@ -649,7 +657,7 @@
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Garden",
-          "spriteFrame": 10,
+          "spriteFrame": "door",
           "locked": true,
           "lockedMessage": "The door has no handle.",
           "targetRoom": "garden",
@@ -663,7 +671,7 @@
       "backgroundColor": "0x1a1a1a",
       "floorColor": "0x2a2a1a",
       "wallColor": "0x3a2a1a",
-      "wallTile": 24,
+      "wallTile": "wallStone",
       "wallThickness": 64,
       "playerStart": { "x": 80, "y": 300 },
       "objects": [
@@ -676,7 +684,7 @@
           "label": "Desk",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 15,
+          "spriteFrame": "desk",
           "state": "locked",
           "lookMessage": "A heavy oak desk. The drawers are locked.",
           "openMessage": "The drawers are locked tight.",
@@ -703,7 +711,7 @@
           "color": "0xffdd88",
           "label": "Lamp",
           "interactable": true,
-          "spriteFrame": 14,
+          "spriteFrame": "lamp",
           "lookMessage": "A strange lamp."
         },
 
@@ -716,7 +724,7 @@
           "label": "Quill",
           "interactable": true,
           "alwaysOnTop": true,
-          "spriteFrame": 18,
+          "spriteFrame": "quill",
           "lookMessage": "A feather quill, still inked.",
           "pickup": true,
           "combineMessages": {
@@ -733,8 +741,8 @@
           "interactable": true,
           "alwaysOnTop": true,
           "hiddenBy": "desk",
-          "spriteFrame": 16,
-          "stateFrames": { "burnt": 17 },
+          "spriteFrame": "photo",
+          "stateFrames": { "burnt": "ashes" },
           "lookMessage": "A faded photograph of a woman standing in a garden.",
           "pickup": true,
           "combineMessages": {
@@ -767,7 +775,7 @@
           "label": "Bookshelf",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "lookMessage": "Outdated legal texts and refuted philosophy."
         },
         {
@@ -779,7 +787,7 @@
           "label": "Bookshelf",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "lookMessage": "The Great Encyclopedia of Standardized Tax Forms: Volumes I–XVII"
         },
         {
@@ -791,7 +799,7 @@
           "label": "Bookshelf",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "lookMessage": "Travel books from distant deserts."
         },
         {
@@ -803,7 +811,7 @@
           "label": "Bookshelf",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "lookMessage": "Cookbooks. Every recipe calls for ingredients you don't have."
         },
         {
@@ -815,7 +823,7 @@
           "label": "Bookshelf",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "lookMessage": "Poets of the Stationary: Staring at the Ceiling from 2 to 4 PM"
         },
         {
@@ -827,7 +835,7 @@
           "label": "Bookshelf",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 9,
+          "spriteFrame": "bookshelf",
           "lookMessage": "Self-help books. They didn't help."
         }
       ],
@@ -838,7 +846,7 @@
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Hallway",
-          "spriteFrame": 10,
+          "spriteFrame": "door",
           "targetRoom": "hallway",
           "targetX": 650,
           "targetY": 170
@@ -861,7 +869,7 @@
           "color": "0x888888",
           "label": "Statue",
           "interactable": true,
-          "spriteFrame": 19,
+          "spriteFrame": "statue",
           "lookMessage": "A stone statue of a young woman on a pyre holding a small bowl. A sign says 'Ashes to ashes.'",
           "becomesDoor": {
             "requiresState": [{ "id": "old_photo", "state": "burnt" }],
@@ -882,7 +890,7 @@
           "label": "Bush",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 25,
+          "spriteFrame": "bush",
           "lookMessage": "A dense green bush. Something rustles inside — probably just a mouse."
         },
         {
@@ -894,7 +902,7 @@
           "label": "Bush",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 25,
+          "spriteFrame": "bush",
           "lookMessage": "This bush looks like it was trimmed into the shape of a bush. Stunning!"
         },
         {
@@ -906,7 +914,7 @@
           "label": "Bush",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 25,
+          "spriteFrame": "bush",
           "lookMessage": "A modest little bush, minding its own business."
         },
         {
@@ -918,7 +926,7 @@
           "label": "Bush",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 25,
+          "spriteFrame": "bush",
           "lookMessage": "A beautiful bush - for people with low standards."
         },
         {
@@ -930,7 +938,7 @@
           "label": "Bush",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 25,
+          "spriteFrame": "bush",
           "lookMessage": "A perfectly ordinary bush. Suspiciously ordinary."
         },
         {
@@ -942,7 +950,7 @@
           "label": "Flowers",
           "interactable": true,
           "lookMessage": "A patch of flowers. They sway gently in the breeze.",
-          "spriteFrame": 26
+          "spriteFrame": "flower"
         },
         {
           "id": "flower2",
@@ -953,7 +961,7 @@
           "label": "Flowers",
           "interactable": true,
           "lookMessage": "Wildflowers. Bees buzz lazily between them.",
-          "spriteFrame": 26
+          "spriteFrame": "flower"
         },
         {
           "id": "flower3",
@@ -964,7 +972,7 @@
           "label": "Flowers",
           "interactable": true,
           "lookMessage": "Blooms cluster near the wall. They smell faintly of honey.",
-          "spriteFrame": 26
+          "spriteFrame": "flower"
         },
         {
           "id": "tree1",
@@ -975,7 +983,7 @@
           "label": "Oak Tree",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 27,
+          "spriteFrame": "tree",
           "lookMessage": "A towering tree. It looks very old."
         },
         {
@@ -987,7 +995,7 @@
           "label": "Willow Tree",
           "interactable": true,
           "blocks": true,
-          "spriteFrame": 27,
+          "spriteFrame": "tree",
           "lookMessage": "A tree."
         },
         {
@@ -998,7 +1006,7 @@
           "color": "0x888888",
           "label": "Tombstone",
           "interactable": true,
-          "spriteFrame": 28,
+          "spriteFrame": "tombstone",
           "lookMessage": "\"Here lies Bartholomew Crumble.\nBeloved gardener.\nHe loved plants. Got hit by a tree.\""
         },
         {
@@ -1009,7 +1017,7 @@
           "color": "0x999999",
           "label": "Tombstone",
           "interactable": true,
-          "spriteFrame": 28,
+          "spriteFrame": "tombstone",
           "lookMessage": "\"Edwina Moss — she finally stopped growing.\""
         },
         {
@@ -1020,7 +1028,7 @@
           "color": "0x777777",
           "label": "Tombstone",
           "interactable": true,
-          "spriteFrame": 28,
+          "spriteFrame": "tombstone",
           "lookMessage": "\"Iris Greenbelt.\nWeeded out.\""
         },
         {
@@ -1031,7 +1039,7 @@
           "color": "0xcc4444",
           "label": "Gnome",
           "interactable": true,
-          "spriteFrame": 29,
+          "spriteFrame": "gnome",
           "lookMessage": "A garden gnome with a cheery red hat and a surprisingly judgmental stare.",
           "talkMessage": "The gnome mutters something indecipherable.",
           "dialogTree": {
@@ -1107,7 +1115,7 @@
           "width": 60, "height": 12,
           "color": "0xcc8833",
           "label": "Hallway",
-          "spriteFrame": 10,
+          "spriteFrame": "door",
           "targetRoom": "hallway",
           "targetX": 620,
           "targetY": 380
@@ -1130,7 +1138,7 @@
           "color": "0x444444",
           "label": "Altar",
           "interactable": true,
-          "spriteFrame": 21,
+          "spriteFrame": "altar",
           "lookMessage": "A dark stone altar. Strange symbols are carved into its surface.",
           "combineMessages": {
             "torch": {
@@ -1153,7 +1161,8 @@
           "color": "0xcc8833",
           "label": "Torch",
           "interactable": true,
-          "spriteFrame": 20,
+          "spriteFrame": "torch",
+          "spriteAnim": "flicker",
           "lookMessage": "A torch flickering with an eerie flame.",
           "pickup": true
         }
@@ -1165,7 +1174,7 @@
           "width": 12, "height": 60,
           "color": "0xcc8833",
           "label": "Garden",
-          "spriteFrame": 10,
+          "spriteFrame": "door",
           "targetRoom": "garden",
           "targetX": 530,
           "targetY": 300

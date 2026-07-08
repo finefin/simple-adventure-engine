@@ -54,7 +54,7 @@ class Inventory {
 
       let icon;
       if (item.spriteFrame !== undefined) {
-        icon = this.scene.add.sprite(x, y - 2, 'objects', item.spriteFrame);
+        icon = this.scene.add.sprite(x, y - 2, 'objects', this.scene.frameNumber(item.spriteFrame));
       } else {
         const color = parseInt(item.color);
         if (item.type === 'circle') {

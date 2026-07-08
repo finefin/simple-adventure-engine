@@ -45,8 +45,8 @@ class RoomManager {
     const floorColor = parseInt(data.floorColor);
     const wallColor = parseInt(data.wallColor);
     const bgColor = parseInt(data.backgroundColor);
-    const floorTile = data.floorTile !== undefined ? data.floorTile : 22;
-    const wallTile = data.wallTile !== undefined ? data.wallTile : 23;
+    const floorTile = this.scene.frameNumber(data.floorTile !== undefined ? data.floorTile : 'floor');
+    const wallTile = this.scene.frameNumber(data.wallTile !== undefined ? data.wallTile : 'wallStone');
 
     const gfx = this.scene.add.graphics();
     this.roomElements.push(gfx);
@@ -123,13 +123,16 @@ class RoomManager {
   createObject(objDef) {
     let go;
 
-    if (objDef.spriteFrame !== undefined) {
-      let frame = objDef.spriteFrame;
-      if (objDef.stateFrames && objDef.state && objDef.stateFrames[objDef.state] !== undefined) {
-        frame = objDef.stateFrames[objDef.state];
-      }
+    if (objDef.spriteFrame !== undefined || objDef.spriteAnim) {
+      const frame = this.scene.frameNumber(objDef.spriteFrame);
       go = this.scene.add.sprite(objDef.x, objDef.y, 'objects', frame);
       go.setDepth(5).setScale(2);
+      if (objDef.spriteAnim) {
+        const animKey = 'obj_' + objDef.spriteAnim;
+        if (this.scene.anims.exists(animKey)) {
+          go.play(animKey);
+        }
+      }
     } else if (objDef.type === 'rect') {
       const color = parseInt(objDef.color);
       go = this.scene.add.rectangle(objDef.x, objDef.y, objDef.width, objDef.height, color);
@@ -151,7 +154,7 @@ class RoomManager {
   createDoor(doorDef) {
     let go;
     if (doorDef.spriteFrame !== undefined) {
-      go = this.scene.add.sprite(doorDef.x, doorDef.y, 'objects', doorDef.spriteFrame);
+      go = this.scene.add.sprite(doorDef.x, doorDef.y, 'objects', this.scene.frameNumber(doorDef.spriteFrame));
       go.setDepth(3).setScale(2);
     } else {
       const color = parseInt(doorDef.color);

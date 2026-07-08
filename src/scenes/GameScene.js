@@ -5,6 +5,29 @@ class GameScene extends Phaser.Scene {
 
   init(data) {
     this.worldData = data.worldData;
+    this.frameTags = data.frameTags || {};
+  }
+
+  frameNumber(v) {
+    if (typeof v === 'string') {
+      const tag = this.frameTags[v];
+      return tag ? tag.from : 0;
+    }
+    return v || 0;
+  }
+
+  frameRange(v) {
+    if (typeof v === 'string') {
+      const tag = this.frameTags[v];
+      if (tag) {
+        const frames = [];
+        for (let i = tag.from; i <= tag.to; i++) frames.push(i);
+        return frames;
+      }
+      return [0];
+    }
+    if (Array.isArray(v)) return v;
+    return [v || 0];
   }
 
   create() {
@@ -16,6 +39,7 @@ class GameScene extends Phaser.Scene {
     this.actionMenu = new ActionMenu(this);
     this.dialogUI = new DialogUI(this);
     this.textPanel = new TextPanel(this);
+    this.createObjectAnimations();
     this.roomManager = new RoomManager(this, this.worldData, this.inventory);
     this.roomManager.onTransition = (roomId) => {
       this.showMessage('Entered ' + this.roomManager.currentRoomData.name);
@@ -37,17 +61,29 @@ class GameScene extends Phaser.Scene {
     this.worldState[objDef.id] = newState;
 
     if (objDef.stateFrames && objDef.stateFrames[newState] !== undefined) {
+      const frame = this.frameNumber(objDef.stateFrames[newState]);
       const entry = this.roomManager.roomObjects.find(o => o.def.id === objDef.id);
       if (entry) {
-        entry.go.setFrame(objDef.stateFrames[newState]);
+        entry.go.stop();
+        entry.go.setFrame(frame);
       } else if (this.inventory.pickedUpIds.has(objDef.id)) {
         const invItem = this.inventory.items.find(i => i.id === objDef.id);
         if (invItem) {
-          invItem.spriteFrame = objDef.stateFrames[newState];
+          invItem.spriteFrame = frame;
           if (objDef.states && objDef.states[newState] && objDef.states[newState].label) {
             invItem.label = objDef.states[newState].label;
           }
           this.inventory.updateDisplay();
+        }
+      }
+    }
+
+    if (objDef.stateAnim && objDef.stateAnim[newState] !== undefined) {
+      const entry = this.roomManager.roomObjects.find(o => o.def.id === objDef.id);
+      if (entry) {
+        const animKey = 'obj_' + objDef.stateAnim[newState];
+        if (this.anims.exists(animKey)) {
+          entry.go.play(animKey);
         }
       }
     }
@@ -133,6 +169,20 @@ class GameScene extends Phaser.Scene {
 
     this.mirrorReflection = this.add.sprite(0, 0, 'player', 0);
     this.mirrorReflection.setDepth(6).setScale(2).setAlpha(0.5).setVisible(false);
+  }
+
+  createObjectAnimations() {
+    const anims = this.worldData.animations;
+    if (!anims) return;
+    Object.keys(anims).forEach((key) => {
+      const def = anims[key];
+      this.anims.create({
+        key: 'obj_' + key,
+        frames: this.anims.generateFrameNumbers('objects', { frames: this.frameRange(def.frames) }),
+        frameRate: def.frameRate,
+        repeat: def.repeat !== undefined ? def.repeat : -1,
+      });
+    });
   }
 
   createUI() {
@@ -351,7 +401,7 @@ class GameScene extends Phaser.Scene {
     if (!this.roomManager.roomObjects) return;
     const z = (y, top) => 5 + y * 0.15 + (top ? 50 : 0);
     const feetY = (go, def) => {
-      if (def.spriteFrame !== undefined) return go.y + go.displayHeight / 2;
+      if (def.spriteFrame !== undefined || def.spriteAnim) return go.y + go.displayHeight / 2;
       if (def.type === 'rect') return go.y + def.height / 2;
       if (def.type === 'circle') return go.y + def.radius;
       return go.y;
