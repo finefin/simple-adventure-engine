@@ -62,9 +62,9 @@ class GameScene extends Phaser.Scene {
       });
     }
 
-    if (objDef.id === 'altar' && newState === 'revealed' && this.worldData.endPanel) {
+    if (objDef.states && objDef.states[newState] && objDef.states[newState].showPanel) {
       this.time.delayedCall(1200, () => {
-        this.textPanel.open(this.worldData.endPanel);
+        this.textPanel.open(objDef.states[newState].showPanel);
       });
     }
   }

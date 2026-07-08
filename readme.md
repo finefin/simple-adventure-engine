@@ -166,6 +166,21 @@ Objects can have multiple states that change their appearance, messages, and beh
 
 When the stove's state is `"off"`, examine shows "A cast iron stove. It's cold." When the state changes to `"on"`, it shows "The stove crackles with a warm flame."
 
+Each state can also display a full-screen text panel when entered:
+
+```json
+"revealed": {
+  "lookMessage": "The secret is now visible.",
+  "showPanel": "A revelation washes over you. You finally understand..."
+}
+```
+
+| Field | Description |
+|---|---|
+| `lookMessage` | Overrides the object's default examine text while in this state |
+| `useMessage` | Overrides the object's default use text while in this state |
+| `showPanel` | Full-screen narrative overlay shown when this state is entered |
+
 ### World Tiles
 
 The floor and walls are rendered as tiled sprites from the objects spritesheet. Each room specifies which frame to use and a tint color:
@@ -180,7 +195,7 @@ The floor and walls are rendered as tiled sprites from the objects spritesheet. 
 The available tile frames are:
 - 22 — Floor stone
 - 23 — Stone wall
-- 24 — Wood wall (use for indoor rooms)
+- 24 — Wood wall
 
 ### Sprites
 
@@ -314,7 +329,7 @@ Combine results can require specific world state conditions:
 }
 ```
 
-`requiresState` is an array of `{id, state}` pairs. ALL conditions must be met for the result to apply. If conditions fail, the engine falls through to the next candidate. Here, burning the photo at the stove only works if the stove is lit; otherwise the matches result is used (or nothing happens if no match).
+`requiresState` is an array of `{id, state}` pairs. ALL conditions must be met for the result to apply. If conditions fail, the engine falls through to the next candidate. If no result matches, nothing happens.
 
 ### Object Doors
 
@@ -348,7 +363,7 @@ Objects can become doors when state conditions are met. This allows secret passa
 | `message` | Displayed when the door opens |
 | `openLookMessage` | Overrides `lookMessage` once open |
 
-The door activates when the condition(s) are met by a combine result (e.g. using a burnt photo on the statue opens the passage).
+The door activates when the condition(s) are met by a combine result.
 
 ### Dialogs
 
@@ -389,21 +404,19 @@ Each node has `text` (NPC dialog) and `options` (player responses). Set `next: n
 
 ### Text Panels
 
-Full-screen overlay panels display narrative text. They appear on game start or when triggered by state changes.
-
-Panels are defined on the world root (outside rooms):
+Full-screen overlay panels display narrative text. They can be triggered on game start via the world root, or on any object state change via the `showPanel` field (see States).
 
 ```json
 {
-  "startPanel": "You wake in a dark manor. The air smells of dust and secrets.",
-  "endPanel": "The altar hums with a faint light. You have uncovered the truth."
+  "startPanel": "A mysterious mansion looms before you..."
 }
 ```
 
 | Field | Description |
 |---|---|
 | `startPanel` | Text shown when the game loads, dismissed on click |
-| `endPanel` | Text shown when `altar` state becomes `'revealed'` |
+
+To trigger a panel on a state change, add `"showPanel"` to the state definition on any object. The panel appears 1.2 seconds after the state transition.
 
 The panel renders a centered bordered text box over a dark overlay. Click anywhere to dismiss it.
 
@@ -427,7 +440,7 @@ Objects with `openMessage` show the Open verb. If `openSetsState` is defined, th
 }
 ```
 
-Opening the cupboard reveals the matches inside (via `setObjState` → `reveals` if the cupboard had a `reveals` field).
+Opening an object can trigger `reveals` on it via `setObjState`, making hidden objects appear.
 
 ### Stock Objects
 
