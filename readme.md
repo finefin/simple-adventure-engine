@@ -27,9 +27,11 @@ A room is a 800x600 area with walls, a floor, objects, and doors.
 |---|---|
 | `name` | Displayed in the top-left corner |
 | `backgroundColor` | Fill behind the walls |
-| `wallColor` | The 4 borders (default thickness 24px) |
-| `floorColor` | The inner walkable area |
+| `wallColor` | Tint applied to wall tiles |
+| `floorColor` | Tint applied to floor tiles |
 | `wallThickness` | Optional, defaults to 24 |
+| `floorTile` | Spritesheet frame for the floor (default 22) |
+| `wallTile` | Spritesheet frame for walls (default 23, use 24 for indoor wood panels) |
 | `playerStart` | Where the player spawns when entering this room |
 | `objects` | Array of interactable objects |
 | `doors` | Array of exits to other rooms |
@@ -91,6 +93,7 @@ Objects are the interactable elements in each room. Two shapes are supported: `r
 | `hiddenBy` | ID of another object. This object is invisible until revealed |
 | `spriteFrame` | Frame index from the objects spritesheet (`Sprite-0002.png`). When set, the object renders as a sprite instead of a colored shape |
 | `stateFrames` | Maps state names to frame indices for visual state changes (see Sprites below) |
+| `alwaysOnTop` | `true` keeps the object rendered above other objects regardless of Y position |
 
 #### Messages
 
@@ -162,6 +165,22 @@ Objects can have multiple states that change their appearance, messages, and beh
 ```
 
 When the stove's state is `"off"`, examine shows "A cast iron stove. It's cold." When the state changes to `"on"`, it shows "The stove crackles with a warm flame."
+
+### World Tiles
+
+The floor and walls are rendered as tiled sprites from the objects spritesheet. Each room specifies which frame to use and a tint color:
+
+| Field | Description |
+|---|---|
+| `floorTile` | Frame index for the floor tile (default 22) |
+| `wallTile` | Frame index for the wall tile (default 23) |
+| `floorColor` | Hex tint applied to the floor tiles |
+| `wallColor` | Hex tint applied to the wall tiles |
+
+The available tile frames are:
+- 22 — Floor stone
+- 23 — Stone wall
+- 24 — Wood wall (use for indoor rooms)
 
 ### Sprites
 
@@ -367,6 +386,26 @@ Objects with `talkMessage` or `dialogTree` support the Talk verb. A `dialogTree`
 ```
 
 Each node has `text` (NPC dialog) and `options` (player responses). Set `next: null` to end the conversation. `dialogStart` on the object overrides the default `"start"` entry point.
+
+### Text Panels
+
+Full-screen overlay panels display narrative text. They appear on game start or when triggered by state changes.
+
+Panels are defined on the world root (outside rooms):
+
+```json
+{
+  "startPanel": "You wake in a dark manor. The air smells of dust and secrets.",
+  "endPanel": "The altar hums with a faint light. You have uncovered the truth."
+}
+```
+
+| Field | Description |
+|---|---|
+| `startPanel` | Text shown when the game loads, dismissed on click |
+| `endPanel` | Text shown when `altar` state becomes `'revealed'` |
+
+The panel renders a centered bordered text box over a dark overlay. Click anywhere to dismiss it.
 
 ### OpenVerb and openSetsState
 
