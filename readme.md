@@ -1,10 +1,11 @@
 # Simple Adventure Engine
 
-A point-and-click adventure engine built on Phaser. Games are created entirely by editing `src/data/world.json`.
+A point-and-click adventure engine built in Phaser. Games are defined as JSON files in `src/data/` and selected from a launcher on startup.
 
 ## Table of Contents
 
 - [Quick Start](#quick-start)
+- [Maker Tool](#maker-tool)
 - [World Structure](#world-structure)
   - [Rooms](#rooms)
   - [Doors](#doors)
@@ -27,7 +28,29 @@ A point-and-click adventure engine built on Phaser. Games are created entirely b
 
 ## Quick Start
 
-No build step is required. The game runs directly from `index.html` using the Phaser framework file. All game data is read from `src/data/world.json` at runtime.
+No build step is required. The game runs directly from `index.html`. When you open the page, a game selector lists all available games from `src/data/`. Click a game to load it.
+
+To create a new game you have two options: use the **Maker Tool** or write the JSON directly.
+
+### Maker Tool
+
+Open `maker/index.html` in your browser — a visual editor for building game worlds. No server or build step needed.
+
+**What you can do:**
+- **Rooms** — add, rename, delete; set colors, wall/floor tiles, player spawn point
+- **Objects** — add interactive objects per room; set position, size, sprite, messages, pickup/block flags
+- **Doors** — connect rooms; set position, target, locked state
+- **World settings** — choose the starting room, set opening text
+- **Import** — load an existing `.json` file to edit
+- **Export** — copy the generated JSON, then save it as a new file in `src/data/`
+
+When you're done, export the JSON, save it as a new file in `src/data/` (e.g. `mygame.json`), and add an entry to `src/data/index.json`:
+
+```json
+{ "name": "My Game", "file": "mygame.json" }
+```
+
+The game will appear in the launcher the next time you open `index.html`.
 
 To add a new room:
 1. Add an entry to the `"rooms"` object with objects, doors, and visual properties

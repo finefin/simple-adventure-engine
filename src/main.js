@@ -4,7 +4,7 @@ const config = {
     mode: Phaser.Scale.FIT},
   width: 800,
   height: 600,
-  parent: document.body,
+  parent: 'gameContainer',
   backgroundColor: '#000000',
   scene: [BootScene, GameScene],
   pixelArt: true, 

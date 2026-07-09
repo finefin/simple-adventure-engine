@@ -124,11 +124,21 @@ class RoomManager {
     let go;
 
     if (objDef.spriteFrame !== undefined || objDef.spriteAnim) {
-      const frame = this.scene.frameNumber(objDef.spriteFrame);
+      const frame = this.scene.frameNumber(
+        objDef.stateFrames && objDef.stateFrames[objDef.state] !== undefined
+          ? objDef.stateFrames[objDef.state]
+          : objDef.spriteFrame
+      );
       go = this.scene.add.sprite(objDef.x, objDef.y, 'objects', frame);
       go.setDepth(5).setScale(2);
       if (objDef.spriteAnim) {
         const animKey = 'obj_' + objDef.spriteAnim;
+        if (this.scene.anims.exists(animKey)) {
+          go.play(animKey);
+        }
+      }
+      if (objDef.stateAnim && objDef.stateAnim[objDef.state] !== undefined) {
+        const animKey = 'obj_' + objDef.stateAnim[objDef.state];
         if (this.scene.anims.exists(animKey)) {
           go.play(animKey);
         }

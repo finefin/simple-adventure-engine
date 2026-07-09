@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adventure Engine - World Maker</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; background: #111; color: #ccc; display: flex; height: 100vh; }
+a { color: #8af; }
+
+/* Layout */
+.sidebar { width: 260px; background: #1a1a1a; border-right: 1px solid #333; display: flex; flex-direction: column; }
+.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+/* Sidebar */
+.sidebar h1 { font-size: 14px; padding: 16px; border-bottom: 1px solid #333; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+.room-list { flex: 1; overflow-y: auto; }
+.room-item { padding: 10px 16px; cursor: pointer; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+.room-item:hover { background: #222; }
+.room-item.active { background: #2a3a4a; color: #fff; }
+.room-item .del { color: #844; cursor: pointer; font-size: 13px; padding: 2px 6px; border-radius: 3px; }
+.room-item .del:hover { background: #633; color: #fff; }
+.sidebar-btn { margin: 12px; padding: 8px; background: #2a4a3a; color: #8c8; border: none; border-radius: 4px; cursor: pointer; font-size: 13px; }
+.sidebar-btn:hover { background: #3a5a4a; }
+.export-btn { margin: 0 12px 12px; padding: 8px; background: #4a3a2a; color: #cc8; border: none; border-radius: 4px; cursor: pointer; font-size: 13px; }
+.export-btn:hover { background: #5a4a3a; }
+
+/* Main */
+.tabs { display: flex; border-bottom: 1px solid #333; background: #1a1a1a; }
+.tab { padding: 10px 20px; cursor: pointer; font-size: 13px; color: #888; border-bottom: 2px solid transparent; }
+.tab:hover { color: #ccc; }
+.tab.active { color: #fff; border-bottom-color: #6af; }
+.tab-content { flex: 1; overflow-y: auto; padding: 20px; display: none; }
+.tab-content.active { display: block; }
+
+/* Forms */
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; font-size: 12px; color: #888; margin-bottom: 3px; }
+.form-row { display: flex; gap: 12px; }
+.form-row .form-group { flex: 1; }
+input, select, textarea { width: 100%; padding: 6px 8px; background: #222; color: #ddd; border: 1px solid #444; border-radius: 3px; font-size: 13px; font-family: inherit; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: #6af; }
+textarea { resize: vertical; min-height: 50px; }
+input[type="checkbox"] { width: auto; }
+.check-label { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #ccc; cursor: pointer; }
+.check-label input { width: auto; }
+
+/* Sections */
+.section-header { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #333; }
+.section-header h3 { font-size: 14px; color: #aaa; }
+.add-btn { padding: 4px 12px; background: #2a4a3a; color: #8c8; border: none; border-radius: 3px; cursor: pointer; font-size: 12px; }
+.add-btn:hover { background: #3a5a4a; }
+.del-btn { padding: 3px 8px; background: #4a2a2a; color: #c88; border: none; border-radius: 3px; cursor: pointer; font-size: 11px; }
+.del-btn:hover { background: #5a3a3a; }
+
+/* Item cards */
+.item-card { background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 12px; margin-bottom: 8px; }
+.item-card .item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.item-card .item-title { font-size: 13px; color: #aaa; font-weight: 600; }
+.item-card .item-fields { display: none; }
+.item-card .item-fields.open { display: block; }
+.item-card .toggle { cursor: pointer; color: #6af; font-size: 12px; }
+
+/* Export modal */
+.modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
+.modal.open { display: flex; }
+.modal-content { background: #1a1a1a; border: 1px solid #444; border-radius: 6px; width: 700px; max-width: 90vw; max-height: 80vh; display: flex; flex-direction: column; }
+.modal-header { padding: 12px 16px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
+.modal-header h2 { font-size: 14px; color: #aaa; }
+.modal-close { cursor: pointer; color: #666; font-size: 18px; }
+.modal-close:hover { color: #fff; }
+.modal-body { padding: 16px; overflow: auto; flex: 1; }
+.modal-body pre { background: #111; padding: 12px; border-radius: 4px; font-size: 12px; color: #8c8; overflow: auto; max-height: 400px; white-space: pre-wrap; }
+.modal-footer { padding: 12px 16px; border-top: 1px solid #333; display: flex; gap: 8px; justify-content: flex-end; }
+.modal-footer button { padding: 6px 16px; border: none; border-radius: 3px; cursor: pointer; font-size: 13px; }
+.copy-btn { background: #2a4a3a; color: #8c8; }
+.done-btn { background: #333; color: #aaa; }
+.done-btn:hover { background: #444; }
+
+.empty-state { color: #555; font-size: 13px; text-align: center; padding: 40px 20px; }
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <h1>World Maker</h1>
+  <div class="room-list" id="roomList"></div>
+  <button class="sidebar-btn" onclick="addRoom()">+ New Room</button>
+  <button class="export-btn" onclick="exportJSON()">Export JSON</button>
+</div>
+<div class="main">
+  <div class="tabs" id="tabs">
+    <div class="tab active" data-tab="room">Room</div>
+    <div class="tab" data-tab="objects">Objects</div>
+    <div class="tab" data-tab="doors">Doors</div>
+    <div style="margin-left:auto;display:flex;gap:6px;padding:6px 12px;">
+      <button class="add-btn" style="font-size:11px;" onclick="document.getElementById('importInput').click()">Import</button>
+      <input type="file" id="importInput" accept=".json" style="display:none" onchange="importJSON(event)">
+    </div>
+  </div>
+  <div class="tab-content active" id="tabRoom">
+    <div class="empty-state" id="noRoomMsg">Select or create a room</div>
+    <div id="roomForm" style="display:none">
+      <div class="section-header" style="margin-top:0">
+        <h3>World Settings</h3>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Start Room</label>
+          <select id="startRoomSelect" onchange="data.startRoom=this.value;save()"></select>
+        </div>
+        <div class="form-group"><label>Start Panel Text</label><input id="startPanel" value="" oninput="data.startPanel=this.value;save()"></div>
+      </div>
+      <div class="section-header">
+        <h3>Room Settings</h3>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Room ID</label><input id="roomId" oninput="markDirty()"></div>
+        <div class="form-group"><label>Display Name</label><input id="roomName" oninput="markDirty()"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Background Color</label><input id="bgColor" value="0x1a1a2e" oninput="markDirty()"></div>
+        <div class="form-group"><label>Floor Color</label><input id="floorColor" value="0x3a3a4a" oninput="markDirty()"></div>
+        <div class="form-group"><label>Wall Color</label><input id="wallColor" value="0x4a3a2a" oninput="markDirty()"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Floor Tile</label><input id="floorTile" value="floor" oninput="markDirty()"></div>
+        <div class="form-group"><label>Wall Tile</label><input id="wallTile" value="wallStone" oninput="markDirty()"></div>
+        <div class="form-group"><label>Wall Thickness</label><input id="wallThickness" type="number" value="64" min="0" oninput="markDirty()"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Player Start X</label><input id="startX" type="number" value="200" oninput="markDirty()"></div>
+        <div class="form-group"><label>Player Start Y</label><input id="startY" type="number" value="400" oninput="markDirty()"></div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content" id="tabObjects">
+    <div class="empty-state" id="noRoomObjects">Select or create a room first</div>
+    <div id="objectsArea" style="display:none">
+      <div class="section-header">
+        <h3>Objects</h3>
+        <button class="add-btn" onclick="addObject()">+ Add Object</button>
+      </div>
+      <div id="objectsList"></div>
+    </div>
+  </div>
+  <div class="tab-content" id="tabDoors">
+    <div class="empty-state" id="noRoomDoors">Select or create a room first</div>
+    <div id="doorsArea" style="display:none">
+      <div class="section-header">
+        <h3>Doors</h3>
+        <button class="add-btn" onclick="addDoor()">+ Add Door</button>
+      </div>
+      <div id="doorsList"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="exportModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Export World JSON</h2>
+      <span class="modal-close" onclick="closeExport()">&times;</span>
+    </div>
+    <div class="modal-body"><pre id="exportPreview"></pre></div>
+    <div class="modal-footer">
+      <button class="copy-btn" onclick="copyJSON()">Copy</button>
+      <button class="done-btn" onclick="closeExport()">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let data = { startPanel: "", startRoom: "", animations: {}, rooms: {} };
+let selectedRoomId = null;
+let dirty = false;
+
+function save() {
+  if (selectedRoomId && dirty) saveCurrentRoom();
+  const json = JSON.stringify(data, null, 2);
+  localStorage.setItem('maker_world', json);
+  dirty = false;
+}
+
+function load() {
+  const saved = localStorage.getItem('maker_world');
+  if (saved) {
+    try { data = JSON.parse(saved); } catch(e) {}
+  }
+  if (!data.rooms) data.rooms = {};
+}
+
+function renderRoomList() {
+  const list = document.getElementById('roomList');
+  const ids = Object.keys(data.rooms);
+  if (ids.length === 0) {
+    list.innerHTML = '<div class="empty-state">No rooms yet</div>';
+    return;
+  }
+  list.innerHTML = ids.map(id => `
+    <div class="room-item${id === selectedRoomId ? ' active' : ''}" onclick="selectRoom('${id}')">
+      <span>${data.rooms[id].name || id}</span>
+      <span class="del" onclick="event.stopPropagation(); deleteRoom('${id}')">✕</span>
+    </div>
+  `).join('');
+}
+
+function addRoom() {
+  saveCurrentRoom();
+  const id = 'new_room_' + Date.now();
+  data.rooms[id] = {
+    name: 'New Room',
+    backgroundColor: '0x1a1a2e',
+    floorColor: '0x3a3a4a',
+    wallColor: '0x4a3a2a',
+    floorTile: 'floor',
+    wallTile: 'wallStone',
+    wallThickness: 64,
+    playerStart: { x: 200, y: 400 },
+    objects: [],
+    doors: []
+  };
+  if (!data.startRoom) data.startRoom = id;
+  dirty = true;
+  save();
+  renderRoomList();
+  populateWorldSettings();
+  selectRoom(id);
+  switchTab('room');
+}
+
+function deleteRoom(id) {
+  if (!confirm('Delete room "' + (data.rooms[id].name || id) + '"?')) return;
+  delete data.rooms[id];
+  if (selectedRoomId === id) {
+    selectedRoomId = null;
+    document.getElementById('roomForm').style.display = 'none';
+    document.getElementById('noRoomMsg').style.display = 'block';
+    document.getElementById('objectsArea').style.display = 'none';
+    document.getElementById('noRoomObjects').style.display = 'block';
+    document.getElementById('doorsArea').style.display = 'none';
+    document.getElementById('noRoomDoors').style.display = 'block';
+  }
+  if (data.startRoom === id) {
+    const ids = Object.keys(data.rooms);
+    data.startRoom = ids.length > 0 ? ids[0] : '';
+  }
+  save();
+  renderRoomList();
+  populateWorldSettings();
+}
+
+function selectRoom(id) {
+  saveCurrentRoom();
+  selectedRoomId = id;
+  dirty = false;
+  renderRoomList();
+  populateWorldSettings();
+  loadRoomForm(id);
+  document.getElementById('noRoomMsg').style.display = 'none';
+  document.getElementById('roomForm').style.display = 'block';
+  document.getElementById('noRoomObjects').style.display = 'none';
+  document.getElementById('objectsArea').style.display = 'block';
+  document.getElementById('noRoomDoors').style.display = 'none';
+  document.getElementById('doorsArea').style.display = 'block';
+  renderObjects();
+  renderDoors();
+}
+
+function loadRoomForm(id) {
+  const r = data.rooms[id];
+  if (!r) return;
+  document.getElementById('roomId').value = id;
+  document.getElementById('roomName').value = r.name || '';
+  document.getElementById('bgColor').value = r.backgroundColor || '0x1a1a2e';
+  document.getElementById('floorColor').value = r.floorColor || '0x3a3a4a';
+  document.getElementById('wallColor').value = r.wallColor || '0x4a3a2a';
+  document.getElementById('floorTile').value = r.floorTile || 'floor';
+  document.getElementById('wallTile').value = r.wallTile || 'wallStone';
+  document.getElementById('wallThickness').value = r.wallThickness ?? 64;
+  document.getElementById('startX').value = (r.playerStart && r.playerStart.x) || 200;
+  document.getElementById('startY').value = (r.playerStart && r.playerStart.y) || 400;
+}
+
+function saveCurrentRoom() {
+  if (!selectedRoomId || !dirty) return;
+  const r = data.rooms[selectedRoomId];
+  if (!r) return;
+  const oldId = selectedRoomId;
+  const newId = document.getElementById('roomId').value.trim() || oldId;
+  r.name = document.getElementById('roomName').value;
+  r.backgroundColor = document.getElementById('bgColor').value;
+  r.floorColor = document.getElementById('floorColor').value;
+  r.wallColor = document.getElementById('wallColor').value;
+  r.floorTile = document.getElementById('floorTile').value;
+  r.wallTile = document.getElementById('wallTile').value;
+  r.wallThickness = parseInt(document.getElementById('wallThickness').value) || 64;
+  r.playerStart = r.playerStart || {};
+  r.playerStart.x = parseInt(document.getElementById('startX').value) || 200;
+  r.playerStart.y = parseInt(document.getElementById('startY').value) || 400;
+  if (newId !== oldId) {
+    data.rooms[newId] = r;
+    delete data.rooms[oldId];
+    if (data.startRoom === oldId) data.startRoom = newId;
+    selectedRoomId = newId;
+    renderRoomList();
+  }
+  dirty = false;
+}
+
+function markDirty() { dirty = true; }
+
+/* Tabs */
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    switchTab(this.dataset.tab);
+  });
+});
+
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.tab[data-tab="${name}"]`).classList.add('active');
+  document.getElementById('tab' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('active');
+  if (name === 'objects' && selectedRoomId) renderObjects();
+  if (name === 'doors' && selectedRoomId) renderDoors();
+}
+
+/* Objects */
+function renderObjects() {
+  const container = document.getElementById('objectsList');
+  if (!selectedRoomId) return;
+  const objs = data.rooms[selectedRoomId].objects || [];
+  if (objs.length === 0) {
+    container.innerHTML = '<div class="empty-state">No objects in this room</div>';
+    return;
+  }
+  container.innerHTML = objs.map((o, i) => renderObjectCard(o, i)).join('');
+}
+
+function renderObjectCard(o, i) {
+  const open = (i === 0) ? ' open' : '';
+  return `
+    <div class="item-card">
+      <div class="item-header">
+        <span class="item-title" onclick="toggleCard(this)">${o.label || o.id || 'Object ' + i}</span>
+        <div>
+          <span class="toggle" onclick="toggleCard(this)">${open ? 'collapse' : 'expand'}</span>
+          <button class="del-btn" onclick="deleteObject(${i})">Remove</button>
+        </div>
+      </div>
+      <div class="item-fields${open}" data-idx="${i}">
+        <div class="form-row">
+          <div class="form-group"><label>ID</label><input value="${o.id || ''}" oninput="updateObject(${i},'id',this.value)"></div>
+          <div class="form-group"><label>Label</label><input value="${o.label || ''}" oninput="updateObject(${i},'label',this.value); renderObjects()"></div>
+          <div class="form-group"><label>Type</label><select onchange="updateObject(${i},'type',this.value)"><option value="rect"${o.type==='rect'?' selected':''}>Rect</option><option value="circle"${o.type==='circle'?' selected':''}>Circle</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>X</label><input type="number" value="${o.x || 0}" oninput="updateObject(${i},'x',parseInt(this.value)||0)"></div>
+          <div class="form-group"><label>Y</label><input type="number" value="${o.y || 0}" oninput="updateObject(${i},'y',parseInt(this.value)||0)"></div>
+          ${o.type === 'rect' ? `
+          <div class="form-group"><label>Width</label><input type="number" value="${o.width || 50}" oninput="updateObject(${i},'width',parseInt(this.value)||0)"></div>
+          <div class="form-group"><label>Height</label><input type="number" value="${o.height || 50}" oninput="updateObject(${i},'height',parseInt(this.value)||0)"></div>
+          ` : `
+          <div class="form-group"><label>Radius</label><input type="number" value="${o.radius || 18}" oninput="updateObject(${i},'radius',parseInt(this.value)||0)"></div>
+          `}
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Color</label><input value="${o.color || '0x888888'}" oninput="updateObject(${i},'color',this.value)"></div>
+          <div class="form-group"><label>Stroke Color</label><input value="${o.strokeColor || ''}" oninput="updateObject(${i},'strokeColor',this.value||undefined)"></div>
+          <div class="form-group"><label>Sprite Frame</label><input value="${o.spriteFrame || ''}" oninput="updateObject(${i},'spriteFrame',this.value||undefined)"></div>
+          <div class="form-group"><label>Sprite Anim</label><input value="${o.spriteAnim || ''}" oninput="updateObject(${i},'spriteAnim',this.value||undefined)"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>State</label><input value="${o.state || ''}" oninput="updateObject(${i},'state',this.value||undefined)"></div>
+          <div class="form-group"><label>Hidden By</label><input value="${o.hiddenBy || ''}" oninput="updateObject(${i},'hiddenBy',this.value||undefined)"></div>
+        </div>
+        <div class="form-row">
+          <label class="check-label"><input type="checkbox" ${o.interactable ? 'checked' : ''} onchange="updateObject(${i},'interactable',this.checked||undefined)"> Interactable</label>
+          <label class="check-label"><input type="checkbox" ${o.blocks ? 'checked' : ''} onchange="updateObject(${i},'blocks',this.checked||undefined)"> Blocks</label>
+          <label class="check-label"><input type="checkbox" ${o.pickup ? 'checked' : ''} onchange="updateObject(${i},'pickup',this.checked||undefined)"> Pickup</label>
+          <label class="check-label"><input type="checkbox" ${o.alwaysOnTop ? 'checked' : ''} onchange="updateObject(${i},'alwaysOnTop',this.checked||undefined)"> Always On Top</label>
+        </div>
+        <div class="form-group"><label>Look Message</label><textarea oninput="updateObject(${i},'lookMessage',this.value||undefined)">${o.lookMessage || ''}</textarea></div>
+        <div class="form-group"><label>Use Message</label><textarea oninput="updateObject(${i},'useMessage',this.value||undefined)">${o.useMessage || ''}</textarea></div>
+        <div class="form-group"><label>Open Message</label><textarea oninput="updateObject(${i},'openMessage',this.value||undefined)">${o.openMessage || ''}</textarea></div>
+        <div class="form-group"><label>Talk Message</label><textarea oninput="updateObject(${i},'talkMessage',this.value||undefined)">${o.talkMessage || ''}</textarea></div>
+      </div>
+    </div>
+  `;
+}
+
+function addObject() {
+  if (!selectedRoomId) return;
+  const objs = data.rooms[selectedRoomId].objects;
+  objs.push({ id: 'obj_' + Date.now(), type: 'rect', x: 200, y: 300, width: 40, height: 40, color: '0x888888', label: 'New Object', interactable: true });
+  save();
+  renderObjects();
+}
+
+function deleteObject(idx) {
+  if (!selectedRoomId) return;
+  data.rooms[selectedRoomId].objects.splice(idx, 1);
+  save();
+  renderObjects();
+}
+
+function updateObject(idx, field, value) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[idx];
+  if (!obj) return;
+  if (value === '' || value === undefined) {
+    delete obj[field];
+  } else {
+    obj[field] = value;
+  }
+  save();
+}
+
+/* Doors */
+function renderDoors() {
+  const container = document.getElementById('doorsList');
+  if (!selectedRoomId) return;
+  const doors = data.rooms[selectedRoomId].doors || [];
+  if (doors.length === 0) {
+    container.innerHTML = '<div class="empty-state">No doors in this room</div>';
+    return;
+  }
+  container.innerHTML = doors.map((d, i) => renderDoorCard(d, i)).join('');
+}
+
+function renderDoorCard(d, i) {
+  return `
+    <div class="item-card">
+      <div class="item-header">
+        <span class="item-title" onclick="toggleCard(this)">${d.label || d.id || 'Door ' + i}</span>
+        <div>
+          <span class="toggle" onclick="toggleCard(this)">expand</span>
+          <button class="del-btn" onclick="deleteDoor(${i})">Remove</button>
+        </div>
+      </div>
+      <div class="item-fields" data-idx="${i}">
+        <div class="form-row">
+          <div class="form-group"><label>ID</label><input value="${d.id || ''}" oninput="updateDoor(${i},'id',this.value)"></div>
+          <div class="form-group"><label>Label</label><input value="${d.label || ''}" oninput="updateDoor(${i},'label',this.value); renderDoors()"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>X</label><input type="number" value="${d.x || 0}" oninput="updateDoor(${i},'x',parseInt(this.value)||0)"></div>
+          <div class="form-group"><label>Y</label><input type="number" value="${d.y || 0}" oninput="updateDoor(${i},'y',parseInt(this.value)||0)"></div>
+          <div class="form-group"><label>Width</label><input type="number" value="${d.width || 12}" oninput="updateDoor(${i},'width',parseInt(this.value)||0)"></div>
+          <div class="form-group"><label>Height</label><input type="number" value="${d.height || 60}" oninput="updateDoor(${i},'height',parseInt(this.value)||0)"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Color</label><input value="${d.color || '0xcc8833'}" oninput="updateDoor(${i},'color',this.value)"></div>
+          <div class="form-group"><label>Sprite Frame</label><input value="${d.spriteFrame || ''}" oninput="updateDoor(${i},'spriteFrame',this.value||undefined)"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Target Room</label><input value="${d.targetRoom || ''}" oninput="updateDoor(${i},'targetRoom',this.value||undefined)"></div>
+          <div class="form-group"><label>Target X</label><input type="number" value="${d.targetX || 0}" oninput="updateDoor(${i},'targetX',parseInt(this.value)||0)"></div>
+          <div class="form-group"><label>Target Y</label><input type="number" value="${d.targetY || 0}" oninput="updateDoor(${i},'targetY',parseInt(this.value)||0)"></div>
+        </div>
+        <div class="form-row">
+          <label class="check-label"><input type="checkbox" ${d.locked ? 'checked' : ''} onchange="updateDoor(${i},'locked',this.checked||undefined)"> Locked</label>
+        </div>
+        <div class="form-group"><label>Locked Message</label><textarea oninput="updateDoor(${i},'lockedMessage',this.value||undefined)">${d.lockedMessage || ''}</textarea></div>
+      </div>
+    </div>
+  `;
+}
+
+function addDoor() {
+  if (!selectedRoomId) return;
+  const doors = data.rooms[selectedRoomId].doors;
+  doors.push({ id: 'door_' + Date.now(), x: 400, y: 300, width: 12, height: 60, color: '0xcc8833', label: 'New Door' });
+  save();
+  renderDoors();
+}
+
+function deleteDoor(idx) {
+  if (!selectedRoomId) return;
+  data.rooms[selectedRoomId].doors.splice(idx, 1);
+  save();
+  renderDoors();
+}
+
+function updateDoor(idx, field, value) {
+  if (!selectedRoomId) return;
+  const d = data.rooms[selectedRoomId].doors[idx];
+  if (!d) return;
+  if (value === '' || value === undefined) {
+    delete d[field];
+  } else {
+    d[field] = value;
+  }
+  save();
+}
+
+function toggleCard(el) {
+  const fields = el.closest('.item-card').querySelector('.item-fields');
+  fields.classList.toggle('open');
+  el.textContent = fields.classList.contains('open') ? 'collapse' : 'expand';
+}
+
+/* Export / Import */
+function exportJSON() {
+  saveCurrentRoom();
+  save();
+  const out = {
+    startPanel: data.startPanel || '',
+    startRoom: data.startRoom || '',
+    animations: data.animations || {},
+    rooms: data.rooms
+  };
+  document.getElementById('exportPreview').textContent = JSON.stringify(out, null, 2);
+  document.getElementById('exportModal').classList.add('open');
+}
+
+function closeExport() {
+  document.getElementById('exportModal').classList.remove('open');
+}
+
+function copyJSON() {
+  const text = document.getElementById('exportPreview').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Copied!');
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    alert('Copied!');
+  });
+}
+
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (!imported.rooms) { alert('Invalid world file: missing rooms'); return; }
+      data = imported;
+      if (!data.animations) data.animations = {};
+      if (!data.startPanel) data.startPanel = '';
+      selectedRoomId = null;
+      save();
+      renderRoomList();
+      populateWorldSettings();
+      const ids = Object.keys(data.rooms);
+      if (ids.length > 0) selectRoom(ids[0]);
+      alert('Imported ' + ids.length + ' rooms.');
+    } catch(err) {
+      alert('Error parsing JSON: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function populateWorldSettings() {
+  document.getElementById('startPanel').value = data.startPanel || '';
+  const sel = document.getElementById('startRoomSelect');
+  const ids = Object.keys(data.rooms);
+  sel.innerHTML = ids.map(id => '<option value="' + id + '"' + (data.startRoom === id ? ' selected' : '') + '>' + (data.rooms[id].name || id) + '</option>').join('');
+}
+
+/* Init */
+load();
+if (!data.rooms) data.rooms = {};
+renderRoomList();
+populateWorldSettings();
+const roomIds = Object.keys(data.rooms);
+if (roomIds.length > 0) selectRoom(roomIds[0]);
+</script>
+</body>
+</html>

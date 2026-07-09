@@ -26,7 +26,7 @@ class TextPanel {
     this.container.add(panel);
 
     const textObj = this.scene.add.text(w / 2, h / 2, text, {
-      fontSize: '16px',
+      fontSize: '24px',
       color: '#ddddee',
       fontFamily: 'monospace',
       wordWrap: { width: panelW - 60 },
