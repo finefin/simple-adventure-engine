@@ -216,7 +216,7 @@
               ]
             },
             "place": {
-              "text": "Old Manor Blackwood. Been standing longer than anyone remembers. Full of secrets.",
+              "text": "Just a generic adventure game Manor. Full of secrets.",
               "options": [
                 { "text": "What kind of secrets?", "next": "secrets" },
                 { "text": "I'd better explore.", "next": null }

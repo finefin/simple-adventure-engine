@@ -38,8 +38,14 @@ class RoomManager {
 
   buildRoom(spawnPos) {
     const data = this.currentRoomData;
-    const w = this.scene.scale.width;
-    const h = this.scene.scale.height;
+    const cw = this.scene.scale.width;
+    const ch = this.scene.scale.height;
+    const w = data.width || cw;
+    const h = data.height || ch;
+    const ox = Math.max(0, (cw - w) / 2);
+    const oy = Math.max(0, (ch - h) / 2);
+    this.roomOffX = ox;
+    this.roomOffY = oy;
     const wt = data.wallThickness || 24;
     const invH = this.scene.inventory ? this.scene.inventory.barHeight : 0;
     const floorColor = parseInt(data.floorColor);
@@ -51,20 +57,20 @@ class RoomManager {
     const gfx = this.scene.add.graphics();
     this.roomElements.push(gfx);
     gfx.fillStyle(bgColor);
-    gfx.fillRect(0, 0, w, h);
+    gfx.fillRect(0, 0, cw, ch);
 
     const floor = this.scene.add.tileSprite(
-      wt, wt, w - wt * 2, h - wt * 2 - invH, 'objects', floorTile
+      ox + wt, oy + wt, w - wt * 2, h - wt * 2 - invH, 'objects', floorTile
     );
     floor.setOrigin(0, 0);
     floor.setTint(floorColor);
     this.roomElements.push(floor);
 
     const wallSides = [
-      { x: 0, y: 0, w: w, h: wt },
-      { x: 0, y: h - wt - invH, w: w, h: wt + invH },
-      { x: 0, y: 0, w: wt, h: h },
-      { x: w - wt, y: 0, w: wt, h: h },
+      { x: ox, y: oy, w: w, h: wt },
+      { x: ox, y: oy + h - wt - invH, w: w, h: wt + invH },
+      { x: ox, y: oy, w: wt, h: h },
+      { x: ox + w - wt, y: oy, w: wt, h: h },
     ];
     wallSides.forEach((ws) => {
       const wall = this.scene.add.tileSprite(ws.x, ws.y, ws.w, ws.h, 'objects', wallTile);
@@ -76,7 +82,7 @@ class RoomManager {
     this.walkableMargin = 16;
     const margin = this.walkableMargin;
     this.walkableArea = new Phaser.Geom.Rectangle(
-      wt + margin, wt + margin,
+      ox + wt + margin, oy + wt + margin,
       w - (wt + margin) * 2,
       h - (wt + margin) * 2 - invH
     );

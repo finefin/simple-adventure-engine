@@ -6,42 +6,49 @@
     "cell": {
       "name": "Cell",
       "backgroundColor": "0x1a1a2e",
-      "floorColor": "0x3a3a4a",
-      "wallColor": "0x4a3a2a",
+      "floorColor": "0x7e807d",
+      "wallColor": "0x5a4e5a",
       "floorTile": "floor",
       "wallTile": "wallStone",
       "wallThickness": 64,
       "playerStart": {
-        "x": 200,
-        "y": 400
+        "x": 410,
+        "y": 300
       },
       "objects": [
         {
           "id": "bed",
           "type": "rect",
-          "x": 200,
+          "x": 340,
           "y": 300,
           "width": 40,
           "height": 40,
           "color": "0x888888",
           "label": "B",
           "interactable": true,
-          "lookMessage": "I can't sleep.",
-          "useMessage": "No."
+          "useMessage": "I can't sleep.",
+          "blocks": true,
+          "spriteFrame": "wallStone",
+          "lookMessage": "A bed. Well, actually, it's a stone slab."
         }
       ],
       "doors": [
         {
           "id": "door_1783537302009",
           "x": 400,
-          "y": 300,
+          "y": 190,
           "width": 12,
           "height": 60,
           "color": "0xcc8833",
           "label": "New Door",
-          "targetRoom": "hallway"
+          "targetRoom": "hallway",
+          "spriteFrame": "door",
+          "targetX": 400,
+          "targetY": 450
         }
-      ]
+      ],
+      "width": 300,
+      "height": 300
     },
     "hallway": {
       "name": "Hallway",
@@ -52,11 +59,26 @@
       "wallTile": "wallStone",
       "wallThickness": 64,
       "playerStart": {
-        "x": 200,
+        "x": 500,
         "y": 400
       },
       "objects": [],
-      "doors": []
+      "doors": [
+        {
+          "x": 400,
+          "y": 510,
+          "width": 12,
+          "height": 60,
+          "color": "0xcc8833",
+          "label": "New Door",
+          "targetRoom": "cell",
+          "spriteFrame": "door",
+          "id": "doorHall1",
+          "targetX": 400,
+          "targetY": 300
+        }
+      ],
+      "width": 300
     }
   }
 }

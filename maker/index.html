@@ -41,6 +41,7 @@ a { color: #8af; }
 .form-row .form-group { flex: 1; }
 input, select, textarea { width: 100%; padding: 6px 8px; background: #222; color: #ddd; border: 1px solid #444; border-radius: 3px; font-size: 13px; font-family: inherit; }
 input:focus, select:focus, textarea:focus { outline: none; border-color: #6af; }
+input[type="color"] { width: 100%; height: 32px; padding: 2px; cursor: pointer; }
 textarea { resize: vertical; min-height: 50px; }
 input[type="checkbox"] { width: auto; }
 .check-label { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #ccc; cursor: pointer; }
@@ -118,9 +119,9 @@ input[type="checkbox"] { width: auto; }
         <div class="form-group"><label>Display Name</label><input id="roomName" oninput="markDirty()"></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Background Color</label><input id="bgColor" value="0x1a1a2e" oninput="markDirty()"></div>
-        <div class="form-group"><label>Floor Color</label><input id="floorColor" value="0x3a3a4a" oninput="markDirty()"></div>
-        <div class="form-group"><label>Wall Color</label><input id="wallColor" value="0x4a3a2a" oninput="markDirty()"></div>
+        <div class="form-group"><label>Background Color</label><input id="bgColor" type="color" value="#1a1a2e" oninput="markDirty()"></div>
+        <div class="form-group"><label>Floor Color</label><input id="floorColor" type="color" value="#3a3a4a" oninput="markDirty()"></div>
+        <div class="form-group"><label>Wall Color</label><input id="wallColor" type="color" value="#4a3a2a" oninput="markDirty()"></div>
       </div>
       <div class="form-row">
         <div class="form-group"><label>Floor Tile</label><input id="floorTile" value="floor" oninput="markDirty()"></div>
@@ -130,6 +131,10 @@ input[type="checkbox"] { width: auto; }
       <div class="form-row">
         <div class="form-group"><label>Player Start X</label><input id="startX" type="number" value="200" oninput="markDirty()"></div>
         <div class="form-group"><label>Player Start Y</label><input id="startY" type="number" value="400" oninput="markDirty()"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Room Width</label><input id="roomWidth" type="number" value="800" min="100" oninput="markDirty()"></div>
+        <div class="form-group"><label>Room Height</label><input id="roomHeight" type="number" value="600" min="100" oninput="markDirty()"></div>
       </div>
     </div>
   </div>
@@ -173,6 +178,37 @@ input[type="checkbox"] { width: auto; }
 let data = { startPanel: "", startRoom: "", animations: {}, rooms: {} };
 let selectedRoomId = null;
 let dirty = false;
+let spriteNames = [];
+
+function toColor(v) {
+  if (!v || v === '') return '';
+  return '#' + v.replace('0x', '');
+}
+
+function fromColor(v) {
+  if (!v || v === '') return '';
+  return '0x' + v.replace('#', '');
+}
+
+function getAnimNames() {
+  return Object.keys(data.animations || {});
+}
+
+function spriteOptions(val) {
+  let opts = '<option value="">(none)</option>';
+  spriteNames.forEach(n => {
+    opts += '<option value="' + n + '"' + (val === n ? ' selected' : '') + '>' + n + '</option>';
+  });
+  return opts;
+}
+
+function animOptions(val) {
+  let opts = '<option value="">(none)</option>';
+  getAnimNames().forEach(n => {
+    opts += '<option value="' + n + '"' + (val === n ? ' selected' : '') + '>' + n + '</option>';
+  });
+  return opts;
+}
 
 function save() {
   if (selectedRoomId && dirty) saveCurrentRoom();
@@ -215,6 +251,8 @@ function addRoom() {
     floorTile: 'floor',
     wallTile: 'wallStone',
     wallThickness: 64,
+    width: 800,
+    height: 600,
     playerStart: { x: 200, y: 400 },
     objects: [],
     doors: []
@@ -271,14 +309,16 @@ function loadRoomForm(id) {
   if (!r) return;
   document.getElementById('roomId').value = id;
   document.getElementById('roomName').value = r.name || '';
-  document.getElementById('bgColor').value = r.backgroundColor || '0x1a1a2e';
-  document.getElementById('floorColor').value = r.floorColor || '0x3a3a4a';
-  document.getElementById('wallColor').value = r.wallColor || '0x4a3a2a';
+  document.getElementById('bgColor').value = toColor(r.backgroundColor) || '#1a1a2e';
+  document.getElementById('floorColor').value = toColor(r.floorColor) || '#3a3a4a';
+  document.getElementById('wallColor').value = toColor(r.wallColor) || '#4a3a2a';
   document.getElementById('floorTile').value = r.floorTile || 'floor';
   document.getElementById('wallTile').value = r.wallTile || 'wallStone';
   document.getElementById('wallThickness').value = r.wallThickness ?? 64;
   document.getElementById('startX').value = (r.playerStart && r.playerStart.x) || 200;
   document.getElementById('startY').value = (r.playerStart && r.playerStart.y) || 400;
+  document.getElementById('roomWidth').value = r.width || 800;
+  document.getElementById('roomHeight').value = r.height || 600;
 }
 
 function saveCurrentRoom() {
@@ -288,15 +328,19 @@ function saveCurrentRoom() {
   const oldId = selectedRoomId;
   const newId = document.getElementById('roomId').value.trim() || oldId;
   r.name = document.getElementById('roomName').value;
-  r.backgroundColor = document.getElementById('bgColor').value;
-  r.floorColor = document.getElementById('floorColor').value;
-  r.wallColor = document.getElementById('wallColor').value;
+  r.backgroundColor = fromColor(document.getElementById('bgColor').value);
+  r.floorColor = fromColor(document.getElementById('floorColor').value);
+  r.wallColor = fromColor(document.getElementById('wallColor').value);
   r.floorTile = document.getElementById('floorTile').value;
   r.wallTile = document.getElementById('wallTile').value;
   r.wallThickness = parseInt(document.getElementById('wallThickness').value) || 64;
   r.playerStart = r.playerStart || {};
   r.playerStart.x = parseInt(document.getElementById('startX').value) || 200;
   r.playerStart.y = parseInt(document.getElementById('startY').value) || 400;
+  const rw = parseInt(document.getElementById('roomWidth').value);
+  const rh = parseInt(document.getElementById('roomHeight').value);
+  if (rw && rw !== 800) r.width = rw; else delete r.width;
+  if (rh && rh !== 600) r.height = rh; else delete r.height;
   if (newId !== oldId) {
     data.rooms[newId] = r;
     delete data.rooms[oldId];
@@ -365,10 +409,10 @@ function renderObjectCard(o, i) {
           `}
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Color</label><input value="${o.color || '0x888888'}" oninput="updateObject(${i},'color',this.value)"></div>
-          <div class="form-group"><label>Stroke Color</label><input value="${o.strokeColor || ''}" oninput="updateObject(${i},'strokeColor',this.value||undefined)"></div>
-          <div class="form-group"><label>Sprite Frame</label><input value="${o.spriteFrame || ''}" oninput="updateObject(${i},'spriteFrame',this.value||undefined)"></div>
-          <div class="form-group"><label>Sprite Anim</label><input value="${o.spriteAnim || ''}" oninput="updateObject(${i},'spriteAnim',this.value||undefined)"></div>
+          <div class="form-group"><label>Color</label><input type="color" value="${toColor(o.color) || '#888888'}" onchange="updateObject(${i},'color',fromColor(this.value))"></div>
+          <div class="form-group"><label>Stroke Color</label><input type="color" value="${toColor(o.strokeColor) || '#000000'}" onchange="updateObject(${i},'strokeColor',fromColor(this.value)||undefined)"></div>
+          <div class="form-group"><label>Sprite Frame</label><select onchange="updateObject(${i},'spriteFrame',this.value||undefined)">${spriteOptions(o.spriteFrame)}</select></div>
+          <div class="form-group"><label>Sprite Anim</label><select onchange="updateObject(${i},'spriteAnim',this.value||undefined)">${animOptions(o.spriteAnim)}</select></div>
         </div>
         <div class="form-row">
           <div class="form-group"><label>State</label><input value="${o.state || ''}" oninput="updateObject(${i},'state',this.value||undefined)"></div>
@@ -450,8 +494,8 @@ function renderDoorCard(d, i) {
           <div class="form-group"><label>Height</label><input type="number" value="${d.height || 60}" oninput="updateDoor(${i},'height',parseInt(this.value)||0)"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Color</label><input value="${d.color || '0xcc8833'}" oninput="updateDoor(${i},'color',this.value)"></div>
-          <div class="form-group"><label>Sprite Frame</label><input value="${d.spriteFrame || ''}" oninput="updateDoor(${i},'spriteFrame',this.value||undefined)"></div>
+          <div class="form-group"><label>Color</label><input type="color" value="${toColor(d.color) || '#cc8833'}" onchange="updateDoor(${i},'color',fromColor(this.value))"></div>
+          <div class="form-group"><label>Sprite Frame</label><select onchange="updateDoor(${i},'spriteFrame',this.value||undefined)">${spriteOptions(d.spriteFrame)}</select></div>
         </div>
         <div class="form-row">
           <div class="form-group"><label>Target Room</label><input value="${d.targetRoom || ''}" oninput="updateDoor(${i},'targetRoom',this.value||undefined)"></div>
@@ -567,6 +611,16 @@ function populateWorldSettings() {
 }
 
 /* Init */
+fetch('../assets/Sprite-0002.json')
+  .then(r => r.json())
+  .then(meta => {
+    if (meta && meta.meta && meta.meta.frameTags) {
+      spriteNames = meta.meta.frameTags.map(t => t.name).sort();
+    }
+    if (selectedRoomId) { renderObjects(); renderDoors(); }
+  })
+  .catch(() => { console.warn('Could not load Sprite-0002.json'); });
+
 load();
 if (!data.rooms) data.rooms = {};
 renderRoomList();
