@@ -6,112 +6,371 @@
 <title>Adventure Engine - World Maker</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: system-ui, sans-serif; background: #111; color: #ccc; display: flex; height: 100vh; }
-a { color: #8af; }
+
+:root {
+  --bg: #0e1013;
+  --surface: #15181f;
+  --surface-2: #1b1f28;
+  --surface-3: #232836;
+  --border: #262c38;
+  --border-strong: #333b4c;
+  --text: #e6e9f0;
+  --text-dim: #9aa3b5;
+  --text-faint: #636c80;
+  --accent: #7c6cff;
+  --accent-bright: #9184ff;
+  --accent-soft: rgba(124, 108, 255, 0.14);
+  --danger: #ff6474;
+  --danger-soft: rgba(255, 100, 116, 0.12);
+  --success: #34d399;
+  --success-soft: rgba(52, 211, 153, 0.12);
+  --radius: 10px;
+  --radius-sm: 8px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, .45);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Ubuntu, sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  color-scheme: dark;
+  background: radial-gradient(1200px 800px at 80% -10%, #161a26 0%, var(--bg) 55%);
+  color: var(--text);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+a { color: var(--accent-bright); }
+::selection { background: var(--accent); color: #fff; }
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #2c3342; border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: #3a4356; background-clip: padding-box; border: 2px solid transparent; }
+::-webkit-scrollbar-track { background: transparent; }
 
 /* Layout */
-.sidebar { width: 260px; background: #1a1a1a; border-right: 1px solid #333; display: flex; flex-direction: column; }
+.sidebar {
+  width: 272px;
+  background: rgba(20, 23, 30, 0.92);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(8px);
+}
 .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 
 /* Sidebar */
-.sidebar h1 { font-size: 14px; padding: 16px; border-bottom: 1px solid #333; color: #888; text-transform: uppercase; letter-spacing: 1px; }
-.room-list { flex: 1; overflow-y: auto; }
-.room-item { padding: 10px 16px; cursor: pointer; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
-.room-item:hover { background: #222; }
-.room-item.active { background: #2a3a4a; color: #fff; }
-.room-item .del { color: #844; cursor: pointer; font-size: 13px; padding: 2px 6px; border-radius: 3px; }
-.room-item .del:hover { background: #633; color: #fff; }
-.sidebar-btn { margin: 12px; padding: 8px; background: #2a4a3a; color: #8c8; border: none; border-radius: 4px; cursor: pointer; font-size: 13px; }
-.sidebar-btn:hover { background: #3a5a4a; }
-.export-btn { margin: 0 12px 12px; padding: 8px; background: #4a3a2a; color: #cc8; border: none; border-radius: 4px; cursor: pointer; font-size: 13px; }
-.export-btn:hover { background: #5a4a3a; }
+.brand { display: flex; align-items: center; gap: 10px; padding: 16px 16px 14px; }
+.brand .logo {
+  width: 28px; height: 28px; border-radius: 8px; flex: none;
+  background: linear-gradient(135deg, var(--accent), #4f8cff);
+  box-shadow: 0 2px 10px rgba(124, 108, 255, .4);
+  display: grid; place-items: center;
+  color: #fff; font-size: 14px;
+}
+.brand h1 { font-size: 14px; font-weight: 650; letter-spacing: .2px; color: var(--text); }
+.brand .sub { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 1px; margin-top: 1px; }
 
-/* Main */
-.tabs { display: flex; border-bottom: 1px solid #333; background: #1a1a1a; }
-.tab { padding: 10px 20px; cursor: pointer; font-size: 13px; color: #888; border-bottom: 2px solid transparent; }
-.tab:hover { color: #ccc; }
-.tab.active { color: #fff; border-bottom-color: #6af; }
-.tab-content { flex: 1; overflow-y: auto; padding: 20px; display: none; }
-.tab-content.active { display: block; }
+.room-list { flex: 1; overflow-y: auto; padding: 6px 8px 4px; }
+.room-item {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 9px 12px; margin-bottom: 2px;
+  border-radius: var(--radius-sm);
+  cursor: pointer; font-size: 13px; color: var(--text-dim);
+  transition: background .15s ease, color .15s ease;
+}
+.room-item:hover { background: rgba(255, 255, 255, .04); color: var(--text); }
+.room-item.active { background: var(--accent-soft); color: var(--text); }
+.room-item .room-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.room-item .del {
+  color: var(--text-faint); cursor: pointer; font-size: 12px; padding: 2px 6px; border-radius: 5px;
+  opacity: 0; transition: opacity .15s ease, background .15s ease, color .15s ease;
+}
+.room-item:hover .del { opacity: 1; }
+.room-item .del:hover { background: var(--danger-soft); color: var(--danger); }
+
+.sidebar-actions { padding: 8px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+.sidebar-btn, .export-btn {
+  width: 100%; padding: 9px 12px; border: none; border-radius: var(--radius-sm);
+  cursor: pointer; font-size: 13px; font-weight: 600; font-family: inherit;
+  transition: filter .15s ease, transform .1s ease, box-shadow .2s ease, background .15s ease, color .15s ease;
+}
+.sidebar-btn { background: linear-gradient(135deg, var(--accent), #5f7cff); color: #fff; box-shadow: 0 4px 14px rgba(124, 108, 255, .35); }
+.sidebar-btn:hover { filter: brightness(1.08); box-shadow: 0 6px 18px rgba(124, 108, 255, .45); }
+.sidebar-btn:active { transform: translateY(1px); }
+.export-btn { background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border-strong); }
+.export-btn:hover { color: var(--text); background: var(--surface-3); }
+
+/* Main toolbar / tabs */
+.tabs {
+  display: flex; align-items: center; gap: 4px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(20, 23, 30, 0.7);
+  backdrop-filter: blur(8px);
+}
+.tab {
+  padding: 13px 14px 12px;
+  cursor: pointer; font-size: 13px; font-weight: 550;
+  color: var(--text-faint);
+  border-bottom: 2px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+.tab:hover { color: var(--text-dim); }
+.tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+.tab-actions { margin-left: auto; display: flex; gap: 6px; padding: 8px 0; }
+.btn-ghost {
+  padding: 6px 14px; border-radius: 7px; cursor: pointer;
+  font-size: 12px; font-weight: 600; font-family: inherit;
+  color: var(--text-dim); background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  transition: all .15s ease;
+}
+.btn-ghost:hover { color: var(--text); border-color: var(--accent); }
+.btn-ghost.danger { color: var(--danger); }
+.btn-ghost.danger:hover { color: #ff7b87; border-color: var(--danger); background: var(--danger-soft); }
+
+/* Content */
+.tab-content { flex: 1; overflow-y: auto; padding: 22px 26px; display: none; }
+.tab-content.active { display: block; animation: fadeIn .18s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
 /* Forms */
-.form-group { margin-bottom: 12px; }
-.form-group label { display: block; font-size: 12px; color: #888; margin-bottom: 3px; }
-.form-row { display: flex; gap: 12px; }
-.form-row .form-group { flex: 1; }
-input, select, textarea { width: 100%; padding: 6px 8px; background: #222; color: #ddd; border: 1px solid #444; border-radius: 3px; font-size: 13px; font-family: inherit; }
-input:focus, select:focus, textarea:focus { outline: none; border-color: #6af; }
-input[type="color"] { width: 100%; height: 32px; padding: 2px; cursor: pointer; }
-textarea { resize: vertical; min-height: 50px; }
-input[type="checkbox"] { width: auto; }
-.check-label { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #ccc; cursor: pointer; }
-.check-label input { width: auto; }
+.form-group { margin-bottom: 11px; }
+.form-group label {
+  display: block; font-size: 11px; font-weight: 600; color: var(--text-faint);
+  letter-spacing: .04em; text-transform: uppercase; margin-bottom: 5px;
+}
+.form-row { display: flex; gap: 12px; align-items: flex-end; }
+.form-row .form-group { flex: 1; margin-bottom: 0; }
+input, select, textarea {
+  width: 100%; padding: 7px 10px;
+  background: var(--surface-2); color: var(--text);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  font-size: 13px; font-family: inherit;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+input:hover, select:hover, textarea:hover { border-color: #3d4657; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+input::placeholder, textarea::placeholder { color: var(--text-faint); }
+input[type="color"] { width: 100%; height: 34px; padding: 3px; cursor: pointer; }
+input[type="color"]::-webkit-color-swatch-wrapper { padding: 2px; }
+input[type="color"]::-webkit-color-swatch { border: none; border-radius: 5px; }
+textarea { resize: vertical; min-height: 44px; line-height: 1.45; }
+input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); }
+input[type="number"] { cursor: ew-resize; }
+body.scrubbing, body.scrubbing * { user-select: none !important; cursor: ew-resize !important; }
+.check-label {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12.5px; color: var(--text-dim); cursor: pointer; user-select: none;
+  padding: 5px 9px; border-radius: 7px; border: 1px solid transparent;
+  transition: all .15s ease;
+}
+.check-label:hover { border-color: var(--border-strong); background: var(--surface-2); color: var(--text); }
+.check-label.mini { padding: 3px 6px; font-size: 11px; white-space: nowrap; }
+#tilePalette { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; padding: 4px 0; }
+.palette-swatch { width: 22px; height: 22px; border-radius: 5px; border: 1px solid var(--border-strong); cursor: pointer; padding: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,.25); }
+.palette-swatch.active { outline: 2px solid var(--accent); outline-offset: 1px; }
+.palette-custom input[type="color"] { width: 26px; height: 22px; padding: 0; border: 1px solid var(--border-strong); border-radius: 5px; cursor: pointer; }
+#tileGridWrap { overflow: auto; max-height: 340px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: #0c0e13; }
+#tileGridCanvas { display: block; cursor: crosshair; }
 
 /* Sections */
-.section-header { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #333; }
-.section-header h3 { font-size: 14px; color: #aaa; }
-.add-btn { padding: 4px 12px; background: #2a4a3a; color: #8c8; border: none; border-radius: 3px; cursor: pointer; font-size: 12px; }
-.add-btn:hover { background: #3a5a4a; }
-.del-btn { padding: 3px 8px; background: #4a2a2a; color: #c88; border: none; border-radius: 3px; cursor: pointer; font-size: 11px; }
-.del-btn:hover { background: #5a3a3a; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin: 18px 0 10px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
+.section-header h3 { font-size: 12.5px; font-weight: 650; color: var(--text-dim); letter-spacing: .03em; }
+.add-btn, .del-btn {
+  padding: 5px 11px; border: none; border-radius: 7px; cursor: pointer;
+  font-size: 12px; font-weight: 600; font-family: inherit;
+  transition: background .15s ease;
+}
+.add-btn { background: var(--success-soft); color: var(--success); }
+.add-btn:hover { background: rgba(52, 211, 153, .22); }
+.del-btn { background: var(--danger-soft); color: var(--danger); }
+.del-btn:hover { background: rgba(255, 100, 116, .22); }
+.dup-btn {
+  padding: 5px 11px; border: none; border-radius: 7px; cursor: pointer;
+  font-size: 12px; font-weight: 600; font-family: inherit;
+  background: var(--surface-3); color: var(--text-dim);
+  transition: background .15s ease, color .15s ease;
+}
+.dup-btn:hover { color: var(--text); background: var(--surface-2); }
 
-/* Item cards */
-.item-card { background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 12px; margin-bottom: 8px; }
-.item-card .item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.item-card .item-title { font-size: 13px; color: #aaa; font-weight: 600; }
-.item-card .item-fields { display: none; }
-.item-card .item-fields.open { display: block; }
-.item-card .toggle { cursor: pointer; color: #6af; font-size: 12px; }
+/* Start panels */
+.start-panel-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
+.start-panel-item textarea { flex: 1; }
+.start-panel-item .del-btn { align-self: center; }
+
+/* Cards */
+.item-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.item-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow); }
+.item-card.expanded { border-color: var(--border-strong); }
+.item-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px;
+  cursor: pointer; user-select: none;
+  transition: background .15s ease;
+}
+.item-header:hover { background: rgba(255, 255, 255, .03); }
+.chevron {
+  width: 7px; height: 7px; flex: none;
+  border-right: 2px solid var(--text-faint);
+  border-bottom: 2px solid var(--text-faint);
+  transform: rotate(-45deg);
+  transition: transform .18s ease, border-color .15s ease;
+}
+.item-card.expanded .chevron { transform: rotate(45deg); border-color: var(--accent); }
+.item-title { font-size: 13.5px; font-weight: 600; color: var(--text); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+.header-actions .del-btn, .header-actions .dup-btn { opacity: 0; transition: opacity .15s ease; }
+.item-card:hover .header-actions .del-btn, .item-card:hover .header-actions .dup-btn { opacity: 1; }
+.item-fields { display: none; padding: 0 14px 14px; }
+.item-fields.open { display: block; animation: fadeIn .15s ease; }
+
+/* Nested dialog node cards */
+.item-card .item-card { margin: 8px 0; background: var(--surface-2); border-radius: var(--radius-sm); }
+.item-card .item-card .item-header { padding: 9px 12px; }
+.item-card .item-card .item-fields { padding: 0 12px 12px; }
+
+/* Sprite picker */
+.sprite-field { display: flex; gap: 8px; align-items: stretch; }
+.sprite-field select { flex: 1; min-width: 0; }
+.sprite-preview {
+  width: 40px; height: 40px; flex: none;
+  background: var(--surface-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  cursor: pointer; padding: 2px;
+  display: grid; place-items: center;
+  overflow: hidden;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.sprite-preview:hover { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.sprite-preview canvas { image-rendering: pixelated; }
+
+.sprite-picker { display: none; position: fixed; inset: 0; background: rgba(8, 10, 14, .7); backdrop-filter: blur(4px); z-index: 120; align-items: center; justify-content: center; }
+.sprite-picker.open { display: flex; animation: fadeIn .18s ease; }
+.sprite-picker-content { background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius); width: 640px; max-width: 92vw; max-height: 82vh; display: flex; flex-direction: column; box-shadow: var(--shadow); overflow: hidden; }
+.sprite-picker-body { padding: 16px 18px; overflow: auto; }
+.sprite-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: 8px; }
+.sprite-tile {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 10px 6px 8px; cursor: pointer; text-align: center; font-family: inherit;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  transition: all .15s ease;
+}
+.sprite-tile:hover { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); transform: translateY(-1px); }
+.sprite-tile canvas { image-rendering: pixelated; margin: 0 auto; }
+.sprite-tile .sprite-name { font-size: 11px; color: var(--text-dim); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* Export modal */
-.modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
-.modal.open { display: flex; }
-.modal-content { background: #1a1a1a; border: 1px solid #444; border-radius: 6px; width: 700px; max-width: 90vw; max-height: 80vh; display: flex; flex-direction: column; }
-.modal-header { padding: 12px 16px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
-.modal-header h2 { font-size: 14px; color: #aaa; }
-.modal-close { cursor: pointer; color: #666; font-size: 18px; }
-.modal-close:hover { color: #fff; }
-.modal-body { padding: 16px; overflow: auto; flex: 1; }
-.modal-body pre { background: #111; padding: 12px; border-radius: 4px; font-size: 12px; color: #8c8; overflow: auto; max-height: 400px; white-space: pre-wrap; }
-.modal-footer { padding: 12px 16px; border-top: 1px solid #333; display: flex; gap: 8px; justify-content: flex-end; }
-.modal-footer button { padding: 6px 16px; border: none; border-radius: 3px; cursor: pointer; font-size: 13px; }
-.copy-btn { background: #2a4a3a; color: #8c8; }
-.done-btn { background: #333; color: #aaa; }
-.done-btn:hover { background: #444; }
+.modal { display: none; position: fixed; inset: 0; background: rgba(8, 10, 14, .7); backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; }
+.modal.open { display: flex; animation: fadeIn .18s ease; }
+.modal-content { background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius); width: 720px; max-width: 92vw; max-height: 82vh; display: flex; flex-direction: column; box-shadow: var(--shadow); overflow: hidden; }
+.modal-header { padding: 14px 18px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.modal-header h2 { font-size: 14px; color: var(--text); font-weight: 650; }
+.modal-close { cursor: pointer; color: var(--text-faint); font-size: 18px; line-height: 1; padding: 4px 8px; border-radius: 6px; transition: all .15s ease; }
+.modal-close:hover { color: var(--text); background: var(--surface-3); }
+.modal-body { padding: 16px 18px; overflow: auto; flex: 1; }
+.modal-body pre { background: #0c0e13; padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border); font-size: 12px; line-height: 1.5; color: #7ee8b0; overflow: auto; max-height: 400px; white-space: pre-wrap; }
+.modal-footer { padding: 12px 18px; border-top: 1px solid var(--border); display: flex; gap: 8px; justify-content: flex-end; }
+.modal-footer button { padding: 7px 16px; border: none; border-radius: 7px; cursor: pointer; font-size: 13px; font-weight: 600; font-family: inherit; transition: all .15s ease; }
+.copy-btn { background: linear-gradient(135deg, var(--accent), #5f7cff); color: #fff; }
+.copy-btn:hover { filter: brightness(1.08); }
+.done-btn { background: var(--surface-3); color: var(--text-dim); }
+.done-btn:hover { color: var(--text); }
 
-.empty-state { color: #555; font-size: 13px; text-align: center; padding: 40px 20px; }
+.empty-state { color: var(--text-faint); font-size: 13px; text-align: center; padding: 36px 20px; }
+
+/* Room preview */
+.preview-panel {
+  width: 272px; flex: none;
+  border-left: 1px solid var(--border);
+  background: rgba(20, 23, 30, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex; flex-direction: column;
+}
+.preview-header {
+  padding: 13px 16px 11px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.preview-header h2 {
+  font-size: 11px; font-weight: 650; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .08em; flex: none;
+}
+.preview-room-name { font-size: 12px; color: var(--text-faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.preview-body { flex: 1; overflow: auto; padding: 14px; display: flex; align-items: flex-start; justify-content: center; }
+#roomPreview { image-rendering: pixelated; border: 1px solid var(--border-strong); border-radius: 6px; background: #000; }
 </style>
 </head>
 <body>
 <div class="sidebar">
-  <h1>World Maker</h1>
+  <div class="brand">
+    <div class="logo">◆</div>
+    <div>
+      <h1>World Maker</h1>
+      <div class="sub">Adventure Engine</div>
+    </div>
+  </div>
   <div class="room-list" id="roomList"></div>
-  <button class="sidebar-btn" onclick="addRoom()">+ New Room</button>
-  <button class="export-btn" onclick="exportJSON()">Export JSON</button>
+  <div class="sidebar-actions">
+    <button class="sidebar-btn" onclick="addRoom()">＋ New Room</button>
+    <button class="export-btn" onclick="exportJSON()">Export JSON</button>
+  </div>
 </div>
 <div class="main">
   <div class="tabs" id="tabs">
-    <div class="tab active" data-tab="room">Room</div>
-    <div class="tab" data-tab="objects">Objects</div>
+    <div class="tab active" data-tab="world">World</div>
+    <div class="tab" data-tab="rooms">Rooms</div>
     <div class="tab" data-tab="doors">Doors</div>
-    <div style="margin-left:auto;display:flex;gap:6px;padding:6px 12px;">
-      <button class="add-btn" style="font-size:11px;" onclick="document.getElementById('importInput').click()">Import</button>
+    <div class="tab" data-tab="objects">Objects</div>
+    <div class="tab-actions">
+      <button class="btn-ghost danger" onclick="newWorld()">New World</button>
+      <button class="btn-ghost" onclick="document.getElementById('importInput').click()">Import</button>
       <input type="file" id="importInput" accept=".json" style="display:none" onchange="importJSON(event)">
     </div>
   </div>
-  <div class="tab-content active" id="tabRoom">
+  <div class="tab-content active" id="tabWorld">
+    <div class="section-header" style="margin-top:0">
+      <h3>World Settings</h3>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Game Name</label><input id="gameNameInput" placeholder="My Adventure" oninput="data.gameName=this.value||undefined;save()"></div>
+      <div class="form-group"><label>Game File</label><input id="gameFileInput" placeholder="world.json" oninput="data.gameFile=this.value||undefined;save()"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>World Width</label><input id="worldWidthInput" type="number" value="800" min="100" oninput="data.worldWidth=parseInt(this.value)||undefined;save()"></div>
+      <div class="form-group"><label>World Height</label><input id="worldHeightInput" type="number" value="600" min="100" oninput="data.worldHeight=parseInt(this.value)||undefined;save()"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Avatar</label>
+        <div class="sprite-field">
+          <input id="avatarInput" placeholder="char1" oninput="updateAvatar(this.value)">
+          <canvas id="avatarPreview"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Start Room</label>
+        <select id="startRoomSelect" onchange="data.startRoom=this.value;save()"></select>
+      </div>
+      <div class="form-group"><label>Start Panels</label>
+        <div id="startPanelsList"></div>
+        <button class="add-btn" onclick="addStartPanel()">+ Add Panel</button>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content" id="tabRooms">
     <div class="empty-state" id="noRoomMsg">Select or create a room</div>
     <div id="roomForm" style="display:none">
       <div class="section-header" style="margin-top:0">
-        <h3>World Settings</h3>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Start Room</label>
-          <select id="startRoomSelect" onchange="data.startRoom=this.value;save()"></select>
-        </div>
-        <div class="form-group"><label>Start Panel Text</label><input id="startPanel" value="" oninput="data.startPanel=this.value;save()"></div>
-      </div>
-      <div class="section-header">
         <h3>Room Settings</h3>
       </div>
       <div class="form-row">
@@ -119,23 +378,35 @@ input[type="checkbox"] { width: auto; }
         <div class="form-group"><label>Display Name</label><input id="roomName" oninput="markDirty()"></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Background Color</label><input id="bgColor" type="color" value="#1a1a2e" oninput="markDirty()"></div>
-        <div class="form-group"><label>Floor Color</label><input id="floorColor" type="color" value="#3a3a4a" oninput="markDirty()"></div>
-        <div class="form-group"><label>Wall Color</label><input id="wallColor" type="color" value="#4a3a2a" oninput="markDirty()"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Floor Tile</label><input id="floorTile" value="floor" oninput="markDirty()"></div>
-        <div class="form-group"><label>Wall Tile</label><input id="wallTile" value="wallStone" oninput="markDirty()"></div>
-        <div class="form-group"><label>Wall Thickness</label><input id="wallThickness" type="number" value="64" min="0" oninput="markDirty()"></div>
-      </div>
-      <div class="form-row">
         <div class="form-group"><label>Player Start X</label><input id="startX" type="number" value="200" oninput="markDirty()"></div>
         <div class="form-group"><label>Player Start Y</label><input id="startY" type="number" value="400" oninput="markDirty()"></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Room Width</label><input id="roomWidth" type="number" value="800" min="100" oninput="markDirty()"></div>
-        <div class="form-group"><label>Room Height</label><input id="roomHeight" type="number" value="600" min="100" oninput="markDirty()"></div>
+        <div class="form-group"><label>Room Width</label><input id="roomWidth" type="number" value="800" min="100" oninput="markDirty(); renderTileGrid()"></div>
+        <div class="form-group"><label>Room Height</label><input id="roomHeight" type="number" value="600" min="100" oninput="markDirty(); renderTileGrid()"></div>
       </div>
+      <div class="section-header" style="margin-top:22px">
+        <h3>Tilemap</h3>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Background Color</label><input id="bgColor" type="color" value="#1a1a2e" oninput="markDirty(); renderTileGrid()"></div>
+        <div class="form-group"><label>Grid Size</label><input id="tileSizeInput" type="number" value="32" min="8" step="8" oninput="updateTileSize(this.value)"></div>
+        <div class="form-group"><label>Place As</label>
+          <select id="tileKindSelect"><option value="floor">Floor</option><option value="wall">Wall</option></select>
+        </div>
+        <div class="form-group"><label>Tile Sprite</label>
+          <select id="tileToolSprite" onchange="setTileToolSprite(this.value)"></select>
+        </div>
+        <div class="form-group"><label>Color</label><div id="tilePalette"></div></div>
+        <div class="form-group"><label>Tool</label>
+          <select id="tileToolSelect"><option value="paint">Paint</option><option value="erase">Erase</option></select>
+        </div>
+        <div class="form-group"><label>Brush Size</label><input id="tileBrushSize" type="number" value="1" min="1" max="9" step="1"></div>
+      </div>
+      <div id="tileGridWrap">
+        <canvas id="tileGridCanvas" onmousedown="tileGridClick(event)" onmousemove="tileGridDrag(event)"></canvas>
+      </div>
+      <div id="tileCount" style="font-size:12px;color:var(--text-faint);margin-top:6px"></div>
     </div>
   </div>
   <div class="tab-content" id="tabObjects">
@@ -160,6 +431,17 @@ input[type="checkbox"] { width: auto; }
   </div>
 </div>
 
+<div class="preview-panel">
+  <div class="preview-header">
+    <h2>Preview</h2>
+    <span id="previewRoomName" class="preview-room-name"></span>
+  </div>
+  <div class="preview-body">
+    <div id="previewEmpty" class="empty-state">Select a room to preview</div>
+    <canvas id="roomPreview" style="display:none"></canvas>
+  </div>
+</div>
+
 <div class="modal" id="exportModal">
   <div class="modal-content">
     <div class="modal-header">
@@ -169,16 +451,50 @@ input[type="checkbox"] { width: auto; }
     <div class="modal-body"><pre id="exportPreview"></pre></div>
     <div class="modal-footer">
       <button class="copy-btn" onclick="copyJSON()">Copy</button>
+      <button class="copy-btn" onclick="downloadJSON()">Download</button>
+      <button class="copy-btn" onclick="openIndexModal()">Download index.json</button>
       <button class="done-btn" onclick="closeExport()">Done</button>
     </div>
   </div>
 </div>
 
+<div class="modal" id="indexModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Export index.json</h2>
+      <span class="modal-close" onclick="closeIndexModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group"><label>Game Name</label><input id="indexNameInput" placeholder="My Adventure"></div>
+        <div class="form-group"><label>File</label><input id="indexFileInput" placeholder="world.json"></div>
+      </div>
+      <div class="form-group"><label>Current index.json</label>
+        <textarea id="indexPaste" rows="8" spellcheck="false" style="font-family:monospace;font-size:12px"></textarea>
+      </div>
+      <div id="indexHint" style="font-size:12px;color:var(--text-faint);margin-top:4px"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="copy-btn" onclick="downloadIndexJSON()">Download index.json</button>
+      <button class="done-btn" onclick="closeIndexModal()">Done</button>
+    </div>
+  </div>
+</div>
+
 <script>
-let data = { startPanel: "", startRoom: "", animations: {}, rooms: {} };
+let data = { gameName: "", startPanels: [], startRoom: "", animations: {}, rooms: {} };
 let selectedRoomId = null;
 let dirty = false;
-let spriteNames = [];
+let spriteTags = [];
+let spriteFrameData = [];
+let spriteSheet = null;
+let spritePickerCallback = null;
+let tileToolSprite = 'floor';
+let tileToolTint = '';
+let tilePaintActive = false;
+let tileDragStarted = false;
+let lastTileCell = null;
+const tileCache = {};
 
 function toColor(v) {
   if (!v || v === '') return '';
@@ -196,18 +512,167 @@ function getAnimNames() {
 
 function spriteOptions(val) {
   let opts = '<option value="">(none)</option>';
-  spriteNames.forEach(n => {
-    opts += '<option value="' + n + '"' + (val === n ? ' selected' : '') + '>' + n + '</option>';
+  spriteTags.forEach(t => {
+    opts += '<option value="' + t.name + '"' + (String(val) === t.name ? ' selected' : '') + '>' + t.name + '</option>';
   });
+  for (let i = 0; i < spriteFrameData.length; i++) {
+    opts += '<option value="' + i + '"' + (String(val) === String(i) ? ' selected' : '') + '>Frame ' + i + '</option>';
+  }
   return opts;
 }
 
 function animOptions(val) {
   let opts = '<option value="">(none)</option>';
-  getAnimNames().forEach(n => {
-    opts += '<option value="' + n + '"' + (val === n ? ' selected' : '') + '>' + n + '</option>';
+  spriteTags.filter(t => t.to > t.from).forEach(t => {
+    opts += '<option value="' + t.name + '"' + (val === t.name ? ' selected' : '') + '>' + t.name + '</option>';
   });
   return opts;
+}
+
+/* Sprite preview / picker */
+function resolveFrameIndex(val) {
+  if (val === '' || val === undefined || val === null) return -1;
+  if (typeof val === 'number') return val;
+  const s = String(val).trim();
+  if (/^\d+$/.test(s)) return parseInt(s, 10);
+  const tag = spriteTags.find(t => t.name === val);
+  return tag ? tag.from : -1;
+}
+
+function spriteValue(raw) {
+  if (raw === '' || raw === undefined || raw === null) return undefined;
+  if (/^\d+$/.test(String(raw).trim())) return parseInt(raw, 10);
+  return raw;
+}
+
+function drawFrameToCanvas(c, idx) {
+  const fr = spriteFrameData[idx];
+  if (idx < 0 || !fr) { c.width = 0; c.height = 0; return; }
+  const scale = 2;
+  c.width = fr.w * scale;
+  c.height = fr.h * scale;
+  const ctx = c.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  ctx.clearRect(0, 0, c.width, c.height);
+  if (spriteSheet) ctx.drawImage(spriteSheet, fr.x, fr.y, fr.w, fr.h, 0, 0, c.width, c.height);
+}
+
+function drawSprite(canvas, val) {
+  drawFrameToCanvas(canvas, resolveFrameIndex(val));
+}
+
+function refreshSpritePreviews() {
+  document.querySelectorAll('canvas[data-frame]').forEach(c => {
+    const v = c.getAttribute('data-frame');
+    if (v === '' || v === null) { c.width = 0; c.height = 0; return; }
+    drawFrameToCanvas(c, parseInt(v, 10));
+  });
+}
+
+function spriteFieldHTML(val, idx, kind) {
+  const fIdx = resolveFrameIndex(val);
+  return `
+    <div class="sprite-field">
+      <select data-sprite-idx="${idx}" data-sprite-kind="${kind}" onchange="spritePicked(this, ${idx}, ${kind})">${spriteOptions(val)}</select>
+      <button type="button" class="sprite-preview" title="Browse sprites" onclick="openSpritePicker(v => spritePickedFromPicker(${idx}, v, ${kind}))">
+        <canvas data-frame="${fIdx < 0 ? '' : fIdx}"></canvas>
+      </button>
+    </div>`;
+}
+
+function spritePicked(sel, idx, kind) {
+  const value = spriteValue(sel.value);
+  if (kind === 0) updateObject(idx, 'spriteFrame', value);
+  else if (kind === 1) updateDoor(idx, 'spriteFrame', value);
+  const canvas = sel.closest('.sprite-field').querySelector('canvas');
+  canvas.setAttribute('data-frame', value === undefined ? '' : resolveFrameIndex(value));
+  drawSprite(canvas, value);
+}
+
+function spritePickedFromPicker(idx, raw, kind) {
+  const value = spriteValue(raw);
+  const sel = document.querySelector(`select[data-sprite-idx="${idx}"][data-sprite-kind="${kind}"]`);
+  if (sel) sel.value = String(raw);
+  if (kind === 0) updateObject(idx, 'spriteFrame', value);
+  else if (kind === 1) updateDoor(idx, 'spriteFrame', value);
+  if (sel) {
+    const canvas = sel.closest('.sprite-field').querySelector('canvas');
+    canvas.setAttribute('data-frame', value === undefined ? '' : resolveFrameIndex(value));
+    drawSprite(canvas, value);
+  }
+}
+
+function openSpritePicker(callback) {
+  spritePickerCallback = callback;
+  let overlay = document.getElementById('spritePicker');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'spritePicker';
+    overlay.className = 'sprite-picker';
+    overlay.innerHTML = `
+      <div class="sprite-picker-content">
+        <div class="modal-header">
+          <h2>Choose Sprite</h2>
+          <span class="modal-close" onclick="closeSpritePicker()">&times;</span>
+        </div>
+        <div class="sprite-picker-body">
+          <input class="sprite-search" placeholder="Filter sprites..." oninput="renderSpriteGrid(this.value)">
+          <div class="sprite-grid" id="spriteGrid"></div>
+        </div>
+      </div>`;
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeSpritePicker(); });
+    document.body.appendChild(overlay);
+  }
+  const search = overlay.querySelector('.sprite-search');
+  if (search) search.value = '';
+  overlay.classList.add('open');
+  renderSpriteGrid('');
+  document.addEventListener('keydown', closeOnEsc);
+}
+
+function closeSpritePicker() {
+  const o = document.getElementById('spritePicker');
+  if (o) o.classList.remove('open');
+  spritePickerCallback = null;
+  document.removeEventListener('keydown', closeOnEsc);
+}
+
+function closeOnEsc(e) {
+  if (e.key !== 'Escape') return;
+  const o = document.getElementById('spritePicker');
+  if (o && o.classList.contains('open')) closeSpritePicker();
+}
+
+function renderSpriteGrid(filter) {
+  const grid = document.getElementById('spriteGrid');
+  if (!grid) return;
+  filter = (filter || '').toLowerCase();
+  let html = '';
+  if (spriteTags.length === 0) {
+    const tiles = [];
+    for (let i = 0; i < spriteFrameData.length; i++) {
+      const label = 'Frame ' + i;
+      if (filter && !label.toLowerCase().includes(filter)) continue;
+      tiles.push(`<button type="button" class="sprite-tile" onclick="pickSprite(${i})"><canvas data-frame="${i}" width="64" height="64"></canvas><div class="sprite-name">${label}</div></button>`);
+    }
+    html = tiles.join('');
+  } else {
+    const tags = spriteTags.filter(t => !filter || t.name.toLowerCase().includes(filter));
+    html = tags.map(t => {
+      const fr = spriteFrameData[t.from];
+      return `<button type="button" class="sprite-tile" onclick="pickSprite(${q(t.name)})"><canvas data-frame="${t.from}" width="${fr ? fr.w * 2 : 64}" height="${fr ? fr.h * 2 : 64}"></canvas><div class="sprite-name">${t.name}</div></button>`;
+    }).join('');
+  }
+  grid.innerHTML = html || '<div class="empty-state">No sprites match</div>';
+  grid.querySelectorAll('canvas[data-frame]').forEach(c => drawFrameToCanvas(c, parseInt(c.getAttribute('data-frame'), 10)));
+}
+
+function pickSprite(name) {
+  try {
+    if (spritePickerCallback) spritePickerCallback(name);
+  } finally {
+    closeSpritePicker();
+  }
 }
 
 function save() {
@@ -215,6 +680,7 @@ function save() {
   const json = JSON.stringify(data, null, 2);
   localStorage.setItem('maker_world', json);
   dirty = false;
+  renderPreview();
 }
 
 function load() {
@@ -234,7 +700,7 @@ function renderRoomList() {
   }
   list.innerHTML = ids.map(id => `
     <div class="room-item${id === selectedRoomId ? ' active' : ''}" onclick="selectRoom('${id}')">
-      <span>${data.rooms[id].name || id}</span>
+      <span class="room-name">${data.rooms[id].name || id}</span>
       <span class="del" onclick="event.stopPropagation(); deleteRoom('${id}')">✕</span>
     </div>
   `).join('');
@@ -246,11 +712,6 @@ function addRoom() {
   data.rooms[id] = {
     name: 'New Room',
     backgroundColor: '0x1a1a2e',
-    floorColor: '0x3a3a4a',
-    wallColor: '0x4a3a2a',
-    floorTile: 'floor',
-    wallTile: 'wallStone',
-    wallThickness: 64,
     width: 800,
     height: 600,
     playerStart: { x: 200, y: 400 },
@@ -263,7 +724,7 @@ function addRoom() {
   renderRoomList();
   populateWorldSettings();
   selectRoom(id);
-  switchTab('room');
+  switchTab('rooms');
 }
 
 function deleteRoom(id) {
@@ -290,6 +751,8 @@ function deleteRoom(id) {
 function selectRoom(id) {
   saveCurrentRoom();
   selectedRoomId = id;
+  hoverObjectIdx = null;
+  openObjectIdx = null;
   dirty = false;
   renderRoomList();
   populateWorldSettings();
@@ -302,6 +765,7 @@ function selectRoom(id) {
   document.getElementById('doorsArea').style.display = 'block';
   renderObjects();
   renderDoors();
+  renderPreview();
 }
 
 function loadRoomForm(id) {
@@ -310,15 +774,12 @@ function loadRoomForm(id) {
   document.getElementById('roomId').value = id;
   document.getElementById('roomName').value = r.name || '';
   document.getElementById('bgColor').value = toColor(r.backgroundColor) || '#1a1a2e';
-  document.getElementById('floorColor').value = toColor(r.floorColor) || '#3a3a4a';
-  document.getElementById('wallColor').value = toColor(r.wallColor) || '#4a3a2a';
-  document.getElementById('floorTile').value = r.floorTile || 'floor';
-  document.getElementById('wallTile').value = r.wallTile || 'wallStone';
-  document.getElementById('wallThickness').value = r.wallThickness ?? 64;
   document.getElementById('startX').value = (r.playerStart && r.playerStart.x) || 200;
   document.getElementById('startY').value = (r.playerStart && r.playerStart.y) || 400;
   document.getElementById('roomWidth').value = r.width || 800;
   document.getElementById('roomHeight').value = r.height || 600;
+  document.getElementById('tileSizeInput').value = r.tileSize || 32;
+  renderTileGrid();
 }
 
 function saveCurrentRoom() {
@@ -329,11 +790,6 @@ function saveCurrentRoom() {
   const newId = document.getElementById('roomId').value.trim() || oldId;
   r.name = document.getElementById('roomName').value;
   r.backgroundColor = fromColor(document.getElementById('bgColor').value);
-  r.floorColor = fromColor(document.getElementById('floorColor').value);
-  r.wallColor = fromColor(document.getElementById('wallColor').value);
-  r.floorTile = document.getElementById('floorTile').value;
-  r.wallTile = document.getElementById('wallTile').value;
-  r.wallThickness = parseInt(document.getElementById('wallThickness').value) || 64;
   r.playerStart = r.playerStart || {};
   r.playerStart.x = parseInt(document.getElementById('startX').value) || 200;
   r.playerStart.y = parseInt(document.getElementById('startY').value) || 400;
@@ -351,7 +807,7 @@ function saveCurrentRoom() {
   dirty = false;
 }
 
-function markDirty() { dirty = true; }
+function markDirty() { dirty = true; renderPreview(); }
 
 /* Tabs */
 document.querySelectorAll('.tab').forEach(tab => {
@@ -365,9 +821,65 @@ function switchTab(name) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.querySelector(`.tab[data-tab="${name}"]`).classList.add('active');
   document.getElementById('tab' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('active');
+  if (name === 'world') populateWorldSettings();
   if (name === 'objects' && selectedRoomId) renderObjects();
   if (name === 'doors' && selectedRoomId) renderDoors();
 }
+
+/* Number drag-scrubbing */
+let scrub = null;
+
+document.addEventListener('mousedown', function(e) {
+  const t = e.target;
+  if (!t || t.tagName !== 'INPUT' || t.type !== 'number') return;
+  if (t.readOnly) return;
+  scrub = {
+    input: t,
+    startVal: parseFloat(t.value) || 0,
+    startX: e.clientX,
+    startY: e.clientY,
+    min: t.min !== '' ? parseFloat(t.min) : -Infinity,
+    max: t.max !== '' ? parseFloat(t.max) : Infinity,
+    step: (t.step && t.step !== 'any') ? parseFloat(t.step) : 1,
+    active: false
+  };
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (!scrub) return;
+  const dx = e.clientX - scrub.startX;
+  const dy = e.clientY - scrub.startY;
+  if (!scrub.active && Math.abs(dx) < 3 && Math.abs(dy) < 3) return;
+  if (!scrub.active) {
+    scrub.active = true;
+    scrub.input.readOnly = true;
+    document.body.classList.add('scrubbing');
+  }
+  const step = scrub.step;
+  let v = scrub.startVal + Math.round(dx - dy) * step;
+  v = Math.min(scrub.max, Math.max(scrub.min, v));
+  const input = scrub.input;
+  input.value = String(v);
+  input.dispatchEvent(new Event('input', { bubbles: true }));
+});
+
+document.addEventListener('mouseup', function() {
+  if (!scrub) return;
+  if (scrub.active) {
+    scrub.input.readOnly = false;
+    document.body.classList.remove('scrubbing');
+  }
+  scrub = null;
+});
+
+document.addEventListener('mouseleave', function() {
+  if (!scrub) return;
+  if (scrub.active) {
+    scrub.input.readOnly = false;
+    document.body.classList.remove('scrubbing');
+  }
+  scrub = null;
+});
 
 /* Objects */
 function renderObjects() {
@@ -379,23 +891,25 @@ function renderObjects() {
     return;
   }
   container.innerHTML = objs.map((o, i) => renderObjectCard(o, i)).join('');
+  refreshSpritePreviews();
 }
 
 function renderObjectCard(o, i) {
-  const open = (i === 0) ? ' open' : '';
+  const open = (openObjectIdx === null ? i === 0 : openObjectIdx === i);
   return `
-    <div class="item-card">
-      <div class="item-header">
-        <span class="item-title" onclick="toggleCard(this)">${o.label || o.id || 'Object ' + i}</span>
-        <div>
-          <span class="toggle" onclick="toggleCard(this)">${open ? 'collapse' : 'expand'}</span>
-          <button class="del-btn" onclick="deleteObject(${i})">Remove</button>
+    <div class="item-card${open ? ' expanded' : ''}" onmouseenter="hoverObject(${i})" onmouseleave="unhoverObject()">
+      <div class="item-header" onclick="toggleCard(this)">
+        <span class="chevron"></span>
+        <span class="item-title">${o.label || o.id || 'Object ' + i}</span>
+        <div class="header-actions">
+          <button class="dup-btn" onclick="event.stopPropagation(); duplicateObject(${i})">Duplicate</button>
+          <button class="del-btn" onclick="event.stopPropagation(); deleteObject(${i})">Remove</button>
         </div>
       </div>
-      <div class="item-fields${open}" data-idx="${i}">
+      <div class="item-fields${open ? ' open' : ''}" data-idx="${i}">
         <div class="form-row">
           <div class="form-group"><label>ID</label><input value="${o.id || ''}" oninput="updateObject(${i},'id',this.value)"></div>
-          <div class="form-group"><label>Label</label><input value="${o.label || ''}" oninput="updateObject(${i},'label',this.value); renderObjects()"></div>
+          <div class="form-group"><label>Label</label><input value="${o.label || ''}" oninput="updateObjectLabel(${i}, this)"></div>
           <div class="form-group"><label>Type</label><select onchange="updateObject(${i},'type',this.value)"><option value="rect"${o.type==='rect'?' selected':''}>Rect</option><option value="circle"${o.type==='circle'?' selected':''}>Circle</option></select></div>
         </div>
         <div class="form-row">
@@ -407,11 +921,13 @@ function renderObjectCard(o, i) {
           ` : `
           <div class="form-group"><label>Radius</label><input type="number" value="${o.radius || 18}" oninput="updateObject(${i},'radius',parseInt(this.value)||0)"></div>
           `}
+          <label class="check-label mini" title="Flip sprite horizontally"><input type="checkbox" ${o.flipX ? 'checked' : ''} onchange="updateObject(${i},'flipX',this.checked||undefined)"> Flip X</label>
+          <label class="check-label mini" title="Flip sprite vertically"><input type="checkbox" ${o.flipY ? 'checked' : ''} onchange="updateObject(${i},'flipY',this.checked||undefined)"> Flip Y</label>
         </div>
         <div class="form-row">
           <div class="form-group"><label>Color</label><input type="color" value="${toColor(o.color) || '#888888'}" onchange="updateObject(${i},'color',fromColor(this.value))"></div>
           <div class="form-group"><label>Stroke Color</label><input type="color" value="${toColor(o.strokeColor) || '#000000'}" onchange="updateObject(${i},'strokeColor',fromColor(this.value)||undefined)"></div>
-          <div class="form-group"><label>Sprite Frame</label><select onchange="updateObject(${i},'spriteFrame',this.value||undefined)">${spriteOptions(o.spriteFrame)}</select></div>
+          <div class="form-group"><label>Sprite Frame</label>${spriteFieldHTML(o.spriteFrame, i, 0)}</div>
           <div class="form-group"><label>Sprite Anim</label><select onchange="updateObject(${i},'spriteAnim',this.value||undefined)">${animOptions(o.spriteAnim)}</select></div>
         </div>
         <div class="form-row">
@@ -422,12 +938,16 @@ function renderObjectCard(o, i) {
           <label class="check-label"><input type="checkbox" ${o.interactable ? 'checked' : ''} onchange="updateObject(${i},'interactable',this.checked||undefined)"> Interactable</label>
           <label class="check-label"><input type="checkbox" ${o.blocks ? 'checked' : ''} onchange="updateObject(${i},'blocks',this.checked||undefined)"> Blocks</label>
           <label class="check-label"><input type="checkbox" ${o.pickup ? 'checked' : ''} onchange="updateObject(${i},'pickup',this.checked||undefined)"> Pickup</label>
+          <label class="check-label"><input type="checkbox" ${o.mirror ? 'checked' : ''} onchange="updateObject(${i},'mirror',this.checked||undefined)"> Mirror</label>
           <label class="check-label"><input type="checkbox" ${o.alwaysOnTop ? 'checked' : ''} onchange="updateObject(${i},'alwaysOnTop',this.checked||undefined)"> Always On Top</label>
         </div>
         <div class="form-group"><label>Look Message</label><textarea oninput="updateObject(${i},'lookMessage',this.value||undefined)">${o.lookMessage || ''}</textarea></div>
         <div class="form-group"><label>Use Message</label><textarea oninput="updateObject(${i},'useMessage',this.value||undefined)">${o.useMessage || ''}</textarea></div>
         <div class="form-group"><label>Open Message</label><textarea oninput="updateObject(${i},'openMessage',this.value||undefined)">${o.openMessage || ''}</textarea></div>
         <div class="form-group"><label>Talk Message</label><textarea oninput="updateObject(${i},'talkMessage',this.value||undefined)">${o.talkMessage || ''}</textarea></div>
+        ${combineSectionHTML(o, i)}
+        ${statesSectionHTML(o, i)}
+        ${dialogTreeSection(o, i)}
       </div>
     </div>
   `;
@@ -448,6 +968,32 @@ function deleteObject(idx) {
   renderObjects();
 }
 
+function duplicateObject(idx) {
+  if (!selectedRoomId) return;
+  const objs = data.rooms[selectedRoomId].objects;
+  const src = objs[idx];
+  if (!src) return;
+  const copy = JSON.parse(JSON.stringify(src));
+  if (copy.id) copy.id = copy.id + '_copy';
+  objs.splice(Math.min(idx + 1, objs.length), 0, copy);
+  openObjectIdx = Math.min(idx + 1, objs.length - 1);
+  save();
+  renderObjects();
+}
+
+let hoverObjectIdx = null;
+let openObjectIdx = null;
+
+function hoverObject(idx) {
+  hoverObjectIdx = idx;
+  renderPreview();
+}
+
+function unhoverObject() {
+  hoverObjectIdx = null;
+  renderPreview();
+}
+
 function updateObject(idx, field, value) {
   if (!selectedRoomId) return;
   const obj = data.rooms[selectedRoomId].objects[idx];
@@ -457,6 +1003,511 @@ function updateObject(idx, field, value) {
   } else {
     obj[field] = value;
   }
+  save();
+}
+
+function updateObjectLabel(idx, input) {
+  const obj = currentObj(idx);
+  if (!obj) return;
+  updateObject(idx, 'label', input.value);
+  const card = input.closest('.item-card');
+  if (card) {
+    const t = card.querySelector('.item-title');
+    if (t) t.textContent = obj.label || obj.id || ('Object ' + idx);
+  }
+}
+
+/* Dialog Tree */
+function q(s) {
+  return "'" + String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n') + "'";
+}
+
+function dialogTreeSection(o, i) {
+  if (!o.dialogTree) {
+    return `
+      <div class="section-header" style="margin-top:16px">
+        <h3>Dialog Tree</h3>
+        <button class="add-btn" onclick="addDialogTree(${i})">+ Add Dialog Tree</button>
+      </div>`;
+  }
+  const nodes = Object.keys(o.dialogTree);
+  return `
+    <div class="section-header" style="margin-top:16px">
+      <h3>Dialog Tree</h3>
+      <button class="del-btn" onclick="deleteDialogTree(${i})">Remove Tree</button>
+    </div>
+    <div class="form-group"><label>Start Node</label><input value="${o.dialogStart || ''}" placeholder="start" oninput="updateDialogStart(${i}, this.value)"></div>
+    ${nodes.map(nid => dialogNodeCard(o.dialogTree[nid], nid, i)).join('')}
+    ${nodes.length === 0 ? '<div class="empty-state">No nodes yet</div>' : ''}
+    <button class="add-btn" onclick="addDialogNode(${i})">+ Add Node</button>
+  `;
+}
+
+function dialogNodeCard(node, nid, i) {
+  return `
+    <div class="item-card">
+      <div class="item-header" onclick="toggleCard(this)">
+        <span class="chevron"></span>
+        <span class="item-title">Node: ${nid}</span>
+        <div class="header-actions">
+          <button class="del-btn" onclick="event.stopPropagation(); deleteDialogNode(${i}, ${q(nid)})">Remove</button>
+        </div>
+      </div>
+      <div class="item-fields">
+        <div class="form-group"><label>Node ID</label><input value="${nid}" onchange="renameDialogNode(${i}, ${q(nid)}, this.value)"></div>
+        <div class="form-group"><label>NPC Text</label><textarea oninput="updateDialogNodeText(${i}, ${q(nid)}, this.value)">${node.text || ''}</textarea></div>
+        <div class="section-header">
+          <h3>Options</h3>
+          <button class="add-btn" onclick="addDialogOption(${i}, ${q(nid)})">+ Add Option</button>
+        </div>
+        ${dialogOptionRows(node, nid, i)}
+      </div>
+    </div>
+  `;
+}
+
+function dialogOptionRows(node, nid, i) {
+  const opts = node.options || [];
+  if (opts.length === 0) return '<div class="empty-state">No options — conversation ends after this line.</div>';
+  return opts.map((opt, oi) => `
+    <div class="form-row">
+      <div class="form-group"><label>Option Text</label><input value="${opt.text || ''}" oninput="updateDialogOption(${i}, ${q(nid)}, ${oi}, 'text', this.value)"></div>
+      <div class="form-group"><label>Next Node</label><input value="${opt.next || ''}" placeholder="(end)" oninput="updateDialogOption(${i}, ${q(nid)}, ${oi}, 'next', this.value)"></div>
+      <button class="del-btn" onclick="deleteDialogOption(${i}, ${q(nid)}, ${oi})">✕</button>
+    </div>
+  `).join('');
+}
+
+function addDialogTree(i) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[i];
+  if (!obj) return;
+  obj.dialogTree = { start: { text: '', options: [{ text: '', next: null }] } };
+  save();
+  renderObjects();
+}
+
+function deleteDialogTree(i) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[i];
+  if (!obj) return;
+  delete obj.dialogTree;
+  delete obj.dialogStart;
+  save();
+  renderObjects();
+}
+
+function updateDialogStart(i, val) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[i];
+  if (!obj || !obj.dialogTree) return;
+  if (val === '') delete obj.dialogStart; else obj.dialogStart = val;
+  save();
+}
+
+function addDialogNode(i) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[i];
+  if (!obj || !obj.dialogTree) return;
+  const id = 'node_' + Date.now();
+  obj.dialogTree[id] = { text: '', options: [{ text: '', next: null }] };
+  save();
+  renderObjects();
+}
+
+function deleteDialogNode(i, id) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[i];
+  if (!obj || !obj.dialogTree) return;
+  delete obj.dialogTree[id];
+  if (obj.dialogStart === id) delete obj.dialogStart;
+  if (Object.keys(obj.dialogTree).length === 0) {
+    delete obj.dialogTree;
+    delete obj.dialogStart;
+  }
+  save();
+  renderObjects();
+}
+
+function renameDialogNode(i, oldId, newId) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[i];
+  if (!obj || !obj.dialogTree) return;
+  newId = (newId || '').trim();
+  if (!newId || newId === oldId) { renderObjects(); return; }
+  if (obj.dialogTree[newId]) { alert('A node with that ID already exists.'); renderObjects(); return; }
+  obj.dialogTree[newId] = obj.dialogTree[oldId];
+  delete obj.dialogTree[oldId];
+  if (obj.dialogStart === oldId) obj.dialogStart = newId;
+  Object.keys(obj.dialogTree).forEach(nid => {
+    (obj.dialogTree[nid].options || []).forEach(opt => {
+      if (opt.next === oldId) opt.next = newId;
+    });
+  });
+  save();
+  renderObjects();
+}
+
+function updateDialogNodeText(i, id, val) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[i];
+  if (!obj || !obj.dialogTree || !obj.dialogTree[id]) return;
+  obj.dialogTree[id].text = val;
+  save();
+}
+
+function addDialogOption(i, id) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[i];
+  if (!obj || !obj.dialogTree || !obj.dialogTree[id]) return;
+  if (!obj.dialogTree[id].options) obj.dialogTree[id].options = [];
+  obj.dialogTree[id].options.push({ text: '', next: null });
+  save();
+  renderObjects();
+}
+
+function deleteDialogOption(i, id, oi) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[i];
+  if (!obj || !obj.dialogTree || !obj.dialogTree[id]) return;
+  obj.dialogTree[id].options.splice(oi, 1);
+  save();
+  renderObjects();
+}
+
+function updateDialogOption(i, id, oi, field, val) {
+  if (!selectedRoomId) return;
+  const obj = data.rooms[selectedRoomId].objects[i];
+  if (!obj || !obj.dialogTree || !obj.dialogTree[id]) return;
+  const opts = obj.dialogTree[id].options;
+  if (!opts || !opts[oi]) return;
+  if (field === 'next') {
+    opts[oi].next = val === '' ? null : val;
+  } else {
+    opts[oi][field] = val;
+  }
+  save();
+}
+
+/* Combines */
+function currentObj(i) {
+  if (!selectedRoomId) return null;
+  return data.rooms[selectedRoomId].objects[i] || null;
+}
+
+function combineEntries(o) {
+  const cm = o.combineMessages || {};
+  return Object.keys(cm).map(k => {
+    const v = cm[k];
+    return {
+      item: k,
+      message: typeof v === 'string' ? v : (v && v.message) || '',
+      setState: (v && typeof v === 'object') ? (v.setState || '') : '',
+      requiresState: (v && typeof v === 'object' && Array.isArray(v.requiresState)) ? v.requiresState.map(r => ({ id: r.id || '', state: r.state || '' })) : []
+    };
+  });
+}
+
+function combineEntryAt(obj, ci) {
+  const keys = Object.keys(obj.combineMessages || {});
+  const key = keys[ci];
+  if (key === undefined) return null;
+  const v = obj.combineMessages[key];
+  return {
+    key,
+    entry: {
+      message: typeof v === 'string' ? v : (v && v.message) || '',
+      setState: (v && typeof v === 'object') ? (v.setState || '') : '',
+      requiresState: (v && typeof v === 'object' && Array.isArray(v.requiresState)) ? v.requiresState : []
+    }
+  };
+}
+
+function writeCombineEntry(obj, key, entry) {
+  if (entry.setState || entry.requiresState.length) {
+    const out = { message: entry.message };
+    if (entry.setState) out.setState = entry.setState;
+    if (entry.requiresState.length) out.requiresState = entry.requiresState;
+    obj.combineMessages[key] = out;
+  } else {
+    obj.combineMessages[key] = entry.message;
+  }
+}
+
+function combineSectionHTML(o, i) {
+  const entries = combineEntries(o);
+  return `
+    <div class="section-header" style="margin-top:16px">
+      <h3>Combines</h3>
+      <button class="add-btn" onclick="addCombine(${i})">+ Add Combine</button>
+    </div>
+    ${entries.length === 0 ? '<div class="empty-state">No combine reactions defined.</div>' : entries.map((en, ci) => `
+      <div class="item-card">
+        <div class="item-header" onclick="toggleCard(this)">
+          <span class="chevron"></span>
+          <span class="item-title">With ${en.item || '(no item)'}</span>
+          <div class="header-actions">
+            <button class="del-btn" onclick="event.stopPropagation(); deleteCombine(${i}, ${ci})">Remove</button>
+          </div>
+        </div>
+        <div class="item-fields">
+          <div class="form-row">
+            <div class="form-group"><label>With Item</label><input value="${en.item}" placeholder="e.g. matches" onchange="updateCombine(${i}, ${ci}, 'item', this.value)"></div>
+            <div class="form-group"><label>Set State</label><input value="${en.setState}" placeholder="e.g. on" oninput="updateCombine(${i}, ${ci}, 'setState', this.value)"></div>
+          </div>
+          <div class="form-group"><label>Message</label><textarea oninput="updateCombine(${i}, ${ci}, 'message', this.value)">${en.message}</textarea></div>
+          <div class="section-header">
+            <h3>Requires State</h3>
+            <button class="add-btn" onclick="addCombineRequirement(${i}, ${ci})">+ Add Requirement</button>
+          </div>
+          ${en.requiresState.length === 0 ? '<div class="empty-state">No requirements</div>' : en.requiresState.map((rq, ri) => `
+            <div class="form-row">
+              <div class="form-group"><label>Object</label><input value="${rq.id}" oninput="updateCombineRequirement(${i}, ${ci}, ${ri}, 'id', this.value)"></div>
+              <div class="form-group"><label>State</label><input value="${rq.state}" oninput="updateCombineRequirement(${i}, ${ci}, ${ri}, 'state', this.value)"></div>
+              <button class="del-btn" onclick="deleteCombineRequirement(${i}, ${ci}, ${ri})">✕</button>
+            </div>`).join('')}
+        </div>
+      </div>`).join('')}
+  `;
+}
+
+function addCombine(i) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  if (!obj.combineMessages) obj.combineMessages = {};
+  obj.combineMessages['item_' + Date.now()] = '';
+  save();
+  renderObjects();
+}
+
+function deleteCombine(i, ci) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  const info = combineEntryAt(obj, ci);
+  if (!info) return;
+  delete obj.combineMessages[info.key];
+  if (Object.keys(obj.combineMessages).length === 0) delete obj.combineMessages;
+  save();
+  renderObjects();
+}
+
+function updateCombine(i, ci, field, val) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  if (field === 'item') {
+    const nk = (val || '').trim();
+    if (!nk) return;
+    const info = combineEntryAt(obj, ci);
+    if (!info) return;
+    if (nk === info.key) return;
+    if (obj.combineMessages[nk] !== undefined) {
+      alert('A combine for "' + nk + '" already exists.');
+      renderObjects();
+      return;
+    }
+    const reordered = {};
+    Object.keys(obj.combineMessages).forEach(k => { reordered[k] = obj.combineMessages[k]; });
+    const cur = reordered[info.key];
+    delete reordered[info.key];
+    const nkeys = Object.keys(reordered);
+    const at = Math.min(ci, nkeys.length);
+    const out = {};
+    nkeys.forEach((k, idx) => {
+      if (idx === at) out[nk] = cur;
+      out[k] = reordered[k];
+    });
+    if (at === nkeys.length) out[nk] = cur;
+    obj.combineMessages = out;
+    save();
+    renderObjects();
+    return;
+  }
+  const info = combineEntryAt(obj, ci);
+  if (!info) return;
+  if (field === 'message') info.entry.message = val;
+  else if (field === 'setState') info.entry.setState = (val || '').trim();
+  writeCombineEntry(obj, info.key, info.entry);
+  save();
+}
+
+function addCombineRequirement(i, ci) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  const info = combineEntryAt(obj, ci);
+  if (!info) return;
+  info.entry.requiresState.push({ id: '', state: '' });
+  writeCombineEntry(obj, info.key, info.entry);
+  save();
+  renderObjects();
+}
+
+function updateCombineRequirement(i, ci, ri, field, val) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  const info = combineEntryAt(obj, ci);
+  if (!info) return;
+  if (!info.entry.requiresState[ri]) return;
+  info.entry.requiresState[ri][field] = (val || '').trim();
+  writeCombineEntry(obj, info.key, info.entry);
+  save();
+}
+
+function deleteCombineRequirement(i, ci, ri) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  const info = combineEntryAt(obj, ci);
+  if (!info) return;
+  info.entry.requiresState.splice(ri, 1);
+  writeCombineEntry(obj, info.key, info.entry);
+  save();
+  renderObjects();
+}
+
+/* States */
+function stateNameList(o) {
+  const names = {};
+  Object.keys(o.stateFrames || {}).forEach(k => names[k] = true);
+  Object.keys(o.stateAnim || {}).forEach(k => names[k] = true);
+  Object.keys(o.states || {}).forEach(k => names[k] = true);
+  return Object.keys(names);
+}
+
+function stateVal(o, s, field) {
+  return (o.states && o.states[s] && o.states[s][field]) || '';
+}
+
+function stateFrameFieldHTML(o, i, s) {
+  const val = o.stateFrames && o.stateFrames[s];
+  const fIdx = resolveFrameIndex(val);
+  return `
+    <div class="sprite-field">
+      <select data-sf-obj="${i}" data-sf-state="${q(s)}" onchange="stateFramePicked(this, ${i}, ${q(s)})">${spriteOptions(val)}</select>
+      <button type="button" class="sprite-preview" title="Browse sprites" onclick="openSpritePicker(v => stateFramePickedFromPicker(${i}, ${q(s)}, v))">
+        <canvas data-frame="${fIdx < 0 ? '' : fIdx}"></canvas>
+      </button>
+    </div>`;
+}
+
+function stateFramePicked(sel, i, s) {
+  const value = spriteValue(sel.value);
+  updateStateFrame(i, s, value);
+  const canvas = sel.closest('.sprite-field').querySelector('canvas');
+  canvas.setAttribute('data-frame', value === undefined ? '' : resolveFrameIndex(value));
+  drawSprite(canvas, value);
+}
+
+function stateFramePickedFromPicker(i, s, raw) {
+  const value = spriteValue(raw);
+  const sel = document.querySelector('select[data-sf-obj="' + i + '"][data-sf-state="' + q(s) + '"]');
+  if (sel) sel.value = String(raw);
+  updateStateFrame(i, s, value);
+  if (sel) {
+    const canvas = sel.closest('.sprite-field').querySelector('canvas');
+    canvas.setAttribute('data-frame', value === undefined ? '' : resolveFrameIndex(value));
+    drawSprite(canvas, value);
+  }
+}
+
+function statesSectionHTML(o, i) {
+  const stateNames = stateNameList(o);
+  return `
+    <div class="section-header" style="margin-top:16px">
+      <h3>States</h3>
+      <button class="add-btn" onclick="addObjectState(${i})">+ Add State</button>
+    </div>
+    ${stateNames.length === 0 ? '<div class="empty-state">No states configured.</div>' : stateNames.map(s => `
+      <div class="item-card">
+        <div class="item-header" onclick="toggleCard(this)">
+          <span class="chevron"></span>
+          <span class="item-title">State: ${s}</span>
+          <div class="header-actions">
+            <button class="del-btn" onclick="event.stopPropagation(); deleteObjectState(${i}, ${q(s)})">Remove</button>
+          </div>
+        </div>
+        <div class="item-fields">
+          <div class="form-row">
+            <div class="form-group"><label>Name</label><input value="${s}" onchange="renameObjectState(${i}, ${q(s)}, this.value)"></div>
+            <div class="form-group"><label>Sprite Frame</label>${stateFrameFieldHTML(o, i, s)}</div>
+            <div class="form-group"><label>Anim</label><select onchange="updateStateAnim(${i}, ${q(s)}, this.value)">${animOptions(o.stateAnim && o.stateAnim[s])}</select></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Label</label><input value="${stateVal(o, s, 'label')}" oninput="updateStateMessage(${i}, ${q(s)}, 'label', this.value)"></div>
+          </div>
+          <div class="form-group"><label>Look Message</label><textarea oninput="updateStateMessage(${i}, ${q(s)}, 'lookMessage', this.value)">${stateVal(o, s, 'lookMessage')}</textarea></div>
+          <div class="form-group"><label>Use Message</label><textarea oninput="updateStateMessage(${i}, ${q(s)}, 'useMessage', this.value)">${stateVal(o, s, 'useMessage')}</textarea></div>
+          <div class="form-group"><label>Open Message</label><textarea oninput="updateStateMessage(${i}, ${q(s)}, 'openMessage', this.value)">${stateVal(o, s, 'openMessage')}</textarea></div>
+          <div class="form-group"><label>Talk Message</label><textarea oninput="updateStateMessage(${i}, ${q(s)}, 'talkMessage', this.value)">${stateVal(o, s, 'talkMessage')}</textarea></div>
+          <div class="form-group"><label>Show Panel</label><textarea placeholder="Shown automatically after the state changes" oninput="updateStateMessage(${i}, ${q(s)}, 'showPanel', this.value)">${stateVal(o, s, 'showPanel')}</textarea></div>
+        </div>
+      </div>`).join('')}
+  `;
+}
+
+function addObjectState(i) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  const s = 'state_' + Date.now();
+  if (!obj.states) obj.states = {};
+  obj.states[s] = { label: 'New State' };
+  save();
+  renderObjects();
+}
+
+function deleteObjectState(i, s) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  if (obj.stateFrames) { delete obj.stateFrames[s]; if (Object.keys(obj.stateFrames).length === 0) delete obj.stateFrames; }
+  if (obj.stateAnim) { delete obj.stateAnim[s]; if (Object.keys(obj.stateAnim).length === 0) delete obj.stateAnim; }
+  if (obj.states) { delete obj.states[s]; if (Object.keys(obj.states).length === 0) delete obj.states; }
+  save();
+  renderObjects();
+}
+
+function renameObjectState(i, oldId, newId) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  newId = (newId || '').trim();
+  if (!newId || newId === oldId) { renderObjects(); return; }
+  const clash = (obj.stateFrames && obj.stateFrames[newId] !== undefined) || (obj.stateAnim && obj.stateAnim[newId] !== undefined) || (obj.states && obj.states[newId]);
+  if (clash) { alert('A state named "' + newId + '" already exists.'); renderObjects(); return; }
+  if (obj.stateFrames && obj.stateFrames[oldId] !== undefined) { obj.stateFrames[newId] = obj.stateFrames[oldId]; delete obj.stateFrames[oldId]; }
+  if (obj.stateAnim && obj.stateAnim[oldId] !== undefined) { obj.stateAnim[newId] = obj.stateAnim[oldId]; delete obj.stateAnim[oldId]; }
+  if (obj.states && obj.states[oldId]) { obj.states[newId] = obj.states[oldId]; delete obj.states[oldId]; }
+  if (obj.state === oldId) obj.state = newId;
+  save();
+  renderObjects();
+}
+
+function updateStateFrame(i, s, value) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  if (!obj.stateFrames) obj.stateFrames = {};
+  if (value === undefined) delete obj.stateFrames[s]; else obj.stateFrames[s] = value;
+  if (Object.keys(obj.stateFrames).length === 0) delete obj.stateFrames;
+  save();
+}
+
+function updateStateAnim(i, s, val) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  if (!obj.stateAnim) obj.stateAnim = {};
+  if (val === undefined || val === '') delete obj.stateAnim[s]; else obj.stateAnim[s] = val;
+  if (Object.keys(obj.stateAnim).length === 0) delete obj.stateAnim;
+  save();
+}
+
+function updateStateMessage(i, s, field, val) {
+  const obj = currentObj(i);
+  if (!obj) return;
+  if (!obj.states) obj.states = {};
+  if (!obj.states[s]) obj.states[s] = {};
+  if (val === '' || val === undefined) {
+    delete obj.states[s][field];
+    if (Object.keys(obj.states[s]).length === 0) delete obj.states[s];
+  } else {
+    obj.states[s][field] = val;
+  }
+  if (obj.states && Object.keys(obj.states).length === 0) delete obj.states;
   save();
 }
 
@@ -470,22 +1521,23 @@ function renderDoors() {
     return;
   }
   container.innerHTML = doors.map((d, i) => renderDoorCard(d, i)).join('');
+  refreshSpritePreviews();
 }
 
 function renderDoorCard(d, i) {
   return `
     <div class="item-card">
-      <div class="item-header">
-        <span class="item-title" onclick="toggleCard(this)">${d.label || d.id || 'Door ' + i}</span>
-        <div>
-          <span class="toggle" onclick="toggleCard(this)">expand</span>
-          <button class="del-btn" onclick="deleteDoor(${i})">Remove</button>
+      <div class="item-header" onclick="toggleCard(this)">
+        <span class="chevron"></span>
+        <span class="item-title">${d.label || d.id || 'Door ' + i}</span>
+        <div class="header-actions">
+          <button class="del-btn" onclick="event.stopPropagation(); deleteDoor(${i})">Remove</button>
         </div>
       </div>
       <div class="item-fields" data-idx="${i}">
         <div class="form-row">
           <div class="form-group"><label>ID</label><input value="${d.id || ''}" oninput="updateDoor(${i},'id',this.value)"></div>
-          <div class="form-group"><label>Label</label><input value="${d.label || ''}" oninput="updateDoor(${i},'label',this.value); renderDoors()"></div>
+          <div class="form-group"><label>Label</label><input value="${d.label || ''}" oninput="updateDoorLabel(${i}, this)"></div>
         </div>
         <div class="form-row">
           <div class="form-group"><label>X</label><input type="number" value="${d.x || 0}" oninput="updateDoor(${i},'x',parseInt(this.value)||0)"></div>
@@ -495,12 +1547,11 @@ function renderDoorCard(d, i) {
         </div>
         <div class="form-row">
           <div class="form-group"><label>Color</label><input type="color" value="${toColor(d.color) || '#cc8833'}" onchange="updateDoor(${i},'color',fromColor(this.value))"></div>
-          <div class="form-group"><label>Sprite Frame</label><select onchange="updateDoor(${i},'spriteFrame',this.value||undefined)">${spriteOptions(d.spriteFrame)}</select></div>
+          <div class="form-group"><label>Sprite Frame</label>${spriteFieldHTML(d.spriteFrame, i, 1)}</div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Target Room</label><input value="${d.targetRoom || ''}" oninput="updateDoor(${i},'targetRoom',this.value||undefined)"></div>
-          <div class="form-group"><label>Target X</label><input type="number" value="${d.targetX || 0}" oninput="updateDoor(${i},'targetX',parseInt(this.value)||0)"></div>
-          <div class="form-group"><label>Target Y</label><input type="number" value="${d.targetY || 0}" oninput="updateDoor(${i},'targetY',parseInt(this.value)||0)"></div>
+          <div class="form-group"><label>Target Room</label><span class="target-room-field">${doorTargetRoomSelectHTML(d, i)}</span></div>
+          <div class="form-group"><label>Target Door</label><span class="target-door-field">${doorTargetSelectHTML(d, i)}</span></div>
         </div>
         <div class="form-row">
           <label class="check-label"><input type="checkbox" ${d.locked ? 'checked' : ''} onchange="updateDoor(${i},'locked',this.checked||undefined)"> Locked</label>
@@ -538,28 +1589,620 @@ function updateDoor(idx, field, value) {
   save();
 }
 
+function updateDoorLabel(idx, input) {
+  const d = data.rooms[selectedRoomId] && data.rooms[selectedRoomId].doors[idx];
+  if (!d) return;
+  updateDoor(idx, 'label', input.value);
+  const card = input.closest('.item-card');
+  if (card) {
+    const t = card.querySelector('.item-title');
+    if (t) t.textContent = d.label || d.id || ('Door ' + idx);
+  }
+}
+
+function doorTargetRoomSelectHTML(d, i) {
+  const rooms = Object.keys(data.rooms);
+  let opts = '<option value="">(none)</option>';
+  let found = !d.targetRoom;
+  rooms.forEach(rid => {
+    const label = (data.rooms[rid] && data.rooms[rid].name) || rid;
+    const sel = d.targetRoom === rid;
+    if (sel) found = true;
+    opts += '<option value="' + rid + '"' + (sel ? ' selected' : '') + '>' + label + '</option>';
+  });
+  if (d.targetRoom && !found) {
+    opts += '<option value="' + d.targetRoom + '" selected>(missing: ' + d.targetRoom + ')</option>';
+  }
+  return '<select onchange="updateDoorTargetRoom(' + i + ', this)">' + opts + '</select>';
+}
+
+function doorTargetSelectHTML(d, i) {
+  const targetDoors = d.targetRoom && data.rooms[d.targetRoom] ? (data.rooms[d.targetRoom].doors || []) : [];
+  let opts = '<option value="">(none)</option>';
+  let found = !d.targetDoor;
+  targetDoors.forEach(td => {
+    const label = td.label || td.id || 'Door';
+    const sel = d.targetDoor === td.id;
+    if (sel) found = true;
+    opts += '<option value="' + td.id + '"' + (sel ? ' selected' : '') + '>' + label + '</option>';
+  });
+  if (d.targetDoor && !found) {
+    opts += '<option value="' + d.targetDoor + '" selected>(missing: ' + d.targetDoor + ')</option>';
+  }
+  if (targetDoors.length === 0 && !d.targetDoor) {
+    opts = '<option value="">(target room has no doors)</option>';
+  }
+  return '<select onchange="updateDoorTarget(' + i + ', this.value)">' + opts + '</select>';
+}
+
+function updateDoorTargetRoom(idx, input) {
+  if (!selectedRoomId) return;
+  const d = data.rooms[selectedRoomId].doors[idx];
+  if (!d) return;
+  updateDoor(idx, 'targetRoom', input.value || undefined);
+  const fields = input.closest('.item-fields');
+  const wrap = fields && fields.querySelector('.target-door-field');
+  if (wrap) wrap.innerHTML = doorTargetSelectHTML(d, idx);
+  if (d.targetDoor) {
+    const targetDoors = d.targetRoom && data.rooms[d.targetRoom] ? (data.rooms[d.targetRoom].doors || []) : [];
+    if (!targetDoors.some(td => td.id === d.targetDoor)) delete d.targetDoor;
+  }
+}
+
+function updateDoorTarget(idx, id) {
+  updateDoor(idx, 'targetDoor', id || undefined);
+}
+
+/* Tilemap */
+const TILE_PALETTE = ['', '#ffffff', '#9aa0aa', '#ff6474', '#ffb454', '#ffe14a', '#7ee8b0', '#4aa8ff', '#b07bff', '#ff7bf0', '#8b6914', '#3a3a4a', '#4a3a2a'];
+
+function roomTileSize() {
+  if (!selectedRoomId) return 32;
+  return parseInt((document.getElementById('tileSizeInput') || {}).value) || 32;
+}
+
+function roomGridCols() {
+  const w = parseInt((document.getElementById('roomWidth') || {}).value) || (data.rooms[selectedRoomId] && data.rooms[selectedRoomId].width) || 800;
+  return Math.max(1, Math.floor(w / roomTileSize()));
+}
+
+function roomGridRows() {
+  const h = parseInt((document.getElementById('roomHeight') || {}).value) || (data.rooms[selectedRoomId] && data.rooms[selectedRoomId].height) || 600;
+  return Math.max(1, Math.floor(h / roomTileSize()));
+}
+
+function roomTiles() {
+  if (!selectedRoomId || !data.rooms[selectedRoomId]) return [];
+  return Array.isArray(data.rooms[selectedRoomId].tiles) ? data.rooms[selectedRoomId].tiles : [];
+}
+
+function tileAt(gx, gy) {
+  return roomTiles().find(t => t.x === gx && t.y === gy);
+}
+
+function updateTileSize(val) {
+  if (!selectedRoomId) return;
+  const r = data.rooms[selectedRoomId];
+  const n = parseInt(val);
+  if (!n || n <= 0) return;
+  if (n === 32) delete r.tileSize; else r.tileSize = n;
+  save();
+  renderTileGrid();
+}
+
+function setTileToolSprite(v) {
+  tileToolSprite = v || '';
+}
+
+function refreshTileToolSprite() {
+  const el = document.getElementById('tileToolSprite');
+  if (!el) return;
+  el.innerHTML = spriteOptions(tileToolSprite);
+}
+
+function setTileToolTint(v) {
+  tileToolTint = v || '';
+  renderTilePalette();
+}
+
+function renderTilePalette() {
+  const el = document.getElementById('tilePalette');
+  if (!el) return;
+  el.innerHTML = TILE_PALETTE.map(c => {
+    const sel = tileToolTint === fromColor(c);
+    return '<button type="button" class="palette-swatch' + (sel ? ' active' : '') + '" style="background:' + (c || 'transparent') + '" title="' + (c || 'No tint') + '" onclick="setTileToolTint(' + q(fromColor(c)) + ')"></button>';
+  }).join('') +
+    '<label class="palette-custom" title="Custom color"><input type="color" value="' + (toColor(tileToolTint) || '#ffffff') + '" onchange="setTileToolTint(fromColor(this.value))"></label>';
+}
+
+function tileCacheKey(fr, tint) {
+  return fr.x + ',' + fr.y + ',' + fr.w + ',' + fr.h + (tint ? '|' + tint : '');
+}
+
+function drawTintedTile(ctx, fr, x, y, w, h, tint) {
+  if (!spriteSheet) return;
+  const key = tileCacheKey(fr, tint);
+  let tmp = tileCache[key];
+  if (!tmp) {
+    tmp = document.createElement('canvas');
+    tmp.width = fr.w;
+    tmp.height = fr.h;
+    const tctx = tmp.getContext('2d');
+    tctx.drawImage(spriteSheet, fr.x, fr.y, fr.w, fr.h, 0, 0, fr.w, fr.h);
+    if (tint) {
+      tctx.globalCompositeOperation = 'source-atop';
+      tctx.fillStyle = tint;
+      tctx.fillRect(0, 0, fr.w, fr.h);
+    }
+    tileCache[key] = tmp;
+  }
+  ctx.drawImage(tmp, x, y, w, h);
+}
+
+function renderTileGrid() {
+  const canvas = document.getElementById('tileGridCanvas');
+  if (!canvas || !selectedRoomId) return;
+  const r = data.rooms[selectedRoomId];
+  const tsize = roomTileSize();
+  const cols = roomGridCols();
+  const rows = roomGridRows();
+  const cellPx = 18;
+  const cw = Math.max(1, cols * cellPx);
+  const ch = Math.max(1, rows * cellPx);
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = Math.round(cw * dpr);
+  canvas.height = Math.round(ch * dpr);
+  canvas.style.width = cw + 'px';
+  canvas.style.height = ch + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.imageSmoothingEnabled = false;
+  ctx.fillStyle = toColor(r.backgroundColor) || '#1a1a2e';
+  ctx.fillRect(0, 0, cw, ch);
+  roomTiles().forEach(t => {
+    if (t.x < 0 || t.y < 0 || t.x >= cols || t.y >= rows) return;
+    const fr = spriteFrameData[resolveFrameIndex(t.frame)];
+    if (fr) drawTintedTile(ctx, fr, t.x * cellPx, t.y * cellPx, cellPx, cellPx, toColor(t.tint));
+  });
+  strokeGridLines();
+  const count = document.getElementById('tileCount');
+  if (count) count.textContent = roomTiles().length + ' tiles placed · grid ' + cols + '×' + rows + ' · cell ' + tsize + 'px';
+}
+
+function tileGridAction(ev, fromDrag) {
+  if (!selectedRoomId) return;
+  const canvas = document.getElementById('tileGridCanvas');
+  const rect = canvas.getBoundingClientRect();
+  const cellPx = 18;
+  const gx = Math.floor((ev.clientX - rect.left) / cellPx);
+  const gy = Math.floor((ev.clientY - rect.top) / cellPx);
+  if (gx < 0 || gy < 0 || gx >= roomGridCols() || gy >= roomGridRows()) return;
+  if (fromDrag && lastTileCell && lastTileCell[0] === gx && lastTileCell[1] === gy) return;
+  lastTileCell = [gx, gy];
+  const tool = document.getElementById('tileToolSelect').value;
+  const brush = Math.max(1, parseInt(document.getElementById('tileBrushSize').value) || 1);
+  const x0 = Math.max(0, gx - Math.floor((brush - 1) / 2));
+  const y0 = Math.max(0, gy - Math.floor((brush - 1) / 2));
+  const x1 = Math.min(roomGridCols(), x0 + brush);
+  const y1 = Math.min(roomGridRows(), y0 + brush);
+  let painted = false;
+  for (let y = y0; y < y1; y++) {
+    for (let x = x0; x < x1; x++) {
+      if (tool === 'erase') {
+        clearTileAt(x, y);
+        painted = true;
+      } else {
+        if (!tileToolSprite) { if (!fromDrag) alert('Select a tile sprite first.'); return; }
+        setTileAt(x, y);
+        painted = true;
+      }
+    }
+  }
+  if (!painted) return;
+  if (fromDrag) {
+    for (let y = y0; y < y1; y++) {
+      for (let x = x0; x < x1; x++) drawGridCell(x, y);
+    }
+    strokeGridLines();
+  } else {
+    save();
+    renderTileGrid();
+  }
+}
+
+function tileGridClick(ev) {
+  tileGridAction(ev, false);
+  tilePaintActive = true;
+  tileDragStarted = false;
+}
+
+function tileGridDrag(ev) {
+  if (!tilePaintActive) return;
+  tileDragStarted = true;
+  tileGridAction(ev, true);
+}
+
+function setTileAt(gx, gy) {
+  if (!selectedRoomId) return;
+  const r = data.rooms[selectedRoomId];
+  if (!tileToolSprite) return;
+  if (!Array.isArray(r.tiles)) r.tiles = [];
+  const kind = document.getElementById('tileKindSelect').value;
+  const existing = tileAt(gx, gy);
+  if (existing) {
+    existing.kind = kind;
+    existing.frame = tileToolSprite;
+    if (tileToolTint) existing.tint = tileToolTint; else delete existing.tint;
+  } else {
+    const t = { x: gx, y: gy, kind: kind, frame: tileToolSprite };
+    if (tileToolTint) t.tint = tileToolTint;
+    r.tiles.push(t);
+  }
+}
+
+function clearTileAt(gx, gy) {
+  if (!selectedRoomId) return;
+  const r = data.rooms[selectedRoomId];
+  if (!Array.isArray(r.tiles)) return;
+  r.tiles = r.tiles.filter(t => !(t.x === gx && t.y === gy));
+}
+
+function drawGridCell(gx, gy) {
+  const canvas = document.getElementById('tileGridCanvas');
+  if (!canvas || !selectedRoomId) return;
+  const r = data.rooms[selectedRoomId];
+  const cellPx = 18;
+  const dpr = window.devicePixelRatio || 1;
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = toColor(r.backgroundColor) || '#1a1a2e';
+  ctx.fillRect(gx * cellPx, gy * cellPx, cellPx, cellPx);
+  const t = tileAt(gx, gy);
+  if (t) {
+    const fr = spriteFrameData[resolveFrameIndex(t.frame)];
+    if (fr) drawTintedTile(ctx, fr, gx * cellPx, gy * cellPx, cellPx, cellPx, toColor(t.tint));
+  }
+}
+
+function strokeGridLines() {
+  const canvas = document.getElementById('tileGridCanvas');
+  if (!canvas) return;
+  const cols = roomGridCols();
+  const rows = roomGridRows();
+  const cellPx = 18;
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(window.devicePixelRatio || 1, 0, 0, window.devicePixelRatio || 1, 0, 0);
+  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let x = 0; x <= cols; x++) { ctx.moveTo(x * cellPx + 0.5, 0); ctx.lineTo(x * cellPx + 0.5, rows * cellPx); }
+  for (let y = 0; y <= rows; y++) { ctx.moveTo(0, y * cellPx + 0.5); ctx.lineTo(cols * cellPx, y * cellPx + 0.5); }
+  ctx.stroke();
+}
+
+/* Room preview */
+function previewSettings() {
+  const r = data.rooms[selectedRoomId];
+  return {
+    name: (r && r.name) || '',
+    backgroundColor: toColor(r.backgroundColor) || '#1a1a2e',
+    width: parseInt((document.getElementById('roomWidth') || {}).value) || (r && r.width) || 800,
+    height: parseInt((document.getElementById('roomHeight') || {}).value) || (r && r.height) || 600,
+    floorTile: r && r.floorTile,
+    floorColor: r && r.floorColor ? toColor(r.floorColor) : undefined
+  };
+}
+
+function drawPreviewShape(o, cx, cy, scale, ctx) {
+  ctx.fillStyle = toColor(o.color) || '#888888';
+  if (o.type === 'circle') {
+    ctx.beginPath();
+    ctx.arc(cx, cy, (o.radius || 18) * scale, 0, Math.PI * 2);
+    ctx.fill();
+    if (o.strokeColor) {
+      ctx.strokeStyle = toColor(o.strokeColor);
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+  } else {
+    const w = (o.width || 40) * scale;
+    const h = (o.height || 40) * scale;
+    ctx.fillRect(cx - w / 2, cy - h / 2, w, h);
+    if (o.strokeColor) {
+      ctx.strokeStyle = toColor(o.strokeColor);
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(cx - w / 2, cy - h / 2, w, h);
+    }
+  }
+}
+
+function drawPreviewDoorShape(d, cx, cy, scale, ctx) {
+  ctx.fillStyle = toColor(d.color) || '#cc8833';
+  ctx.fillRect(cx - ((d.width || 12) * scale) / 2, cy - ((d.height || 60) * scale) / 2, (d.width || 12) * scale, (d.height || 60) * scale);
+}
+
+function drawPreviewSprite(ctx, val, cx, cy, scale, flipX, flipY) {
+  const idx = resolveFrameIndex(val);
+  const fr = spriteFrameData[idx];
+  if (!fr || !spriteSheet) return false;
+  const w = fr.w * 2 * scale;
+  const h = fr.h * 2 * scale;
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(flipX ? -1 : 1, flipY ? -1 : 1);
+  ctx.drawImage(spriteSheet, fr.x, fr.y, fr.w, fr.h, -w / 2, -h / 2, w, h);
+  ctx.restore();
+  return true;
+}
+
+function drawObjectHighlight(ctx, o, scale) {
+  const cx = o.x * scale;
+  const cy = o.y * scale;
+  let w;
+  let h;
+  if (o.type === 'circle') {
+    const rad = (o.radius || 18) * scale;
+    w = Math.max(rad, 32 * scale) * 2;
+    h = w;
+  } else {
+    w = Math.max((o.width || 40) * scale, 64 * scale);
+    h = Math.max((o.height || 40) * scale, 64 * scale);
+  }
+  ctx.save();
+  ctx.lineWidth = 1.5;
+  ctx.strokeStyle = 'rgba(255,217,74,0.9)';
+  ctx.setLineDash([4, 3]);
+  ctx.shadowColor = 'rgba(255,217,74,0.8)';
+  ctx.shadowBlur = 5;
+  ctx.strokeRect(cx - w / 2, cy - h / 2, w, h);
+  ctx.setLineDash([]);
+  ctx.shadowBlur = 0;
+  ctx.globalAlpha = 0.14;
+  ctx.fillStyle = '#ffd94a';
+  ctx.fillRect(cx - w / 2, cy - h / 2, w, h);
+  ctx.restore();
+}
+
+function tileRegion(ctx, val, x0, y0, w, h, scale, tint) {
+  const idx = resolveFrameIndex(val);
+  const fr = spriteFrameData[idx];
+  if (!fr || !spriteSheet) return false;
+  const tw = fr.w * 2 * scale;
+  const th = fr.h * 2 * scale;
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(x0, y0, w, h);
+  ctx.clip();
+  for (let ty = y0; ty < y0 + h + th; ty += th) {
+    for (let tx = x0; tx < x0 + w + tw; tx += tw) {
+      ctx.drawImage(spriteSheet, fr.x, fr.y, fr.w, fr.h, tx, ty, tw, th);
+    }
+  }
+  if (tint) {
+    ctx.globalCompositeOperation = 'multiply';
+    ctx.fillStyle = tint;
+    ctx.fillRect(x0, y0, w, h);
+  }
+  ctx.restore();
+  return true;
+}
+
+function drawPreviewTiles(ctx, r, scale) {
+  const tiles = r.tiles || [];
+  if (!tiles.length) return;
+  const tsize = r.tileSize || 32;
+  const size = tsize * scale;
+  [false, true].forEach(isWall => {
+    tiles.forEach(t => {
+      if ((t.kind === 'wall') !== isWall) return;
+      const fr = spriteFrameData[resolveFrameIndex(t.frame)];
+      if (!fr) return;
+      drawTintedTile(ctx, fr, (t.x * tsize + tsize / 2) * scale - size / 2, (t.y * tsize + tsize / 2) * scale - size / 2, size, size, toColor(t.tint));
+    });
+  });
+}
+
+function renderPreview() {
+  const canvas = document.getElementById('roomPreview');
+  const empty = document.getElementById('previewEmpty');
+  const nameEl = document.getElementById('previewRoomName');
+  if (!canvas || !selectedRoomId || !data.rooms[selectedRoomId]) {
+    if (empty) empty.style.display = 'block';
+    if (canvas) canvas.style.display = 'none';
+    if (nameEl) nameEl.textContent = '';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  canvas.style.display = 'block';
+  const r = data.rooms[selectedRoomId];
+  const s = previewSettings();
+  if (nameEl) nameEl.textContent = s.name || selectedRoomId;
+
+  const dpr = window.devicePixelRatio || 1;
+  const viewW = 240;
+  const viewH = Math.max(80, Math.round(viewW * s.height / s.width));
+  canvas.style.width = viewW + 'px';
+  canvas.style.height = viewH + 'px';
+  canvas.width = Math.round(viewW * dpr);
+  canvas.height = Math.round(viewH * dpr);
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.scale(dpr, dpr);
+  ctx.imageSmoothingEnabled = false;
+  const scale = viewW / s.width;
+
+  ctx.fillStyle = s.backgroundColor;
+  ctx.fillRect(0, 0, viewW, viewH);
+
+  if (s.floorTile !== undefined) {
+    if (!tileRegion(ctx, s.floorTile, 0, 0, viewW, viewH, scale, s.floorColor)) {
+      ctx.fillStyle = s.floorColor || '#3a3a4a';
+      ctx.fillRect(0, 0, viewW, viewH);
+    }
+  }
+
+  drawPreviewTiles(ctx, r, scale);
+
+  (r.doors || []).forEach(d => {
+    const cx = d.x * scale;
+    const cy = d.y * scale;
+    if (d.spriteFrame !== undefined) {
+      if (!drawPreviewSprite(ctx, d.spriteFrame, cx, cy, scale)) drawPreviewDoorShape(d, cx, cy, scale, ctx);
+    } else {
+      drawPreviewDoorShape(d, cx, cy, scale, ctx);
+    }
+  });
+
+  (r.objects || []).forEach(o => {
+    const cx = o.x * scale;
+    const cy = o.y * scale;
+    ctx.save();
+    if (o.hiddenBy) ctx.globalAlpha = 0.35;
+    let val = o.spriteFrame;
+    let animName = o.spriteAnim;
+    if (o.state && o.stateFrames && o.stateFrames[o.state] !== undefined) val = o.stateFrames[o.state];
+    if (o.state && o.stateAnim && o.stateAnim[o.state] !== undefined) animName = o.stateAnim[o.state];
+    if (val === undefined && animName) {
+      const anim = (data.animations || {})[animName];
+      if (anim) val = Array.isArray(anim.frames) ? anim.frames[0] : anim.frames;
+    }
+    if (val !== undefined) {
+      if (!drawPreviewSprite(ctx, val, cx, cy, scale, !!o.flipX, !!o.flipY)) drawPreviewShape(o, cx, cy, scale, ctx);
+    } else {
+      drawPreviewShape(o, cx, cy, scale, ctx);
+    }
+    ctx.restore();
+  });
+
+  if (hoverObjectIdx !== null && hoverObjectIdx !== undefined) {
+    const o = (r.objects || [])[hoverObjectIdx];
+    if (o) drawObjectHighlight(ctx, o, scale);
+  }
+
+  const ps = {
+    x: parseInt((document.getElementById('startX') || {}).value) || (r.playerStart && r.playerStart.x) || 200,
+    y: parseInt((document.getElementById('startY') || {}).value) || (r.playerStart && r.playerStart.y) || 400
+  };
+  const px = ps.x * scale;
+  const py = ps.y * scale;
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = 'rgba(0,0,0,.55)';
+  ctx.beginPath();
+  ctx.arc(px, py, 5.5, 0, Math.PI * 2);
+  ctx.fillStyle = '#ffffff';
+  ctx.fill();
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+  ctx.fillStyle = '#ff6474';
+  ctx.fill();
+}
+
 function toggleCard(el) {
-  const fields = el.closest('.item-card').querySelector('.item-fields');
-  fields.classList.toggle('open');
-  el.textContent = fields.classList.contains('open') ? 'collapse' : 'expand';
+  const card = el.closest('.item-card');
+  if (!card) return;
+  const fields = card.querySelector(':scope > .item-fields');
+  const open = fields.classList.toggle('open');
+  card.classList.toggle('expanded', open);
+  if (fields.dataset.idx !== undefined) {
+    openObjectIdx = open ? parseInt(fields.dataset.idx, 10) : null;
+  }
 }
 
 /* Export / Import */
-function exportJSON() {
+function buildExportJSON() {
   saveCurrentRoom();
   save();
-  const out = {
-    startPanel: data.startPanel || '',
+  migrateStartPanels();
+  return {
+    gameName: data.gameName || '',
+    startPanels: data.startPanels || [],
     startRoom: data.startRoom || '',
     animations: data.animations || {},
     rooms: data.rooms
   };
+}
+
+function exportJSON() {
+  const out = buildExportJSON();
   document.getElementById('exportPreview').textContent = JSON.stringify(out, null, 2);
   document.getElementById('exportModal').classList.add('open');
 }
 
+function downloadJSON() {
+  const out = buildExportJSON();
+  const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = (data.gameFile || 'world.json').trim() || 'world.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+}
+
 function closeExport() {
   document.getElementById('exportModal').classList.remove('open');
+}
+
+function openIndexModal() {
+  saveCurrentRoom();
+  save();
+  document.getElementById('indexNameInput').value = data.gameName || '';
+  document.getElementById('indexFileInput').value = data.gameFile || 'world.json';
+  const paste = document.getElementById('indexPaste');
+  const hint = document.getElementById('indexHint');
+  paste.value = '';
+  hint.textContent = 'Reading ../data/index.json...';
+  fetch('../data/index.json')
+    .then(r => r.json())
+    .then(arr => {
+      if (Array.isArray(arr)) {
+        paste.value = JSON.stringify(arr, null, 2);
+        hint.textContent = 'Found the current index.json — your game will be merged into it.';
+      } else {
+        paste.value = '[]';
+        hint.textContent = 'index.json did not parse as an array.';
+      }
+    })
+    .catch(() => {
+      paste.value = '[]';
+      hint.textContent = 'Could not read ../data/index.json (fetch is blocked on file://). If it already lists other games, paste its contents above before downloading.';
+    });
+  document.getElementById('indexModal').classList.add('open');
+}
+
+function closeIndexModal() {
+  document.getElementById('indexModal').classList.remove('open');
+}
+
+function downloadIndexJSON() {
+  const name = document.getElementById('indexNameInput').value.trim() || 'My World';
+  const file = document.getElementById('indexFileInput').value.trim() || 'world.json';
+  let list;
+  try {
+    list = JSON.parse(document.getElementById('indexPaste').value || '[]');
+  } catch (e) {
+    alert('Could not parse the current index.json content.');
+    return;
+  }
+  if (!Array.isArray(list)) {
+    alert('index.json must be an array of games — downloaded with just the new entry.');
+    list = [];
+  }
+  const existing = list.findIndex(g => g && g.file === file);
+  if (existing >= 0) list[existing] = { name: name, file: file };
+  else list.push({ name: name, file: file });
+  const blob = new Blob([JSON.stringify(list, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'index.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
 }
 
 function copyJSON() {
@@ -577,6 +2220,27 @@ function copyJSON() {
   });
 }
 
+function newWorld() {
+  if (!confirm('Start a NEW WORLD? This erases the current world (rooms, objects, doors, and settings). This cannot be undone.')) return;
+  data = { gameName: '', startPanels: [], startRoom: '', animations: {}, rooms: {} };
+  selectedRoomId = null;
+  hoverObjectIdx = null;
+  openObjectIdx = null;
+  dirty = false;
+  document.getElementById('roomForm').style.display = 'none';
+  document.getElementById('noRoomMsg').style.display = 'block';
+  document.getElementById('objectsArea').style.display = 'none';
+  document.getElementById('noRoomObjects').style.display = 'block';
+  document.getElementById('doorsArea').style.display = 'none';
+  document.getElementById('noRoomDoors').style.display = 'block';
+  document.getElementById('objectsList').innerHTML = '';
+  document.getElementById('doorsList').innerHTML = '';
+  save();
+  renderRoomList();
+  populateWorldSettings();
+  switchTab('world');
+}
+
 function importJSON(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -587,7 +2251,7 @@ function importJSON(event) {
       if (!imported.rooms) { alert('Invalid world file: missing rooms'); return; }
       data = imported;
       if (!data.animations) data.animations = {};
-      if (!data.startPanel) data.startPanel = '';
+      migrateStartPanels();
       selectedRoomId = null;
       save();
       renderRoomList();
@@ -603,23 +2267,174 @@ function importJSON(event) {
   event.target.value = '';
 }
 
+function migrateStartPanels() {
+  if (!Array.isArray(data.startPanels)) {
+    if (typeof data.startPanel === 'string' && data.startPanel) data.startPanels = [data.startPanel];
+    else data.startPanels = [];
+    delete data.startPanel;
+  }
+}
+
+function renderStartPanels() {
+  migrateStartPanels();
+  const container = document.getElementById('startPanelsList');
+  if (!container) return;
+  if (data.startPanels.length === 0) {
+    container.innerHTML = '<div class="empty-state" style="padding:14px 10px">No start panels yet — text shown when the game loads</div>';
+    return;
+  }
+  container.innerHTML = data.startPanels.map((t, i) =>
+    '<div class="start-panel-item">' +
+      '<textarea rows="4" placeholder="Panel ' + (i + 1) + ' text..." oninput="updateStartPanel(' + i + ', this.value)">' + (t || '') + '</textarea>' +
+      '<button class="del-btn" onclick="removeStartPanel(' + i + ')">&times;</button>' +
+    '</div>'
+  ).join('');
+}
+
+function updateStartPanel(i, value) {
+  migrateStartPanels();
+  data.startPanels[i] = value;
+  save();
+}
+
+function addStartPanel() {
+  migrateStartPanels();
+  data.startPanels.push('');
+  save();
+  renderStartPanels();
+}
+
+function removeStartPanel(i) {
+  migrateStartPanels();
+  data.startPanels.splice(i, 1);
+  save();
+  renderStartPanels();
+}
+
 function populateWorldSettings() {
-  document.getElementById('startPanel').value = data.startPanel || '';
+  renderStartPanels();
+  const nameInput = document.getElementById('gameNameInput');
+  const fileInput = document.getElementById('gameFileInput');
+  if (nameInput) nameInput.value = data.gameName || '';
+  if (fileInput) fileInput.value = data.gameFile || 'world.json';
+  const ww = document.getElementById('worldWidthInput');
+  if (ww) ww.value = data.worldWidth || 800;
+  const wh = document.getElementById('worldHeightInput');
+  if (wh) wh.value = data.worldHeight || 600;
+  const av = document.getElementById('avatarInput');
+  if (av) av.value = data.avatar || 'char1';
+  loadAvatarSheet(data.avatar || 'char1');
+  loadAvatarMeta(data.avatar || 'char1');
   const sel = document.getElementById('startRoomSelect');
   const ids = Object.keys(data.rooms);
   sel.innerHTML = ids.map(id => '<option value="' + id + '"' + (data.startRoom === id ? ' selected' : '') + '>' + (data.rooms[id].name || id) + '</option>').join('');
 }
 
-/* Init */
-fetch('../assets/Sprite-0002.json')
-  .then(r => r.json())
-  .then(meta => {
-    if (meta && meta.meta && meta.meta.frameTags) {
-      spriteNames = meta.meta.frameTags.map(t => t.name).sort();
+/* Sprite loading — the image loads independently so previews work even from file:// where fetch is blocked */
+function deriveFramesFromImage(img) {
+  const fw = 32, fh = 32;
+  const cols = Math.max(1, Math.floor(img.naturalWidth / fw));
+  const rows = Math.max(1, Math.floor(img.naturalHeight / fh));
+  const out = [];
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      out.push({ x: c * fw, y: r * fh, w: fw, h: fh });
     }
-    if (selectedRoomId) { renderObjects(); renderDoors(); }
-  })
-  .catch(() => { console.warn('Could not load Sprite-0002.json'); });
+  }
+  return out;
+}
+
+function loadSpriteSheet() {
+  spriteSheet = new Image();
+  spriteSheet.onload = () => {
+    if (spriteFrameData.length === 0) spriteFrameData = deriveFramesFromImage(spriteSheet);
+    for (const k in tileCache) delete tileCache[k];
+    refreshSpritePreviews();
+    renderPreview();
+    renderTileGrid();
+    refreshTileToolSprite();
+    const picker = document.getElementById('spritePicker');
+    if (picker && picker.classList.contains('open')) renderSpriteGrid('');
+  };
+  spriteSheet.onerror = () => { spriteSheet = null; console.warn('Could not load objects.png'); };
+  spriteSheet.src = '../assets/objects.png';
+}
+
+function loadSpriteMeta() {
+  fetch('../assets/objects.json')
+    .then(r => r.json())
+    .then(meta => {
+      if (meta && meta.meta && meta.meta.frameTags) spriteTags = meta.meta.frameTags;
+      if (Array.isArray(meta.frames)) spriteFrameData = meta.frames.map(f => f.frame);
+      refreshSpritePreviews();
+      renderPreview();
+      refreshTileToolSprite();
+      const picker = document.getElementById('spritePicker');
+      if (picker && picker.classList.contains('open')) renderSpriteGrid('');
+      if (selectedRoomId) { renderObjects(); renderDoors(); renderTileGrid(); }
+    })
+    .catch(() => { console.warn('Could not load objects.json; using frame indices only'); });
+}
+
+/* Avatar loading */
+let avatarSheet = null;
+let avatarFrameData = [];
+
+function loadAvatarSheet(name) {
+  const img = new Image();
+  img.onload = () => { avatarSheet = img; drawAvatarPreview(); };
+  img.onerror = () => { avatarSheet = null; avatarFrameData = []; drawAvatarPreview(); };
+  img.src = '../assets/' + (name || 'char1') + '.png';
+}
+
+function loadAvatarMeta(name) {
+  fetch('../assets/' + (name || 'char1') + '.json')
+    .then(r => r.json())
+    .then(meta => {
+      avatarFrameData = Array.isArray(meta.frames) ? meta.frames.map(f => f.frame) : [];
+      drawAvatarPreview();
+    })
+    .catch(() => { avatarFrameData = []; drawAvatarPreview(); });
+}
+
+function drawAvatarPreview() {
+  const canvas = document.getElementById('avatarPreview');
+  if (!canvas) return;
+  if (!avatarSheet || !avatarFrameData.length) { canvas.width = 0; canvas.height = 0; return; }
+  const fr = avatarFrameData[0];
+  const scale = 2;
+  canvas.width = fr.w * scale;
+  canvas.height = fr.h * scale;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(avatarSheet, fr.x, fr.y, fr.w, fr.h, 0, 0, canvas.width, canvas.height);
+}
+
+function updateAvatar(name) {
+  data.avatar = name || undefined;
+  save();
+  loadAvatarSheet(name);
+  loadAvatarMeta(name);
+}
+
+/* Init */
+loadSpriteSheet();
+loadSpriteMeta();
+document.addEventListener('mouseup', () => {
+  if (tilePaintActive) {
+    const wasDrag = tileDragStarted;
+    tilePaintActive = false;
+    tileDragStarted = false;
+    lastTileCell = null;
+    if (wasDrag) {
+      save();
+      renderTileGrid();
+    }
+  }
+});
+refreshTileToolSprite();
+renderTilePalette();
 
 load();
 if (!data.rooms) data.rooms = {};
@@ -627,6 +2442,7 @@ renderRoomList();
 populateWorldSettings();
 const roomIds = Object.keys(data.rooms);
 if (roomIds.length > 0) selectRoom(roomIds[0]);
+renderPreview();
 </script>
 </body>
 </html>

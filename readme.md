@@ -1,6 +1,6 @@
 # Simple Adventure Engine
 
-A point-and-click adventure engine built in Phaser. Games are defined as JSON files in `src/data/` and selected from a launcher on startup.
+A point-and-click adventure engine built in Phaser. Games are defined as JSON files in `data/` and selected from a launcher on startup.
 
 ## Table of Contents
 
@@ -28,7 +28,7 @@ A point-and-click adventure engine built in Phaser. Games are defined as JSON fi
 
 ## Quick Start
 
-No build step is required. The game runs directly from `index.html`. When you open the page, a game selector lists all available games from `src/data/`. Click a game to load it.
+No build step is required. The game runs directly from `index.html`. When you open the page, a game selector lists all available games from `data/`. Click a game to load it.
 
 To create a new game you have two options: use the **Maker Tool** or write the JSON directly.
 
@@ -39,12 +39,13 @@ Open `maker/index.html` in your browser — a visual editor for building game wo
 **What you can do:**
 - **Rooms** — add, rename, delete; set colors, wall/floor tiles, player spawn point
 - **Objects** — add interactive objects per room; set position, size, sprite, messages, pickup/block flags
+- **Dialogs** — build branching `dialogTree` conversations per object: add/rename nodes, wire option targets, set the start node
 - **Doors** — connect rooms; set position, target, locked state
 - **World settings** — choose the starting room, set opening text
 - **Import** — load an existing `.json` file to edit
-- **Export** — copy the generated JSON, then save it as a new file in `src/data/`
+- **Export** — copy the generated JSON, or download it as a file with the **Download** button
 
-When you're done, export the JSON, save it as a new file in `src/data/` (e.g. `mygame.json`), and add an entry to `src/data/index.json`:
+When you're done, export the JSON, save it as a new file in `data/` (e.g. `mygame.json`), and add an entry to `data/index.json`:
 
 ```json
 { "name": "My Game", "file": "mygame.json" }
@@ -152,6 +153,7 @@ Objects are the interactable elements in each room. Two shapes are supported: `r
 | `label` | Displayed below the object |
 | `interactable` | Must be `true` for clicks to register |
 | `blocks` | `true` makes the object impassable to the player |
+| `mirror` | `true` makes the object reflect the player. Approaching within 200px fades in a mirror image of the player at the object's position (scaled/flipped like the player). Can be set on any object |
 | `hiddenBy` | ID of another object. This object is invisible until revealed |
 | `spriteFrame` | Sprite name (from the spritesheet's `frameTags`) or frame index. When set, the object renders as a sprite instead of a colored shape |
 | `stateFrames` | Maps state names to sprite names or frame indices for visual state changes (see Sprites) |
@@ -517,13 +519,17 @@ Full-screen overlay panels display narrative text. They can be triggered on game
 
 ```json
 {
-  "startPanel": "A mysterious mansion looms before you..."
+  "startPanels": [
+    "A mysterious mansion looms before you...",
+    "Someone has been here recently."
+  ]
 }
 ```
 
 | Field | Description |
 |---|---|
-| `startPanel` | Text shown when the game loads, dismissed on click |
+| `startPanels` | Array of texts shown on game load. If more than one, a **Continue** button advances through them (clicking the overlay dismisses the rest). |
+| `startPanel` | Legacy single-panel text, still supported as a fallback when `startPanels` is absent |
 
 To trigger a panel on a state change, add `"showPanel"` to the state definition on any object. The panel appears 1.2 seconds after the state transition.
 

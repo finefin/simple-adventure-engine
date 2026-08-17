@@ -4,12 +4,15 @@ class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    const worldFile = typeof SELECTED_WORLD !== 'undefined' && SELECTED_WORLD
-      ? 'src/data/' + SELECTED_WORLD : 'src/data/demo.json';
+    const v = typeof window.AE_VER !== 'undefined' ? '?v=' + window.AE_VER : '';
+    const worldFile = (typeof SELECTED_WORLD !== 'undefined' && SELECTED_WORLD
+      ? 'data/' + SELECTED_WORLD : 'data/demo.json') + v;
+    const avatar = (typeof window.AE_AVATAR !== 'undefined' && window.AE_AVATAR) || 'char1';
     this.load.json('world', worldFile);
-    this.load.json('spritesheet', 'assets/Sprite-0002.json');
-    this.load.spritesheet('objects', 'assets/Sprite-0002.png', { frameWidth: 32, frameHeight: 32 });
-    this.load.spritesheet('player', 'assets/Sprite-0001.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.json('spritesheet', 'assets/objects.json' + v);
+    this.load.json('charMeta', 'assets/' + avatar + '.json' + v);
+    this.load.spritesheet('objects', 'assets/objects.png' + v, { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('player', 'assets/' + avatar + '.png' + v, { frameWidth: 32, frameHeight: 32 });
 
     const gameName = typeof SELECTED_WORLD !== 'undefined' && SELECTED_WORLD
       ? SELECTED_WORLD.replace('.json', '') : 'demo';

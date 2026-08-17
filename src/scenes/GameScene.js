@@ -45,9 +45,21 @@ class GameScene extends Phaser.Scene {
       this.showMessage('Entered ' + this.roomManager.currentRoomData.name);
     };
     this.roomManager.start(this.worldData.startRoom);
-    if (this.worldData.startPanel) {
+    const startPanels = (Array.isArray(this.worldData.startPanels)
+      ? this.worldData.startPanels
+      : (this.worldData.startPanel ? [this.worldData.startPanel] : [])
+    ).filter(t => typeof t === 'string' && t.trim() !== '');
+    if (startPanels.length > 0) {
       this.time.delayedCall(100, () => {
-        this.textPanel.open(this.worldData.startPanel);
+        let idx = 0;
+        const showNext = () => {
+          if (idx >= startPanels.length) return;
+          const isLast = idx === startPanels.length - 1;
+          const text = startPanels[idx];
+          idx++;
+          this.textPanel.open(text, isLast ? null : showNext);
+        };
+        showNext();
       });
     }
     this.setupInput();
@@ -146,16 +158,24 @@ class GameScene extends Phaser.Scene {
     this.player = this.add.sprite(0, 0, 'player');
     this.player.setDepth(10).setScale(2);
 
+    const charMeta = this.cache.json.get('charMeta');
+    const charTags = {};
+    if (charMeta && charMeta.meta && charMeta.meta.frameTags) {
+      charMeta.meta.frameTags.forEach((t) => { charTags[t.name] = { from: t.from, to: t.to }; });
+    }
+    const idleTag = charTags.idle || { from: 0, to: 1 };
+    const walkTag = charTags.walk || { from: 2, to: 3 };
+
     this.anims.create({
       key: 'idle',
-      frames: this.anims.generateFrameNumbers('player', { start: 0, end: 1 }),
+      frames: this.anims.generateFrameNumbers('player', { start: idleTag.from, end: idleTag.to }),
       frameRate: 2.5,
       repeat: -1
     });
 
     this.anims.create({
       key: 'walk',
-      frames: this.anims.generateFrameNumbers('player', { start: 2, end: 3 }),
+      frames: this.anims.generateFrameNumbers('player', { start: walkTag.from, end: walkTag.to }),
       frameRate: 10,
       repeat: -1
     });
@@ -167,20 +187,34 @@ class GameScene extends Phaser.Scene {
       onArrive: () => {}
     });
 
-    this.mirrorReflection = this.add.sprite(0, 0, 'player', 0);
-    this.mirrorReflection.setDepth(6).setScale(2).setAlpha(0.5).setVisible(false);
+    this.mirrorReflections = [];
   }
 
   createObjectAnimations() {
     const anims = this.worldData.animations;
-    if (!anims) return;
-    Object.keys(anims).forEach((key) => {
-      const def = anims[key];
+    if (anims) {
+      Object.keys(anims).forEach((key) => {
+        const def = anims[key];
+        this.anims.create({
+          key: 'obj_' + key,
+          frames: this.anims.generateFrameNumbers('objects', { frames: this.frameRange(def.frames) }),
+          frameRate: def.frameRate,
+          repeat: def.repeat !== undefined ? def.repeat : -1,
+        });
+      });
+    }
+    Object.keys(this.frameTags).forEach((name) => {
+      const animKey = 'obj_' + name;
+      if (this.anims.exists(animKey)) return;
+      const tag = this.frameTags[name];
+      if (tag.to <= tag.from) return;
+      const frames = [];
+      for (let i = tag.from; i <= tag.to; i++) frames.push(i);
       this.anims.create({
-        key: 'obj_' + key,
-        frames: this.anims.generateFrameNumbers('objects', { frames: this.frameRange(def.frames) }),
-        frameRate: def.frameRate,
-        repeat: def.repeat !== undefined ? def.repeat : -1,
+        key: animKey,
+        frames: this.anims.generateFrameNumbers('objects', { frames }),
+        frameRate: 8,
+        repeat: -1,
       });
     });
   }
@@ -296,8 +330,7 @@ class GameScene extends Phaser.Scene {
     const origArrive = this.playerMovement.onArrive;
     this.playerMovement.onArrive = () => {
       this.playerMovement.onArrive = origArrive;
-      const bd = obj.def.becomesDoor;
-      this.roomManager.transitionTo({ targetRoom: bd.targetRoom, targetX: bd.targetX, targetY: bd.targetY });
+      this.roomManager.transitionTo(obj.def.becomesDoor);
     };
     return true;
   }
@@ -412,32 +445,42 @@ class GameScene extends Phaser.Scene {
 
   updateMirrorReflection() {
     const room = this.roomManager.currentRoomData;
-    const mirrorDef = room && room.objects.find(o => o.id === 'mirror');
-    if (!mirrorDef) {
-      this.mirrorReflection.setVisible(false);
-      return;
-    }
+    const mirrors = room ? room.objects.filter(o => o.mirror || o.id === 'mirror') : [];
 
-    const dy = this.player.y - mirrorDef.y;
-    const dx = this.player.x - mirrorDef.x;
-    const near = Math.abs(dx) < 200 && Math.abs(dy) < 200;
+    mirrors.forEach((mirrorDef, i) => {
+      let ref = this.mirrorReflections[i];
+      if (!ref) {
+        ref = this.add.sprite(0, 0, 'player', 0);
+        ref.setDepth(6).setScale(2).setAlpha(0.5).setVisible(false);
+        this.mirrorReflections.push(ref);
+      }
 
-    if (near) {
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = 200;
-      const t = Phaser.Math.Clamp(1 - dist / maxDist, 0, 1);
-      const alpha = 0.5 * t;
-      const scale = 1 + t;
-      this.mirrorReflection.setPosition(mirrorDef.x, mirrorDef.y);
-      this.mirrorReflection.setScale(scale);
-      this.mirrorReflection.setDepth(100);
-      this.mirrorReflection.setFrame(this.player.frame.name);
-      this.mirrorReflection.setFlipX(this.player.flipX);
-      this.mirrorReflection.setAlpha(alpha);
-      this.mirrorReflection.setVisible(true);
-    } else {
-      this.mirrorReflection.setAlpha(0);
-      this.mirrorReflection.setVisible(false);
+      const dy = this.player.y - mirrorDef.y;
+      const dx = this.player.x - mirrorDef.x;
+      const near = Math.abs(dx) < 200 && Math.abs(dy) < 200;
+
+      if (near) {
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const maxDist = 200;
+        const t = Phaser.Math.Clamp(1 - dist / maxDist, 0, 1);
+        const alpha = 0.5 * t;
+        const scale = 1 + t;
+        ref.setPosition(mirrorDef.x, mirrorDef.y);
+        ref.setScale(scale);
+        ref.setDepth(this.player.depth - 1);
+        ref.setFrame(this.player.frame.name);
+        ref.setFlipX(this.player.flipX);
+        ref.setAlpha(alpha);
+        ref.setVisible(true);
+      } else {
+        ref.setAlpha(0);
+        ref.setVisible(false);
+      }
+    });
+
+    for (let i = mirrors.length; i < this.mirrorReflections.length; i++) {
+      this.mirrorReflections[i].setAlpha(0);
+      this.mirrorReflections[i].setVisible(false);
     }
   }
 }

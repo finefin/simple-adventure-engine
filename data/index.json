@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Fine Manor",
+    "file": "demo.json"
+  },
+  {
+    "name": "Prisoned",
+    "file": "prisoned.json"
+  },
+  {
+    "name": "It's gonna be fine",
+    "file": "befine.json"
+  },
+  {
+    "name": "Another test",
+    "file": "atest.json"
+  },
+  {
+    "name": "First Steps",
+    "file": "1ststeps.json"
+  }
+]

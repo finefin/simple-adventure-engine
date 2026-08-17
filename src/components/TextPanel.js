@@ -6,7 +6,7 @@ class TextPanel {
     this.isOpen = false;
   }
 
-  open(text) {
+  open(text, continueHandler) {
     this.container.removeAll(true);
 
     const w = this.scene.scale.width;
@@ -25,7 +25,8 @@ class TextPanel {
     panel.setStrokeStyle(2, 0x666688);
     this.container.add(panel);
 
-    const textObj = this.scene.add.text(w / 2, h / 2, text, {
+    const hasButton = typeof continueHandler === 'function';
+    const textObj = this.scene.add.text(w / 2, h / 2 - (hasButton ? 22 : 0), text, {
       fontSize: '24px',
       color: '#ddddee',
       fontFamily: 'monospace',
@@ -34,6 +35,23 @@ class TextPanel {
       align: 'center',
     }).setOrigin(0.5);
     this.container.add(textObj);
+
+    if (hasButton) {
+      const btnW = 180;
+      const btnH = 44;
+      const btnY = h / 2 + panelH / 2 - 30;
+      const btn = this.scene.add.rectangle(w / 2, btnY, btnW, btnH, 0x2a2a4a, 1);
+      btn.setStrokeStyle(1, 0x8888aa);
+      btn.setInteractive();
+      this.container.add(btn);
+      const btnText = this.scene.add.text(w / 2, btnY, 'Continue \u25b8', {
+        fontSize: '16px',
+        color: '#ffffff',
+        fontFamily: 'monospace',
+      }).setOrigin(0.5);
+      this.container.add(btnText);
+      btn.on('pointerdown', continueHandler);
+    }
 
     overlay.on('pointerdown', () => {
       this.close();

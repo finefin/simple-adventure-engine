@@ -1,0 +1,8897 @@
+{
+  "gameName": "Another test",
+  "startPanels": [
+    "Fuck alta! Wo binnik hier?"
+  ],
+  "startRoom": "cemetary",
+  "animations": {},
+  "rooms": {
+    "cemetary": {
+      "name": "Cemetary",
+      "backgroundColor": "0x1a1a2e",
+      "floorColor": "0x3a3a4a",
+      "wallColor": "0x4a3a2a",
+      "floorTile": "floor",
+      "wallTile": "wallStone",
+      "wallThickness": 64,
+      "playerStart": {
+        "x": 200,
+        "y": 400
+      },
+      "objects": [
+        {
+          "id": "obj_1786890682470",
+          "type": "rect",
+          "x": 131,
+          "y": 300,
+          "width": 40,
+          "height": 40,
+          "color": "0x888888",
+          "label": "bones1",
+          "interactable": true,
+          "spriteFrame": "bones1",
+          "lookMessage": "IIIIhhh! 'N totet Skenglett!",
+          "blocks": true
+        },
+        {
+          "id": "obj_1786890682470_copy",
+          "type": "rect",
+          "x": 624,
+          "y": 369,
+          "width": 40,
+          "height": 40,
+          "color": "0x888888",
+          "label": "bones1",
+          "interactable": true,
+          "spriteFrame": "bones1",
+          "flipX": true,
+          "lookMessage": "Kiek nich so!",
+          "blocks": true
+        },
+        {
+          "id": "obj_1786890682470_copy_copy",
+          "type": "rect",
+          "x": 492,
+          "y": 157,
+          "width": 40,
+          "height": 40,
+          "color": "0x888888",
+          "label": "bones1",
+          "interactable": true,
+          "spriteFrame": "bones2",
+          "flipX": true,
+          "lookMessage": "Hm... dit is hoffentlich nurn Kaninchen oda so.",
+          "blocks": true,
+          "pickup": true
+        },
+        {
+          "id": "obj_1786890682470_copy_copy_copy",
+          "type": "rect",
+          "x": 576,
+          "y": 239,
+          "width": 51,
+          "height": 40,
+          "color": "0x888888",
+          "label": "bones1",
+          "interactable": true,
+          "spriteFrame": "bones2",
+          "flipY": true,
+          "lookMessage": "Könnte vonner Katze sein - ick bin aba keen Knochologe.",
+          "pickup": true
+        }
+      ],
+      "doors": [
+        {
+          "id": "door_1786890102647",
+          "x": 778,
+          "y": 247,
+          "width": 32,
+          "height": 53,
+          "color": "0x442d11",
+          "label": "New Door",
+          "targetRoom": "crypt",
+          "targetDoor": "door_1786891947000"
+        }
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 6,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 7,
+          "y": 1,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 1,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 1,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 1,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 1,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 1,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 1,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 1,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 1,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 17,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 18,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 20,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 21,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 21,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 20,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 2,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 1,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 1,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 1,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 16,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 7,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 10,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 11,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 14,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 22,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 22,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 23,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 22,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 23,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 22,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 23,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 22,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 23,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 22,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 23,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 22,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 23,
+          "y": 10,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 7,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 6,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 22,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 21,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 20,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 21,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 20,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 21,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 20,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 22,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 23,
+          "y": 11,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 18,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 18,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 17,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 17,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 16,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 16,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 17,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 18,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 15,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 15,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 13,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 17,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 24,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 21,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 18,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 17,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 15,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 13,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 11,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 10,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 9,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 21,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 20,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 12,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 11,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 10,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 9,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 8,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 7,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 6,
+          "y": 17,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 8,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 9,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 10,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 11,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone"
+        }
+      ]
+    },
+    "crypt": {
+      "name": "Crypt",
+      "backgroundColor": "0x1a1a2e",
+      "floorColor": "0x3a3a4a",
+      "wallColor": "0x4a3a2a",
+      "floorTile": "floor",
+      "wallTile": "wallStone",
+      "wallThickness": 64,
+      "playerStart": {
+        "x": 200,
+        "y": 400
+      },
+      "objects": [
+        {
+          "id": "gruft",
+          "type": "rect",
+          "x": 511,
+          "y": 305,
+          "width": 177,
+          "height": 137,
+          "color": "0x888888",
+          "label": "Gruft",
+          "interactable": true,
+          "lookMessage": "Ne Gruft. Sieht aus wie im Viejospiel.",
+          "useMessage": "Ick muss eenfach durche Tür, gloobik.",
+          "openMessage": "Tür is offen, wie's aussieht.",
+          "blocks": true
+        }
+      ],
+      "doors": [
+        {
+          "id": "door_1786891487448",
+          "x": 421,
+          "y": 302,
+          "width": 39,
+          "height": 60,
+          "color": "0x804000",
+          "label": "CryptDoor",
+          "spriteFrame": "door",
+          "targetRoom": "dungeon1",
+          "targetDoor": "door_1786892779535"
+        },
+        {
+          "id": "door_1786891947000",
+          "x": 10,
+          "y": 314,
+          "width": 12,
+          "height": 60,
+          "color": "0x271a0a",
+          "label": "CemetDoor",
+          "targetRoom": "cemetary"
+        }
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 1,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 2,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 6,
+          "y": 1,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 6,
+          "y": 2,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 7,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 7,
+          "y": 1,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 7,
+          "y": 2,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 8,
+          "y": 1,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 8,
+          "y": 2,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 9,
+          "y": 1,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 9,
+          "y": 2,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 10,
+          "y": 0,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 10,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 0,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 1,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 2,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 4,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 4,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 21,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 3,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 3,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 7,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 6,
+          "y": 3,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 0,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 1,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 1,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 2,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 3,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 1,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 2,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 3,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 15,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 1,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 0,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 0,
+          "y": 15,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 0,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 1,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 0,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 0,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 0,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 0,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 5,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 6,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 7,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 8,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 9,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 11,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 12,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 13,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 15,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 17,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 18,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 19,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 20,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 21,
+          "y": 16,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 16,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 17,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 15,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 13,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 14,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 23,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 11,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 11,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 10,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 10,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 9,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 9,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 8,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 8,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 23,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 24,
+          "y": 5,
+          "kind": "floor",
+          "frame": "tombstone"
+        },
+        {
+          "x": 22,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 8,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 8,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 22,
+          "y": 9,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 10,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 10,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 21,
+          "y": 11,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 20,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 11,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 12,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 19,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 7,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 7,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 8,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 8,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 9,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 9,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 9,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 10,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 10,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 11,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 11,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 11,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 11,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 17,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 18,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 15,
+          "y": 10,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 9,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 8,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 7,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 7,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 16,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 14,
+          "y": 7,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 7,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 8,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 10,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 11,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "kind": "floor",
+          "frame": "wallStone",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 11,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 13,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 6,
+          "y": 14,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 6,
+          "y": 15,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 13,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 10,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 11,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "kind": "wall",
+          "frame": "tombstone",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor"
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor"
+        }
+      ]
+    },
+    "dungeon1": {
+      "name": "Dungeon1",
+      "backgroundColor": "0x1a1a2e",
+      "floorColor": "0x3a3a4a",
+      "wallColor": "0x4a3a2a",
+      "floorTile": "floor",
+      "wallTile": "wallStone",
+      "wallThickness": 64,
+      "playerStart": {
+        "x": 200,
+        "y": 400
+      },
+      "objects": [],
+      "doors": [
+        {
+          "id": "door_1786892779535",
+          "x": 15,
+          "y": 161,
+          "width": 67,
+          "height": 60,
+          "color": "0x754e1e",
+          "label": "cryptexit",
+          "targetRoom": "crypt",
+          "targetDoor": "door_1786891487448",
+          "locked": true,
+          "lockedMessage": "Kacke! Auf dieser Seite is keen Griff."
+        },
+        {
+          "id": "door_1786892794430",
+          "x": 174,
+          "y": 550,
+          "width": 101,
+          "height": 60,
+          "color": "0x400000",
+          "label": "TreasureRoomDoow",
+          "locked": true,
+          "lockedMessage": "Abjeschlossn..."
+        }
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 3,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 5,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 6,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 6,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 7,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 8,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 9,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 10,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 11,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 13,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 14,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 15,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 3,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 3,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 20,
+          "y": 4,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 4,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 21,
+          "y": 5,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 6,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 7,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 8,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 22,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 9,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 10,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 11,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 21,
+          "y": 14,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 18,
+          "y": 12,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 18,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 19,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 20,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 17,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 16,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 15,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 14,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 13,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 12,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 11,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 10,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 7,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 9,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 6,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 6,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 3,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 4,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 5,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 1,
+          "y": 14,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 1,
+          "y": 15,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 1,
+          "y": 16,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 6,
+          "y": 13,
+          "kind": "floor",
+          "frame": "floor",
+          "tint": "0x9aa0aa"
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 5,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 6,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 7,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 7,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 8,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 10,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 11,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 9,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 10,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 11,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 17,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 18,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 19,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 19,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 19,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 20,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 20,
+          "y": 2,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 21,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 21,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 21,
+          "y": 2,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 22,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 22,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 22,
+          "y": 2,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 21,
+          "y": 3,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 22,
+          "y": 3,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 2,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 3,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 24,
+          "y": 1,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 24,
+          "y": 2,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 24,
+          "y": 3,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 22,
+          "y": 4,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 23,
+          "y": 4,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 24,
+          "y": 4,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 22,
+          "y": 5,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 23,
+          "y": 5,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 24,
+          "y": 5,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 24,
+          "y": 6,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 24,
+          "y": 0,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 7,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 24,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 8,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 24,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 9,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 24,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 10,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 24,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 11,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 24,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 24,
+          "y": 12,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 13,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 24,
+          "y": 13,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 14,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 24,
+          "y": 14,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 22,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 22,
+          "y": 13,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 22,
+          "y": 14,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 22,
+          "y": 15,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 15,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 22,
+          "y": 16,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 16,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 24,
+          "y": 16,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 21,
+          "y": 15,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 21,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 21,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 22,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 23,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 20,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 20,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 19,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 19,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 18,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 17,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 16,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 15,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 13,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 12,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 11,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 11,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 10,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 24,
+          "y": 17,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 9,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 7,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 8,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 9,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 10,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 10,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 9,
+          "y": 6,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 6,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 0,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 0,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 1,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 0,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 1,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 2,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 0,
+          "y": 12,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 1,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 3,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 4,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 3,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 4,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 5,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 5,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 5,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 6,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 6,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 6,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 7,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 7,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 7,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 8,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 8,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 8,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 9,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 9,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 9,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 10,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 10,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 11,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 11,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 11,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 12,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 13,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 15,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 11,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 17,
+          "y": 10,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 11,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 17,
+          "y": 12,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 15,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 16,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 9,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 18,
+          "y": 10,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 18,
+          "y": 11,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 8,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 16,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 17,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 18,
+          "y": 7,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 15,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 15,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 16,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 17,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 14,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 10,
+          "y": 6,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 11,
+          "y": 6,
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 10,
+          "y": 5,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 11,
+          "y": 5,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 9,
+          "y": 5,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 14,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 18,
+          "y": 6,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 1,
+          "y": 13,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 0,
+          "y": 13,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 0,
+          "y": 14,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 0,
+          "y": 15,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 0,
+          "y": 16,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 0,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 1,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 2,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 3,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 5,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 6,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 7,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 8,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        },
+        {
+          "x": 9,
+          "y": 17,
+          "kind": "wall",
+          "frame": "wallStone"
+        }
+      ]
+    }
+  }
+}
