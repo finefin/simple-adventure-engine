@@ -91,6 +91,7 @@ class ActionMenu {
     }
 
     if (key === 'take') {
+      scene.playUseAnimation();
       scene.roomManager.removeRoomObjectByDef(target);
       scene.inventory.addItem(target);
       scene.showMessage('Picked up ' + target.label + '.');
@@ -118,6 +119,7 @@ class ActionMenu {
     }
 
     if (key === 'use') {
+      scene.playUseAnimation();
       scene.showMessage(scene.getObjMessage(target, 'use') || 'Nothing happens.');
       return;
     }

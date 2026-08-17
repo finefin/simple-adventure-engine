@@ -165,6 +165,7 @@ class GameScene extends Phaser.Scene {
     }
     const idleTag = charTags.idle || { from: 0, to: 1 };
     const walkTag = charTags.walk || { from: 2, to: 3 };
+    const useTag = charTags.use || { from: 4, to: 5 };
 
     this.anims.create({
       key: 'idle',
@@ -180,6 +181,14 @@ class GameScene extends Phaser.Scene {
       repeat: -1
     });
 
+    this.anims.create({
+      key: 'use',
+      frames: this.anims.generateFrameNumbers('player', { start: useTag.from, end: useTag.to }),
+      frameRate: 10,
+      repeat: 0
+    });
+
+    this.playerAnimating = false;
     this.player.play('idle');
 
     this.playerMovement = new CharacterMovement(this, this.player, {
@@ -188,6 +197,16 @@ class GameScene extends Phaser.Scene {
     });
 
     this.mirrorReflections = [];
+  }
+
+  playUseAnimation() {
+    this.playerAnimating = true;
+    this.player.removeAllListeners('animationcomplete');
+    this.player.play('use');
+    this.player.once('animationcomplete', () => {
+      this.playerAnimating = false;
+      this.player.play('idle');
+    });
   }
 
   createObjectAnimations() {
@@ -286,6 +305,7 @@ class GameScene extends Phaser.Scene {
       this.setObjState(result.setStateTarget, result.setState);
     }
 
+    this.playUseAnimation();
     this.showMessage(result.message);
   }
 
@@ -365,6 +385,7 @@ class GameScene extends Phaser.Scene {
         if (result.setState) {
           this.setObjState(result.setStateTarget, result.setState);
         }
+        this.playUseAnimation();
         this.showMessage(result.message);
 
         if (obj.def.becomesDoor) {
@@ -413,14 +434,14 @@ class GameScene extends Phaser.Scene {
       this.playerMovement.update(time, delta);
 
       if (this.playerMovement.isMoving) {
-        if (this.player.anims.currentAnim?.key !== 'walk') {
+        if (!this.playerAnimating && this.player.anims.currentAnim?.key !== 'walk') {
           this.player.play('walk');
         }
         if (this.playerMovement.target) {
           this.player.setFlipX(this.playerMovement.target.x >= this.player.x);
         }
       } else {
-        if (this.player.anims.currentAnim?.key !== 'idle') {
+        if (!this.playerAnimating && this.player.anims.currentAnim?.key !== 'idle') {
           this.player.play('idle');
         }
       }

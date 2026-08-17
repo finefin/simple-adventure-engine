@@ -196,6 +196,9 @@
             "targetRoom": "garden",
             "targetX": 260,
             "targetY": 480
+          },
+          "stateFrames": {
+            "open": "windowOpen"
           }
         },
         {
@@ -211,11 +214,6 @@
           "spriteFrame": "window",
           "lookMessage": "This window is really dirty. I can't see nything but dust.",
           "openSetsState": "open",
-          "states": {
-            "open": {
-              "lookMessage": "The window is open, revealing the garden beyond."
-            }
-          },
           "becomesDoor": {
             "targetRoom": "garden",
             "targetX": 260,
@@ -236,11 +234,6 @@
           "spriteFrame": "window",
           "lookMessage": "This window is really dirty. I can't see nything but dust.",
           "openSetsState": "open",
-          "states": {
-            "open": {
-              "lookMessage": "The window is open, revealing the garden beyond."
-            }
-          },
           "becomesDoor": {
             "targetRoom": "garden",
             "targetX": 260,
@@ -350,6 +343,10 @@
                   "next": "secrets"
                 },
                 {
+                  "text": "Ah I know! Mysterious portals and hidden items?",
+                  "next": "secrets4"
+                },
+                {
                   "text": "I'd better explore.",
                   "next": null
                 }
@@ -382,6 +379,15 @@
               "options": [
                 {
                   "text": "I really hope so.",
+                  "next": null
+                }
+              ]
+            },
+            "secrets4": {
+              "text": "Mysterious, indeed, Sir. And right in front of your eyes. You just have to examine them.",
+              "options": [
+                {
+                  "text": "Examine objects - got it!",
                   "next": null
                 }
               ]
@@ -1873,10 +1879,10 @@
           "id": "cupboard",
           "type": "rect",
           "x": 190,
-          "y": 500,
+          "y": 493,
           "width": 70,
           "height": 80,
-          "color": "0x8B6914",
+          "color": "0x3e2f09",
           "label": "Cupboard",
           "spriteFrame": "cupboard",
           "interactable": true,
@@ -2132,7 +2138,7 @@
           "interactable": true,
           "blocks": true,
           "spriteFrame": "plant",
-          "lookMessage": "A thriving basil plant. Someone's been watering it."
+          "lookMessage": "This is a .... another plant."
         },
         {
           "id": "potted_plant_copy_copy",
@@ -2146,6 +2152,33 @@
           "blocks": true,
           "spriteFrame": "plant",
           "lookMessage": "A thriving basil plant. Someone's been watering it."
+        },
+        {
+          "id": "obj_1786996467219",
+          "type": "rect",
+          "x": 133,
+          "y": 212,
+          "width": 40,
+          "height": 40,
+          "color": "0x888888",
+          "label": "Candles",
+          "interactable": true,
+          "spriteFrame": "candlesOff",
+          "blocks": true,
+          "combineMessages": {
+            "matches": {
+              "message": "",
+              "setState": "on"
+            }
+          },
+          "states": {
+            "on": {
+              "label": "New State"
+            }
+          },
+          "stateFrames": {
+            "on": "candlesOn"
+          }
         }
       ],
       "doors": [
@@ -5702,8 +5735,8 @@
         {
           "id": "quill",
           "type": "rect",
-          "x": 445,
-          "y": 292,
+          "x": 450,
+          "y": 283,
           "width": 6,
           "height": 18,
           "color": "0xddddcc",
@@ -5844,6 +5877,110 @@
           "blocks": true,
           "spriteFrame": "bookshelf",
           "lookMessage": "Self-help books. They didn't help."
+        },
+        {
+          "id": "obj_1786999167155",
+          "type": "rect",
+          "x": 678,
+          "y": 448,
+          "width": 40,
+          "height": 40,
+          "color": "0x888888",
+          "label": "candle1",
+          "interactable": true,
+          "spriteFrame": "candlesOff",
+          "combineMessages": {
+            "matches": {
+              "message": "",
+              "setState": "on"
+            }
+          },
+          "states": {
+            "on": {
+              "label": "on"
+            }
+          },
+          "stateFrames": {
+            "on": "candlesOn"
+          }
+        },
+        {
+          "id": "obj_1786999167155_copy",
+          "type": "rect",
+          "x": 112,
+          "y": 448,
+          "width": 40,
+          "height": 40,
+          "color": "0x888888",
+          "label": "candle1",
+          "interactable": true,
+          "spriteFrame": "candlesOff",
+          "combineMessages": {
+            "matches": {
+              "message": "",
+              "setState": "on"
+            }
+          },
+          "states": {
+            "on": {
+              "label": "on"
+            }
+          },
+          "stateFrames": {
+            "on": "candlesOn"
+          }
+        },
+        {
+          "id": "obj_1786999167155_copy",
+          "type": "rect",
+          "x": 674,
+          "y": 147,
+          "width": 40,
+          "height": 40,
+          "color": "0x888888",
+          "label": "candle1",
+          "interactable": true,
+          "spriteFrame": "candlesOff",
+          "combineMessages": {
+            "matches": {
+              "message": "",
+              "setState": "on"
+            }
+          },
+          "states": {
+            "on": {
+              "label": "on"
+            }
+          },
+          "stateFrames": {
+            "on": "candlesOn"
+          }
+        },
+        {
+          "id": "obj_1786999167155_copy_copy",
+          "type": "rect",
+          "x": 116,
+          "y": 147,
+          "width": 40,
+          "height": 40,
+          "color": "0x888888",
+          "label": "candle1",
+          "interactable": true,
+          "spriteFrame": "candlesOff",
+          "combineMessages": {
+            "matches": {
+              "message": "",
+              "setState": "on"
+            }
+          },
+          "states": {
+            "on": {
+              "label": "on"
+            }
+          },
+          "stateFrames": {
+            "on": "candlesOn"
+          }
         }
       ],
       "doors": [
@@ -7273,7 +7410,7 @@
         {
           "id": "tree1",
           "type": "circle",
-          "x": 80,
+          "x": 123,
           "y": 300,
           "radius": 18,
           "color": "0x3a5a2a",
