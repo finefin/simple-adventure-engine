@@ -48,7 +48,7 @@
           "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
-          "lookMessage": "Volume 1 of 'How to Annoy Adventurers in Ten Easy Steps.'."
+          "lookMessage": "'How to Annoy Adventurers in Ten Easy Steps.'"
         },
         {
           "id": "bookshelf2",
@@ -62,7 +62,7 @@
           "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
-          "lookMessage": "Mostly furniture catalogues from 1982. Someone had a dream, I guess."
+          "lookMessage": "Furniture catalogues from 1982. Someone had a dream, I guess."
         },
         {
           "id": "bookshelf3",
@@ -76,7 +76,7 @@
           "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
-          "lookMessage": "Every single book is titled 'The Adventures of Captain Obvious.'"
+          "lookMessage": "'The Adventures of Captain Obvious.'"
         },
         {
           "id": "bookshelf4",
@@ -90,7 +90,7 @@
           "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
-          "lookMessage": "This shelf is just 47 copies of the same book about taxidermy."
+          "lookMessage": "This shelf is just 42 copies of the same book about taxidermy."
         },
         {
           "id": "bookshelf5",
@@ -104,7 +104,7 @@
           "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
-          "lookMessage": "A self-help book titled 'How to Stop Being Addicted to Reading'"
+          "lookMessage": "'How to Stop Being Addicted to Reading'"
         },
         {
           "id": "bookshelf6",
@@ -118,7 +118,7 @@
           "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
-          "lookMessage": "'Point and Click Adventures for Dummies'... Sounds slightly interesing."
+          "lookMessage": "'Point and Click Adventures for Dummies'"
         },
         {
           "id": "bookshelf7",
@@ -132,7 +132,7 @@
           "spriteFrame": "bookshelf",
           "interactable": true,
           "blocks": true,
-          "lookMessage": "The complete encyclopedia of 'Things that are annoying'"
+          "lookMessage": "\"The complete Encyclopedia of boring Things\""
         },
         {
           "id": "table",
@@ -9297,8 +9297,8 @@
         {
           "id": "torch",
           "type": "rect",
-          "x": 200,
-          "y": 160,
+          "x": 126,
+          "y": 188,
           "width": 8,
           "height": 40,
           "color": "0xcc8833",
@@ -9308,13 +9308,41 @@
           "spriteAnim": "torch",
           "lookMessage": "A torch flickering with an eerie flame.",
           "pickup": true
+        },
+        {
+          "id": "obj_1787000734372",
+          "type": "rect",
+          "x": 200,
+          "y": 342,
+          "width": 40,
+          "height": 40,
+          "color": "0x888888",
+          "label": "bones1",
+          "interactable": true,
+          "spriteFrame": "bones1",
+          "blocks": true,
+          "pickup": true
+        },
+        {
+          "id": "obj_1787000762444",
+          "type": "rect",
+          "x": 644,
+          "y": 300,
+          "width": 40,
+          "height": 40,
+          "color": "0x888888",
+          "label": "bones2",
+          "interactable": true,
+          "spriteFrame": "bones2",
+          "pickup": true,
+          "blocks": true
         }
       ],
       "doors": [
         {
           "id": "door_garden_return",
-          "x": 759,
-          "y": 547,
+          "x": 692,
+          "y": 482,
           "width": 12,
           "height": 60,
           "color": "0xcc8833",
@@ -11416,7 +11444,7 @@
           "x": 18,
           "y": 16,
           "kind": "wall",
-          "frame": "wallStone",
+          "frame": "floor",
           "tint": "0x3a3a4a"
         },
         {
@@ -11443,16 +11471,16 @@
         {
           "x": 19,
           "y": 16,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 19,
           "y": 17,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 20,
@@ -11471,44 +11499,44 @@
         {
           "x": 20,
           "y": 16,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 20,
           "y": 17,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 21,
           "y": 14,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 21,
           "y": 15,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 21,
           "y": 16,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 21,
           "y": 17,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 22,
@@ -11520,23 +11548,23 @@
         {
           "x": 22,
           "y": 15,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 22,
           "y": 16,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 22,
           "y": 17,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 23,
@@ -11555,16 +11583,16 @@
         {
           "x": 23,
           "y": 16,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 23,
           "y": 17,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 24,
@@ -11583,16 +11611,16 @@
         {
           "x": 24,
           "y": 16,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 24,
           "y": 17,
-          "kind": "floor",
-          "frame": "wallStone",
-          "tint": "0x111115"
+          "kind": "wall",
+          "frame": "floor",
+          "tint": "0x3a3a4a"
         },
         {
           "x": 23,
